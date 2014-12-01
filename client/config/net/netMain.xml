@@ -121,8 +121,8 @@
 	</bean>
 		
 	<bean id="connectionManager" class="core.net.ConnectionManager" init-method="connect">
-		<!---><property name="server" value="(String)95.85.42.58"/><!---->
-		<!----><property name="server" value="(String)127.0.0.1"/><!---->
+		<!----><property name="server" value="(String)104.131.161.78"/><!---->
+		<!---><property name="server" value="(String)127.0.0.1"/><!---->
 		<property name="port" value="8881"/>
 		<property name="dataReader" ref="dataReader"/>
 		<property name="scenesController" ref="scenesController"/>
