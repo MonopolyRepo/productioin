@@ -1,0 +1,29 @@
+<beans>
+
+	<bean id="displayManager" class="display.ui.DisplayManager"/>
+	
+	<bean id="scenesController" class="gameui.ScenesController" init-method="initialize">
+		<property name="displayManager" ref="displayManager"/>
+	</bean>
+	
+	<bean id="preloaderScene" class="gameui.preloadScreen.PreloaderScene"/>
+	<bean id="lobbyScene" class="gameui.lobbyscene.LobbyScene"/>
+	
+	<bean id="gameData" class="monopoly.core.GameData"/>
+	<bean id="gameField" class="gamefield.GameField" init-method="initialize">
+		<property name="size" value="40"/>
+	</bean>
+	
+	<bean id="gameScene" class="gameui.gameScene.GameScene">
+		<property name="gameData" ref="gameData"/>
+		<property name="gameField" ref="gameField"/>
+		<property name="userDataManager" ref="userDataManager"/>
+	</bean>
+	
+	<bean id="connectionErrorScene" class="gameui.connectionError.ConnectionErrorScene"/>
+	
+	<!-- --> <bean id="autorisationScene" class="gameui.autorisation.AutorisationScene"/> <!---->
+	
+
+	
+</beans>

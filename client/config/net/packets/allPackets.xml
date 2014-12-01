@@ -1,0 +1,8 @@
+<beans>
+	<import resource="chat.xml"/>
+	<import resource="login.xml"/>
+	<import resource="ping.xml"/>
+	<import resource="gameRequest.xml"/>
+	<import resource="userDataPackets.xml"/>
+	<import resource="game.xml"/>
+</beans>

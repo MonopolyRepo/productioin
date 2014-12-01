@@ -1,0 +1,16 @@
+<beans>
+	<bean class="core.external.io.IntOperator" id="intOperator"/>
+	<bean class="core.external.io.DoubleOperator" id="doubleOperator"/>
+	<bean class="core.external.io.PointOperator" id="pointOperator"/>
+	<bean class="core.external.io.UTFStringOperator" id="UTFStringOperator"/>
+	<bean class="core.external.io.Vector3DOperator" id="vector3DOperator"/>
+	<bean class="core.external.io.ArrayOperator" id="arrayOperator"/>
+	
+	<bean id="headerOperator" class="core.external.io.StreamOperator">	
+		<lookup-method ref="intOperator" name="addSerializer"/>
+		<lookup-method ref="intOperator" name="addSerializer"/>
+		
+		<lookup-method ref="intOperator" name="addDeserializer"/>
+		<lookup-method ref="intOperator" name="addDeserializer"/>
+	</bean>
+</beans>

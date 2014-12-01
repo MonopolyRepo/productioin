@@ -1,0 +1,27 @@
+<beans>
+	<bean id="loginOperator" class="core.external.io.StreamOperator">
+		<!-- login -->
+		<lookup-method ref="UTFStringOperator" name="addDeserializer"/>
+		<!-- password -->
+		<lookup-method ref="UTFStringOperator" name="addDeserializer"/>
+	</bean>
+	
+	<bean id="loginAnswerOperator" class="core.external.io.StreamOperator">
+		<!-- id -->
+		<lookup-method ref="intOperator" name="addSerializer"/>
+		<!-- status -->
+		<lookup-method ref="intOperator" name="addSerializer"/>
+	</bean>
+	
+	<bean id="loginPacket" class="core.net.packets.BytePacket">
+		<property name="type" value="2"/>
+		<property name="headerOperator" ref="headerOperator"/>
+		<property name="streamOperator" ref="loginOperator"/>
+	</bean>
+	
+		<bean id="loginAnswer" class="core.net.packets.BytePacket">
+		<property name="type" value="1"/>
+		<property name="headerOperator" ref="headerOperator"/>
+		<property name="streamOperator" ref="loginAnswerOperator"/>
+	</bean>
+</beans>

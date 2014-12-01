@@ -1,0 +1,135 @@
+<beans>
+	<import resource="readers/readers.xml"/>
+	<import resource="packets/allPackets.xml"/>
+	
+	
+	<!-- events/ events routing -->
+	<bean id="socketDataRouter" class="net.events.SocketDataEventRouter">
+		
+		<lookup-method name="addEventListener" ref="loginEventListener"/>
+		
+		<lookup-method name="addEventListener" ref="chatMesasgeEventListener"/>
+		<lookup-method name="addEventListener" ref="chatJoinEventListener"/>
+		
+		<lookup-method name="addEventListener" ref="sitToTableEventListener"/>
+		<lookup-method name="addEventListener" ref="leaveTableEventListener"/>
+		<lookup-method name="addEventListener" ref="notifyGameStartEventListener"/>
+		
+		<lookup-method name="addEventListener" ref="getTurnEventListener"/>
+		<lookup-method name="addEventListener" ref="buyFieldEventListener"/>
+		<lookup-method name="addEventListener" ref="gamePlayerStatusEventListener"/>
+		
+		<lookup-method name="addEventListener" ref="getUserDataEventListener"/>
+		
+
+		
+	</bean>
+		
+	<bean id="loginEventListener" class="net.events.LoginAnswerEventListener">
+		<property name="type" value="1"/>
+		<property name="scenesController" ref="scenesController"/>
+		<property name="userDataManager" ref="userDataManager"/>
+	</bean>
+	
+	<bean id="chatMesasgeEventListener" class="net.events.ChatMessageEventListener">
+		<property name="type" value="10"/>
+		<!-- <property name="lobbyController" ref="LobbyWindow"/> -->
+	</bean>
+
+	<bean id="chatJoinEventListener" class="net.events.ChatJoinEventListener">
+		<property name="type" value="11"/>
+		<!-- <property name="lobbyController" ref="LobbyWindow"/> -->
+	</bean>
+	
+	<bean id="sitToTableEventListener" class="net.events.SitToTableEventListener">
+		<property name="type" value="22"/>
+		<property name="userDataManager" ref="userDataManager"/>
+		<property name="tableLayerModel" ref="tableLayerModel"/>
+		<!-- <property name="lobbyController" ref="LobbyWindow"/> -->
+	</bean>
+	
+	<bean id="leaveTableEventListener" class="net.events.LeaveTableEventListener">
+		<property name="type" value="23"/>
+		<property name="userDataManager" ref="userDataManager"/>
+		<property name="tableLayerModel" ref="tableLayerModel"/>
+		<!-- <property name="lobbyController" ref="LobbyWindow"/> -->
+	</bean>
+	
+	<bean id="notifyGameStartEventListener" class="net.events.NotifyGameStartEventListener">
+		<property name="type" value="24"/>
+		<property name="userDataManager" ref="userDataManager"/>
+		<property name="tableLayerModel" ref="tableLayerModel"/>
+		<property name="gameData" ref="gameData"/>
+		<!-- <property name="lobbyController" ref="LobbyWindow"/> -->
+	</bean>
+	
+	<bean id="getUserDataEventListener" class="net.events.GetUserDataEventListener">
+		<property name="type" value="30"/>
+		<property name="userDataManager" ref="userDataManager"/>
+	</bean>
+	
+	<bean id="getTurnEventListener" class="net.events.GetTurnEventListener">
+		<property name="type" value="40"/>
+		<property name="gameData" ref="gameData"/>
+		<property name="userDataManager" ref="userDataManager"/>
+	</bean>
+	
+	<bean id="buyFieldEventListener" class="net.events.BuyFieldEventListener">
+		<property name="type" value="41"/>
+		<property name="gameData" ref="gameData"/>
+		<property name="gameField" ref="gameField"/>
+	</bean>
+	
+	<bean id="gamePlayerStatusEventListener" class="net.events.GamePlayerStatusEventListener">
+		<property name="type" value="44"/>
+		<property name="gameData" ref="gameData"/>
+	</bean>
+	
+	
+	<!-- events/ events routing -->
+
+	<!-- services -->
+	<bean id="ChatService" class="services.ChatService">
+		<property name="connectionManager" ref="connectionManager"/>
+		<property name="chatMessage" ref="chatMessage"/>
+		<property name="gameModel" ref="gameModel"/>
+	</bean>
+	
+	<bean id="LoginService" class="services.LoginService">
+		<property name="connectionManager" ref="connectionManager"/>
+		<property name="loginPacket" ref="loginPacket"/>
+	</bean>
+	<!-- end of services -->
+	
+	<bean id="dataReader" class="core.net.DataReader">
+		<property name="eventRouter" ref="socketDataRouter"/>
+		<lookup-method name="addPacket" ref="loginAnswer"/>
+		<lookup-method name="addPacket" ref="chatMessage"/>
+		<lookup-method name="addPacket" ref="chatJoin"/>
+		
+		<lookup-method name="addPacket" ref="gameJoinPacket"/>
+		<lookup-method name="addPacket" ref="gameLeavePacket"/>
+		<lookup-method name="addPacket" ref="gameStartPacket"/>
+		
+		<lookup-method name="addPacket" ref="doTurnPacket"/>
+		<lookup-method name="addPacket" ref="buyFieldPacket"/>
+		<lookup-method name="addPacket" ref="gamePlayerStatusPacket"/>
+		
+		<lookup-method name="addPacket" ref="userDataPacket"/>
+		
+		
+	</bean>
+		
+	<bean id="connectionManager" class="core.net.ConnectionManager" init-method="connect">
+		<!---><property name="server" value="(String)95.85.42.58"/><!---->
+		<!----><property name="server" value="(String)127.0.0.1"/><!---->
+		<property name="port" value="8881"/>
+		<property name="dataReader" ref="dataReader"/>
+		<property name="scenesController" ref="scenesController"/>
+	</bean>
+	
+	<bean id="PingSender" class="net.PingSender">
+		<property name="pingPacket" ref="pingPacket"/>
+	</bean>
+	
+</beans>

@@ -1,0 +1,14 @@
+<beans>
+    <bean id="userDataOperator" class="core.external.io.StreamOperator">
+        <!-- id -->
+		<lookup-method ref="intOperator" name="addSerializer"/>
+		<!-- login -->
+		<lookup-method ref="UTFStringOperator" name="addSerializer"/>
+    </bean>
+
+    <bean id="userDataPacket" class="core.net.packets.BytePacket">
+        <property name="type" value="30"/>
+        <property name="headerOperator" ref="headerOperator"/>
+        <property name="streamOperator" ref="userDataOperator"/>
+    </bean>
+</beans>

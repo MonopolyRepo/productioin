@@ -1,0 +1,30 @@
+<beans>
+	<bean id="commandManager" class="monopoly.core.commands.CommandsManager"/>
+	
+	<bean id="takeSittingPlaceCommand" class="monopoly.core.commands.TakeSittingPlaceCommand">
+		<property name="gameRequestPacket" ref="gameRequestPacket"/>
+		<property name="connectionManager" ref="connectionManager"/>
+	</bean>
+	
+	<bean id="freeSittingPlace" class="monopoly.core.commands.FreeSittingPlace">
+		<property name="gameLeavePacket" ref="gameLeavePacket"/>
+		<property name="connectionManager" ref="connectionManager"/>
+	</bean>
+	
+	<bean id="buyFieldCommand" class="monopoly.core.commands.BuyFieldCommand">
+		<property name="buyFieldPacket" ref="buyFieldPacket"/>
+		<property name="connectionManager" ref="connectionManager"/>
+		<property name="gameField" ref="gameField"/>
+		<property name="gameData" ref="gameData"/>
+	</bean>
+	
+	<bean id="endTurnCommand" class="monopoly.core.commands.EndTurnCommand">
+		<property name="endTurnPacket" ref="endTurnPacket"/>
+		<property name="connectionManager" ref="connectionManager"/>
+	</bean>
+	
+	<bean id="animationEndCommand" class="monopoly.core.commands.AnimationEndCommand">
+		<property name="animationEndPacket" ref="animationEndPacket"/>
+		<property name="connectionManager" ref="connectionManager"/>
+	</bean>
+</beans>

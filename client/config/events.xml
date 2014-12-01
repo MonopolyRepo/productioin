@@ -1,0 +1,10 @@
+<beans>
+	
+	<bean id="gameDispatcher" class="monopoly.core.events.EventManager"/>
+	
+	<bean id="clientChangeSitting" class="monopoly.core.events.ClientChangeSittingEvent">
+		<property name="gameDispatcher" ref="gameDispatcher"/>
+		<property name="connectionManager" ref="connectionManager"/>
+	</bean>
+	
+</beans>

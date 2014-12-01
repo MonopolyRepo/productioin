@@ -1,0 +1,9 @@
+<beans>
+
+	<bean id="chatModel" class="gameui.lobbyscene.chatLayer.datavalue.ChatModel"/>
+	
+	<bean id="chatController" class="gameui.lobbyscene.chatLayer.logic.ChatController">
+		<property name="playerData" ref="userPlayerData"/>
+	</bean>
+	
+</beans>

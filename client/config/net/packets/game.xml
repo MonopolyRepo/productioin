@@ -1,0 +1,47 @@
+<beans>
+	
+	<bean id="turnOperator" class="core.external.io.StreamOperator">
+		<lookup-method ref="intOperator" name="addSerializer"/><!-- player id -->
+		<lookup-method ref="intOperator" name="addSerializer"/><!-- dice1 -->
+		<lookup-method ref="intOperator" name="addSerializer"/><!-- dice2 -->
+		<lookup-method ref="intOperator" name="addSerializer"/><!-- currentField -->
+	</bean>
+	
+	<bean id="gamePlayerStatusOperator" class="core.external.io.StreamOperator">
+		<lookup-method ref="intOperator" name="addSerializer"/><!-- player id -->
+		<lookup-method ref="intOperator" name="addSerializer"/><!-- new money value -->
+	</bean>
+	
+	<bean id="buyFieldOperator" class="core.external.io.StreamOperator">
+		<lookup-method ref="intOperator" name="addSerializer"/><!-- player id -->
+    </bean>
+
+    <bean id="doTurnPacket" class="core.net.packets.BytePacket">
+        <property name="type" value="40"/>
+        <property name="headerOperator" ref="headerOperator"/>
+        <property name="streamOperator" ref="turnOperator"/>
+    </bean>
+	
+	<bean id="buyFieldPacket" class="core.net.packets.BytePacket">
+        <property name="type" value="41"/>
+        <property name="headerOperator" ref="headerOperator"/>
+        <property name="streamOperator" ref="buyFieldOperator"/>
+    </bean>
+	
+	<bean id="endTurnPacket" class="core.net.packets.BytePacket">
+        <property name="type" value="42"/>
+        <property name="headerOperator" ref="headerOperator"/>
+    </bean>
+	
+	<bean id="animationEndPacket" class="core.net.packets.BytePacket">
+        <property name="type" value="43"/>
+        <property name="headerOperator" ref="headerOperator"/>
+    </bean>
+	
+	 <bean id="gamePlayerStatusPacket" class="core.net.packets.BytePacket">
+        <property name="type" value="44"/>
+        <property name="headerOperator" ref="headerOperator"/>
+        <property name="streamOperator" ref="gamePlayerStatusOperator"/>
+    </bean>
+	
+</beans>

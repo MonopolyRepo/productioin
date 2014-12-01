@@ -1,0 +1,54 @@
+<beans>
+	
+	<bean id="gameFoundOperator" class="core.external.io.StreamOperator">
+		<lookup-method ref="intOperator" name="addSerializer"/> <!-- game id -->
+		<lookup-method ref="intOperator" name="addSerializer"/> <!-- player id -->
+    </bean>
+
+    <bean id="gameStartOperator" class="core.external.io.StreamOperator">
+       <lookup-method ref="intOperator" name="addSerializer"/> <!-- game id -->
+    </bean>
+
+    <bean id="gameReuqstOperator" class="core.external.io.StreamOperator">
+        <lookup-method ref="intOperator" name="addDeserializer"/> <!-- game id -->
+        <lookup-method ref="intOperator" name="addDeserializer"/> <!-- place id -->
+    </bean>
+
+    <bean id="gameStatusOperator" class="core.external.io.StreamOperator">
+       <lookup-method ref="intOperator" name="addSerializer"/> <!-- player id -->
+	   <lookup-method ref="intOperator" name="addSerializer"/> <!-- match id -->
+	   <lookup-method ref="intOperator" name="addSerializer"/> <!-- place id -->
+    </bean>
+
+    <bean id="gameFound" class="core.net.packets.BytePacket">
+        <property name="type" value="20"/>
+        <property name="headerOperator" ref="headerOperator"/>
+        <property name="streamOperator" ref="gameFoundOperator"/>
+    </bean>
+
+    <bean id="gameRequestPacket" class="core.net.packets.BytePacket">
+        <property name="type" value="21"/>
+        <property name="headerOperator" ref="headerOperator"/>
+        <property name="streamOperator" ref="gameReuqstOperator"/>
+    </bean>
+
+    <bean id="gameJoinPacket" class="core.net.packets.BytePacket">
+        <property name="type" value="22"/>
+        <property name="headerOperator" ref="headerOperator"/>
+        <property name="streamOperator" ref="gameStatusOperator"/>
+    </bean>
+
+    <bean id="gameLeavePacket" class="core.net.packets.BytePacket">
+        <property name="type" value="23"/>
+        <property name="headerOperator" ref="headerOperator"/>
+        <property name="streamOperator" ref="gameStatusOperator"/>
+    </bean>
+
+    <bean id="gameStartPacket" class="core.net.packets.BytePacket">
+        <property name="type" value="24"/>
+        <property name="headerOperator" ref="headerOperator"/>
+        <property name="streamOperator" ref="gameStartOperator"/>
+    </bean>
+
+
+</beans>
