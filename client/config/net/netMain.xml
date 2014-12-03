@@ -17,7 +17,10 @@
 		
 		<lookup-method name="addEventListener" ref="getTurnEventListener"/>
 		<lookup-method name="addEventListener" ref="buyFieldEventListener"/>
+		<lookup-method name="addEventListener" ref="sellFieldEventListener"/>
+		<lookup-method name="addEventListener" ref="upgradeFieldEventListener"/>
 		<lookup-method name="addEventListener" ref="gamePlayerStatusEventListener"/>
+		<lookup-method name="addEventListener" ref="compassEventListener"/>
 		
 		<lookup-method name="addEventListener" ref="getUserDataEventListener"/>
 		
@@ -71,7 +74,26 @@
 	<bean id="getTurnEventListener" class="net.events.GetTurnEventListener">
 		<property name="type" value="40"/>
 		<property name="gameData" ref="gameData"/>
+		<property name="gameField" ref="gameField"/>
 		<property name="userDataManager" ref="userDataManager"/>
+	</bean>
+	
+	<bean id="compassEventListener" class="net.events.CompassEventListener">
+		<property name="type" value="45"/>
+		<property name="gameData" ref="gameData"/>
+		<property name="userDataManager" ref="userDataManager"/>
+	</bean>
+	
+	<bean id="upgradeFieldEventListener" class="net.events.UpgradeFieldEventListener">
+		<property name="type" value="46"/>
+		<property name="gameData" ref="gameData"/>
+		<property name="gameField" ref="gameField"/>
+	</bean>
+	
+	<bean id="sellFieldEventListener" class="net.events.SellFieldEventListener">
+		<property name="type" value="47"/>
+		<property name="gameData" ref="gameData"/>
+		<property name="gameField" ref="gameField"/>
 	</bean>
 	
 	<bean id="buyFieldEventListener" class="net.events.BuyFieldEventListener">
@@ -113,7 +135,10 @@
 		
 		<lookup-method name="addPacket" ref="doTurnPacket"/>
 		<lookup-method name="addPacket" ref="buyFieldPacket"/>
+		<lookup-method name="addPacket" ref="sellFieldPacket"/>
+		<lookup-method name="addPacket" ref="upgradeFieldPacket"/>
 		<lookup-method name="addPacket" ref="gamePlayerStatusPacket"/>
+		<lookup-method name="addPacket" ref="gameCompassPacket"/>
 		
 		<lookup-method name="addPacket" ref="userDataPacket"/>
 		

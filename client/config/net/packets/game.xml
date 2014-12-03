@@ -15,6 +15,25 @@
 	<bean id="buyFieldOperator" class="core.external.io.StreamOperator">
 		<lookup-method ref="intOperator" name="addSerializer"/><!-- player id -->
     </bean>
+	
+	<bean id="sellFieldOperator" class="core.external.io.StreamOperator">
+		<lookup-method ref="intOperator" name="addDeserializer"/><!-- field id -->
+		
+		<lookup-method ref="intOperator" name="addSerializer"/><!-- player id -->
+		<lookup-method ref="intOperator" name="addSerializer"/><!-- field id -->
+    </bean>
+	
+	<bean id="upgradeFieldOperator" class="core.external.io.StreamOperator">
+		<lookup-method ref="intOperator" name="addSerializer"/><!-- player id -->
+		<lookup-method ref="intOperator" name="addSerializer"/><!-- field id -->
+		
+		<lookup-method ref="intOperator" name="addDeserializer"/><!-- field id -->
+    </bean>
+	
+	<bean id="changeFieldActionOperator" class="core.external.io.StreamOperator">
+		<lookup-method ref="intOperator" name="addSerializer"/><!-- player id -->
+		<lookup-method ref="intOperator" name="addSerializer"/><!-- new field id -->
+    </bean>
 
     <bean id="doTurnPacket" class="core.net.packets.BytePacket">
         <property name="type" value="40"/>
@@ -28,6 +47,18 @@
         <property name="streamOperator" ref="buyFieldOperator"/>
     </bean>
 	
+	<bean id="upgradeFieldPacket" class="core.net.packets.BytePacket">
+        <property name="type" value="46"/>
+        <property name="headerOperator" ref="headerOperator"/>
+        <property name="streamOperator" ref="upgradeFieldOperator"/>
+    </bean>
+	
+	<bean id="sellFieldPacket" class="core.net.packets.BytePacket">
+        <property name="type" value="47"/>
+        <property name="headerOperator" ref="headerOperator"/>
+        <property name="streamOperator" ref="sellFieldOperator"/>
+    </bean>
+	
 	<bean id="endTurnPacket" class="core.net.packets.BytePacket">
         <property name="type" value="42"/>
         <property name="headerOperator" ref="headerOperator"/>
@@ -38,10 +69,16 @@
         <property name="headerOperator" ref="headerOperator"/>
     </bean>
 	
-	 <bean id="gamePlayerStatusPacket" class="core.net.packets.BytePacket">
-        <property name="type" value="44"/>
-        <property name="headerOperator" ref="headerOperator"/>
-        <property name="streamOperator" ref="gamePlayerStatusOperator"/>
-    </bean>
+	<bean id="gamePlayerStatusPacket" class="core.net.packets.BytePacket">
+		<property name="type" value="44"/>
+		<property name="headerOperator" ref="headerOperator"/>
+		<property name="streamOperator" ref="gamePlayerStatusOperator"/>
+	</bean>
+	
+	<bean id="gameCompassPacket" class="core.net.packets.BytePacket">
+		<property name="type" value="45"/>
+		<property name="headerOperator" ref="headerOperator"/>
+		<property name="streamOperator" ref="changeFieldActionOperator"/>
+	</bean>
 	
 </beans>

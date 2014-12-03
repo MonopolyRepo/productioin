@@ -27,4 +27,17 @@
 		<property name="animationEndPacket" ref="animationEndPacket"/>
 		<property name="connectionManager" ref="connectionManager"/>
 	</bean>
+	
+	<bean id="upgradeCommand" class="monopoly.core.commands.UpgradeCommand">
+		<property name="upgradeFieldPacket" ref="upgradeFieldPacket"/>
+		<property name="connectionManager" ref="connectionManager"/>
+		<property name="gameData" ref="gameData"/>
+	</bean>
+	
+	<bean id="sellFieldCommand" class="monopoly.core.commands.SellFieldCommand">
+		<property name="sellFieldPacket" ref="sellFieldPacket"/>
+		<property name="connectionManager" ref="connectionManager"/>
+		<property name="gameData" ref="gameData"/>
+	</bean>
+	
 </beans>
