@@ -50,4 +50,7 @@
 		<property name="unjailDicePacket" ref="unjailDicePacket"/>
 		<property name="connectionManager" ref="connectionManager"/>
 	</bean>
+	
+	<bean id="popUpCancelCommand" class="monopoly.core.commands.PopUpCancelCommand">
+	</bean>
 </beans>
