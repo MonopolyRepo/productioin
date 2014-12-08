@@ -166,9 +166,10 @@
 		<property name="port" value="8881"/>
 		<property name="dataReader" ref="dataReader"/>
 		<property name="scenesController" ref="scenesController"/>
+		<property name="pingSender" ref="pingSender"/>
 	</bean>
 	
-	<bean id="PingSender" class="net.PingSender">
+	<bean id="pingSender" class="net.PingSender">
 		<property name="pingPacket" ref="pingPacket"/>
 	</bean>
 	
