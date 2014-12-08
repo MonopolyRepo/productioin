@@ -21,6 +21,8 @@
 		<lookup-method name="addEventListener" ref="upgradeFieldEventListener"/>
 		<lookup-method name="addEventListener" ref="gamePlayerStatusEventListener"/>
 		<lookup-method name="addEventListener" ref="compassEventListener"/>
+		<lookup-method name="addEventListener" ref="jailNotifyEventListener"/>
+		<lookup-method name="addEventListener" ref="jailDiceEventListener"/>
 		
 		<lookup-method name="addEventListener" ref="getUserDataEventListener"/>
 		
@@ -96,6 +98,17 @@
 		<property name="gameField" ref="gameField"/>
 	</bean>
 	
+	<bean id="jailNotifyEventListener" class="net.events.JailNotifyEventListener">
+		<property name="type" value="49"/>
+		<property name="gameData" ref="gameData"/>
+	</bean>
+	
+	<bean id="jailDiceEventListener" class="net.events.JailDiceEventListener">
+		<property name="type" value="48"/>
+		<property name="gameData" ref="gameData"/>
+	</bean>
+	
+	
 	<bean id="buyFieldEventListener" class="net.events.BuyFieldEventListener">
 		<property name="type" value="41"/>
 		<property name="gameData" ref="gameData"/>
@@ -139,6 +152,8 @@
 		<lookup-method name="addPacket" ref="upgradeFieldPacket"/>
 		<lookup-method name="addPacket" ref="gamePlayerStatusPacket"/>
 		<lookup-method name="addPacket" ref="gameCompassPacket"/>
+		<lookup-method name="addPacket" ref="jailNotifyPacket"/>
+		<lookup-method name="addPacket" ref="unjailDicePacket"/>
 		
 		<lookup-method name="addPacket" ref="userDataPacket"/>
 		
@@ -147,7 +162,7 @@
 		
 	<bean id="connectionManager" class="core.net.ConnectionManager" init-method="connect">
 		<!----><property name="server" value="(String)104.131.161.78"/><!---->
-		<!---><property name="server" value="(String)127.0.0.1"/><!---->
+		<!---><property name="server" value="(String)192.168.2.111"/><!---->
 		<property name="port" value="8881"/>
 		<property name="dataReader" ref="dataReader"/>
 		<property name="scenesController" ref="scenesController"/>

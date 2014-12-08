@@ -12,6 +12,20 @@
 		<lookup-method ref="intOperator" name="addSerializer"/><!-- new money value -->
 	</bean>
 	
+	<bean id="jailNotifyOperator" class="core.external.io.StreamOperator">
+		<lookup-method ref="intOperator" name="addSerializer"/><!-- player id -->
+    </bean>
+	
+	<bean id="unjailDiceOperator" class="core.external.io.StreamOperator">
+		<lookup-method ref="intOperator" name="addSerializer"/><!-- player id -->
+		<lookup-method ref="intOperator" name="addSerializer"/><!-- dice 1 -->
+		<lookup-method ref="intOperator" name="addSerializer"/><!-- dice 2 -->
+    </bean>
+	
+	<bean id="unjailPayOperator" class="core.external.io.StreamOperator">
+		<lookup-method ref="intOperator" name="addSerializer"/><!-- player id -->
+    </bean>
+	
 	<bean id="buyFieldOperator" class="core.external.io.StreamOperator">
 		<lookup-method ref="intOperator" name="addSerializer"/><!-- player id -->
     </bean>
@@ -57,6 +71,24 @@
         <property name="type" value="47"/>
         <property name="headerOperator" ref="headerOperator"/>
         <property name="streamOperator" ref="sellFieldOperator"/>
+    </bean>
+	
+	<bean id="unjailDicePacket" class="core.net.packets.BytePacket">
+        <property name="type" value="48"/>
+        <property name="headerOperator" ref="headerOperator"/>
+        <property name="streamOperator" ref="unjailDiceOperator"/>
+    </bean>
+	
+	<bean id="jailNotifyPacket" class="core.net.packets.BytePacket">
+        <property name="type" value="49"/>
+        <property name="headerOperator" ref="headerOperator"/>
+        <property name="streamOperator" ref="jailNotifyOperator"/>
+    </bean>
+	
+	<bean id="unjailPayPacket" class="core.net.packets.BytePacket">
+        <property name="type" value="50"/>
+        <property name="headerOperator" ref="headerOperator"/>
+        <property name="streamOperator" ref="unjailPayOperator"/>
     </bean>
 	
 	<bean id="endTurnPacket" class="core.net.packets.BytePacket">

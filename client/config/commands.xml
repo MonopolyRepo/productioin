@@ -40,4 +40,14 @@
 		<property name="gameData" ref="gameData"/>
 	</bean>
 	
+	<bean id="unjailPayCommand" class="monopoly.core.commands.UnjailPayCommand">
+		<property name="unjailPayPacket" ref="unjailPayPacket"/>
+		<property name="connectionManager" ref="connectionManager"/>
+		<property name="gameData" ref="gameData"/>
+	</bean>
+	
+	<bean id="unjailDiceCommand" class="monopoly.core.commands.UnjailDiceCommand">
+		<property name="unjailDicePacket" ref="unjailDicePacket"/>
+		<property name="connectionManager" ref="connectionManager"/>
+	</bean>
 </beans>
