@@ -53,4 +53,19 @@
 	
 	<bean id="popUpCancelCommand" class="monopoly.core.commands.PopUpCancelCommand">
 	</bean>
+	
+	<bean id="exchangeFieldsCommand" class="monopoly.core.commands.ExchangeFieldsCommand">
+		<property name="exchangePacket" ref="exchangePacket"/>
+		<property name="connectionManager" ref="connectionManager"/>
+	</bean>
+	
+	<bean id="exchangeCancelCommand" class="monopoly.core.commands.ExchangeCancelCommand">
+		<property name="exchangeCancelPacket" ref="exchangeCancelPacket"/>
+		<property name="connectionManager" ref="connectionManager"/>
+	</bean>
+	
+	<bean id="exchangeAcceptCommand" class="monopoly.core.commands.ExchangeAcceptCommand">
+		<property name="exchangeAcceptPacket" ref="exchangeAcceptPacket"/>
+		<property name="connectionManager" ref="connectionManager"/>
+	</bean>
 </beans>

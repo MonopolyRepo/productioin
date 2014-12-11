@@ -48,6 +48,63 @@
 		<lookup-method ref="intOperator" name="addSerializer"/><!-- player id -->
 		<lookup-method ref="intOperator" name="addSerializer"/><!-- new field id -->
     </bean>
+	
+	<bean id="intArrayOperator" class="core.external.io.ArrayOperator">
+		<lookup-method ref="intOperator" name="addDeserializer"/>
+		<lookup-method ref="intOperator" name="addSerializer"/>
+	</bean>
+	
+	<bean id="exchangeOperator" class="core.external.io.StreamOperator">
+		<lookup-method ref="intOperator" name="addDeserializer"/><!-- player id -->
+		<lookup-method ref="intOperator" name="addDeserializer"/><!-- money want -->
+		<lookup-method ref="intOperator" name="addDeserializer"/><!-- money offer -->
+		<lookup-method ref="intArrayOperator" name="addDeserializer"/><!-- fields want -->
+		<lookup-method ref="intArrayOperator" name="addDeserializer"/><!-- fields offer -->
+		
+		<lookup-method ref="intOperator" name="addSerializer"/><!-- player id -->
+		<lookup-method ref="intOperator" name="addSerializer"/><!-- money want -->
+		<lookup-method ref="intOperator" name="addSerializer"/><!-- money offer -->
+		<lookup-method ref="intArrayOperator" name="addSerializer"/><!-- fields want -->
+		<lookup-method ref="intArrayOperator" name="addSerializer"/><!-- fields offer -->
+	</bean>
+	
+	<bean id="exchangeApplyOperator" class="core.external.io.StreamOperator">
+		<lookup-method ref="intOperator" name="addDeserializer"/><!-- want player id -->
+		<lookup-method ref="intOperator" name="addDeserializer"/><!-- offer player id -->
+		<lookup-method ref="intOperator" name="addDeserializer"/><!-- money want -->
+		<lookup-method ref="intOperator" name="addDeserializer"/><!-- money offer -->
+		<lookup-method ref="intArrayOperator" name="addDeserializer"/><!-- fields want -->
+		<lookup-method ref="intArrayOperator" name="addDeserializer"/><!-- fields offer -->
+		
+		<lookup-method ref="intOperator" name="addSerializer"/><!-- want player id -->
+		<lookup-method ref="intOperator" name="addSerializer"/><!-- offer player id -->
+		<lookup-method ref="intOperator" name="addSerializer"/><!-- money want -->
+		<lookup-method ref="intOperator" name="addSerializer"/><!-- money offer -->
+		<lookup-method ref="intArrayOperator" name="addSerializer"/><!-- fields want -->
+		<lookup-method ref="intArrayOperator" name="addSerializer"/><!-- fields offer -->
+	</bean>
+	
+	 <bean id="exchangeCancelPacket" class="core.net.packets.BytePacket">
+        <property name="type" value="53"/>
+        <property name="headerOperator" ref="headerOperator"/>
+    </bean>
+
+    <bean id="exchangeAcceptPacket" class="core.net.packets.BytePacket">
+        <property name="type" value="54"/>
+        <property name="headerOperator" ref="headerOperator"/>
+    </bean>
+
+    <bean id="exchangeApplyPacket" class="core.net.packets.BytePacket">
+        <property name="type" value="55"/>
+        <property name="headerOperator" ref="headerOperator"/>
+        <property name="streamOperator" ref="exchangeApplyOperator"/>
+    </bean>
+
+    <bean id="exchangePacket" class="core.net.packets.BytePacket">
+        <property name="type" value="51"/>
+        <property name="headerOperator" ref="headerOperator"/>
+        <property name="streamOperator" ref="exchangeOperator"/>
+    </bean>
 
     <bean id="doTurnPacket" class="core.net.packets.BytePacket">
         <property name="type" value="40"/>

@@ -24,6 +24,10 @@
 		<lookup-method name="addEventListener" ref="jailNotifyEventListener"/>
 		<lookup-method name="addEventListener" ref="jailDiceEventListener"/>
 		
+		<lookup-method name="addEventListener" ref="exchangeEventListener"/>
+		<lookup-method name="addEventListener" ref="exchangeCancelEventListener"/>
+		<lookup-method name="addEventListener" ref="exchangeApplyEventListener"/>
+		
 		<lookup-method name="addEventListener" ref="getUserDataEventListener"/>
 		
 
@@ -83,6 +87,7 @@
 	<bean id="compassEventListener" class="net.events.CompassEventListener">
 		<property name="type" value="45"/>
 		<property name="gameData" ref="gameData"/>
+		<property name="gameField" ref="gameField"/>
 		<property name="userDataManager" ref="userDataManager"/>
 	</bean>
 	
@@ -106,6 +111,7 @@
 	<bean id="jailDiceEventListener" class="net.events.JailDiceEventListener">
 		<property name="type" value="48"/>
 		<property name="gameData" ref="gameData"/>
+		<property name="gameField" ref="gameField"/>
 	</bean>
 	
 	
@@ -119,6 +125,25 @@
 		<property name="type" value="44"/>
 		<property name="gameData" ref="gameData"/>
 	</bean>
+	
+	<bean class="net.events.ExchangeEventListener" id="exchangeEventListener">
+        <property name="type" value="51" />
+        <property name="gameData" ref="gameData"/>
+        <property name="gameField" ref="gameField"/>
+    </bean>
+	
+	<bean class="net.events.ExchangeApplyEventListener" id="exchangeApplyEventListener">
+        <property name="type" value="55" />
+        <property name="gameData" ref="gameData"/>
+        <property name="gameField" ref="gameField"/>
+    </bean>
+	
+	<bean class="net.events.ExchangeCancelEventListener" id="exchangeCancelEventListener">
+        <property name="type" value="53" />
+        <property name="gameData" ref="gameData"/>
+        <property name="gameField" ref="gameField"/>
+    </bean>
+	
 	
 	
 	<!-- events/ events routing -->
@@ -155,14 +180,18 @@
 		<lookup-method name="addPacket" ref="jailNotifyPacket"/>
 		<lookup-method name="addPacket" ref="unjailDicePacket"/>
 		
+		<lookup-method name="addPacket" ref="exchangePacket"/>
+		<lookup-method name="addPacket" ref="exchangeCancelPacket"/>
+		<lookup-method name="addPacket" ref="exchangeApplyPacket"/>
+		
 		<lookup-method name="addPacket" ref="userDataPacket"/>
 		
 		
 	</bean>
 		
 	<bean id="connectionManager" class="core.net.ConnectionManager" init-method="connect">
-		<!----><property name="server" value="(String)104.131.161.78"/><!---->
-		<!---><property name="server" value="(String)192.168.2.111"/><!---->
+		<!---><property name="server" value="(String)104.131.161.78"/><!---->
+		<!----><property name="server" value="(String)192.168.2.111"/><!---->
 		<property name="port" value="8881"/>
 		<property name="dataReader" ref="dataReader"/>
 		<property name="scenesController" ref="scenesController"/>
