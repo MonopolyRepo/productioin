@@ -97,10 +97,18 @@
 		<property name="gameField" ref="gameField"/>
 	</bean>
 	
+	<bean id="buyFieldEventListener" class="net.events.BuyFieldEventListener">
+		<property name="type" value="41"/>
+		<property name="gameData" ref="gameData"/>
+		<property name="gameField" ref="gameField"/>
+		<property name="fieldOperationsService" ref="fieldOperationsService"/>
+	</bean>
+	
 	<bean id="sellFieldEventListener" class="net.events.SellFieldEventListener">
 		<property name="type" value="47"/>
 		<property name="gameData" ref="gameData"/>
 		<property name="gameField" ref="gameField"/>
+		<property name="fieldOperationsService" ref="fieldOperationsService"/>
 	</bean>
 	
 	<bean id="jailNotifyEventListener" class="net.events.JailNotifyEventListener">
@@ -110,13 +118,6 @@
 	
 	<bean id="jailDiceEventListener" class="net.events.JailDiceEventListener">
 		<property name="type" value="48"/>
-		<property name="gameData" ref="gameData"/>
-		<property name="gameField" ref="gameField"/>
-	</bean>
-	
-	
-	<bean id="buyFieldEventListener" class="net.events.BuyFieldEventListener">
-		<property name="type" value="41"/>
 		<property name="gameData" ref="gameData"/>
 		<property name="gameField" ref="gameField"/>
 	</bean>
@@ -148,13 +149,14 @@
 	
 	<!-- events/ events routing -->
 
-	<!-- services -->
+	<!-- services
 	<bean id="ChatService" class="services.ChatService">
 		<property name="connectionManager" ref="connectionManager"/>
 		<property name="chatMessage" ref="chatMessage"/>
 		<property name="gameModel" ref="gameModel"/>
 	</bean>
-	
+	 -->
+	 
 	<bean id="LoginService" class="services.LoginService">
 		<property name="connectionManager" ref="connectionManager"/>
 		<property name="loginPacket" ref="loginPacket"/>

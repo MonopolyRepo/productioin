@@ -2,52 +2,58 @@
 	<bean id="commandManager" class="monopoly.core.commands.CommandsManager"/>
 	
 	<bean id="takeSittingPlaceCommand" class="monopoly.core.commands.TakeSittingPlaceCommand">
-		<property name="gameRequestPacket" ref="gameRequestPacket"/>
+		<property name="packetData" ref="gameRequestPacket"/>
 		<property name="connectionManager" ref="connectionManager"/>
 	</bean>
 	
 	<bean id="freeSittingPlace" class="monopoly.core.commands.FreeSittingPlace">
-		<property name="gameLeavePacket" ref="gameLeavePacket"/>
+		<property name="packetData" ref="gameLeavePacket"/>
 		<property name="connectionManager" ref="connectionManager"/>
 	</bean>
 	
 	<bean id="buyFieldCommand" class="monopoly.core.commands.BuyFieldCommand">
-		<property name="buyFieldPacket" ref="buyFieldPacket"/>
+		<property name="packetData" ref="buyFieldPacket"/>
 		<property name="connectionManager" ref="connectionManager"/>
+		
 		<property name="gameField" ref="gameField"/>
 		<property name="gameData" ref="gameData"/>
+		<property name="fieldOperationsService" ref="fieldOperationsService"/>
+	</bean>
+	
+	<bean id="sellFieldCommand" class="monopoly.core.commands.SellFieldCommand">
+		<property name="packetData" ref="sellFieldPacket"/>
+		<property name="connectionManager" ref="connectionManager"/>
+		
+		<property name="gameData" ref="gameData"/>
+		<property name="fieldOperationsService" ref="fieldOperationsService"/>
 	</bean>
 	
 	<bean id="endTurnCommand" class="monopoly.core.commands.EndTurnCommand">
-		<property name="endTurnPacket" ref="endTurnPacket"/>
+		<property name="packetData" ref="endTurnPacket"/>
 		<property name="connectionManager" ref="connectionManager"/>
 	</bean>
 	
 	<bean id="animationEndCommand" class="monopoly.core.commands.AnimationEndCommand">
-		<property name="animationEndPacket" ref="animationEndPacket"/>
+		<property name="packetData" ref="animationEndPacket"/>
 		<property name="connectionManager" ref="connectionManager"/>
 	</bean>
 	
 	<bean id="upgradeCommand" class="monopoly.core.commands.UpgradeCommand">
-		<property name="upgradeFieldPacket" ref="upgradeFieldPacket"/>
+		<property name="packetData" ref="upgradeFieldPacket"/>
 		<property name="connectionManager" ref="connectionManager"/>
-		<property name="gameData" ref="gameData"/>
-	</bean>
-	
-	<bean id="sellFieldCommand" class="monopoly.core.commands.SellFieldCommand">
-		<property name="sellFieldPacket" ref="sellFieldPacket"/>
-		<property name="connectionManager" ref="connectionManager"/>
+		
 		<property name="gameData" ref="gameData"/>
 	</bean>
 	
 	<bean id="unjailPayCommand" class="monopoly.core.commands.UnjailPayCommand">
-		<property name="unjailPayPacket" ref="unjailPayPacket"/>
+		<property name="packetData" ref="unjailPayPacket"/>
 		<property name="connectionManager" ref="connectionManager"/>
+		
 		<property name="gameData" ref="gameData"/>
 	</bean>
 	
 	<bean id="unjailDiceCommand" class="monopoly.core.commands.UnjailDiceCommand">
-		<property name="unjailDicePacket" ref="unjailDicePacket"/>
+		<property name="packetData" ref="unjailDicePacket"/>
 		<property name="connectionManager" ref="connectionManager"/>
 	</bean>
 	
@@ -55,17 +61,17 @@
 	</bean>
 	
 	<bean id="exchangeFieldsCommand" class="monopoly.core.commands.ExchangeFieldsCommand">
-		<property name="exchangePacket" ref="exchangePacket"/>
+		<property name="packetData" ref="exchangePacket"/>
 		<property name="connectionManager" ref="connectionManager"/>
 	</bean>
 	
 	<bean id="exchangeCancelCommand" class="monopoly.core.commands.ExchangeCancelCommand">
-		<property name="exchangeCancelPacket" ref="exchangeCancelPacket"/>
+		<property name="packetData" ref="exchangeCancelPacket"/>
 		<property name="connectionManager" ref="connectionManager"/>
 	</bean>
 	
 	<bean id="exchangeAcceptCommand" class="monopoly.core.commands.ExchangeAcceptCommand">
-		<property name="exchangeAcceptPacket" ref="exchangeAcceptPacket"/>
+		<property name="packetData" ref="exchangeAcceptPacket"/>
 		<property name="connectionManager" ref="connectionManager"/>
 	</bean>
 </beans>

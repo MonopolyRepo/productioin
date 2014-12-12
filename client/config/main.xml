@@ -1,6 +1,7 @@
 <beans>
 	<import resource="vfssettings.xml"/>
 	<import resource="commands.xml"/>
+	<import resource="services.xml"/>
 	
 	<import resource="scenes/scenes.xml"/>
 	<import resource="net/netMain.xml"/>
