@@ -84,6 +84,16 @@
 		<lookup-method ref="intArrayOperator" name="addSerializer"/><!-- fields offer -->
 	</bean>
 	
+	<bean id="leaveGameOperator" class="core.external.io.StreamOperator">
+		<lookup-method ref="intOperator" name="addSerializer"/><!-- player id -->
+    </bean>
+
+    <bean id="leaveGamePacket" class="core.net.packets.BytePacket">
+        <property name="type" value="56"/>
+        <property name="headerOperator" ref="headerOperator"/>
+        <property name="streamOperator" ref="leaveGameOperator"/>
+    </bean>
+	
 	 <bean id="exchangeCancelPacket" class="core.net.packets.BytePacket">
         <property name="type" value="53"/>
         <property name="headerOperator" ref="headerOperator"/>
