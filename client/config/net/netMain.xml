@@ -30,6 +30,8 @@
 		
 		<lookup-method name="addEventListener" ref="getUserDataEventListener"/>
 		
+		<lookup-method name="addEventListener" ref="leaveGameEventListener"/>
+		
 
 		
 	</bean>
@@ -145,6 +147,11 @@
         <property name="gameField" ref="gameField"/>
     </bean>
 	
+	<bean id="leaveGameEventListener" class="net.events.LeaveGameEventListener">
+		<property name="type" value="56"/>
+		<property name="gameData" ref="gameData"/>
+	</bean>
+	
 	
 	
 	<!-- events/ events routing -->
@@ -187,6 +194,8 @@
 		<lookup-method name="addPacket" ref="exchangeApplyPacket"/>
 		
 		<lookup-method name="addPacket" ref="userDataPacket"/>
+		
+		<lookup-method name="addPacket" ref="leaveGamePacket"/>
 		
 		
 	</bean>
