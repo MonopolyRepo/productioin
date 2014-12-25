@@ -1,9 +1,13 @@
 <beans>
     <bean id="userDataOperator" class="core.external.io.StreamOperator">
-        <!-- id -->
-		<lookup-method ref="intOperator" name="addSerializer"/>
-		<!-- login -->
-		<lookup-method ref="UTFStringOperator" name="addSerializer"/>
+		<lookup-method ref="intOperator" name="addSerializer"/><!-- id -->
+		<lookup-method ref="UTFStringOperator" name="addSerializer"/><!-- login -->
+		<lookup-method ref="intOperator" name="addSerializer"/><!-- money real -->
+		<lookup-method ref="intOperator" name="addSerializer"/><!-- money game -->
+		<lookup-method ref="intOperator" name="addSerializer"/><!-- level -->
+		<lookup-method ref="intOperator" name="addSerializer"/><!-- currentExp -->
+		<lookup-method ref="intOperator" name="addSerializer"/><!-- expToLevel -->
+		<lookup-method ref="intOperator" name="addSerializer"/><!-- energy -->
     </bean>
 
     <bean id="userDataPacket" class="core.net.packets.BytePacket">

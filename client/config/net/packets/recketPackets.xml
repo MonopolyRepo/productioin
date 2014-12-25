@@ -1,0 +1,35 @@
+<beans>
+	
+    <bean id="recketNotifyOperator" class="core.external.io.StreamOperator">
+		<lookup-method ref="intOperator" name="addSerializer"/><!-- money amount -->
+    </bean>
+
+    <bean id="recketAnswerOperator" class="core.external.io.StreamOperator">
+		<lookup-method ref="intOperator" name="addSerializer"/><!-- player choose value -->
+		<lookup-method ref="intOperator" name="addDeserializer"/><!-- player choose value -->
+    </bean>
+
+    <bean id="recketNotifyPacket" class="core.net.packets.BytePacket">
+        <property name="type" value="80"/>
+        <property name="headerOperator" ref="headerOperator"/>
+        <property name="streamOperator" ref="recketNotifyOperator"/>
+    </bean>
+
+    <bean id="recketAnswerPacket" class="core.net.packets.BytePacket">
+        <property name="type" value="81"/>
+        <property name="headerOperator" ref="headerOperator"/>
+        <property name="streamOperator" ref="recketAnswerOperator"/>
+    </bean>
+
+    <bean class="net.events.RecketAnswerEventListener" id="recketAnswerEventListener">
+        <property name="type" value="81" />
+		<property name="gameData" ref="gameData" />
+    </bean>
+
+	 <bean class="net.events.RecketNotifyEventListener" id="recketNotifyEventListener">
+        <property name="type" value="80" />
+        <property name="gameData" ref="gameData" />
+    </bean>
+
+	
+</beans>

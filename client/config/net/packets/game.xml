@@ -1,5 +1,8 @@
 <beans>
 	
+	<import resource="recketPackets.xml"/>
+	<import resource="riskPacket.xml"/>
+	
 	<bean id="turnOperator" class="core.external.io.StreamOperator">
 		<lookup-method ref="intOperator" name="addSerializer"/><!-- player id -->
 		<lookup-method ref="intOperator" name="addSerializer"/><!-- dice1 -->

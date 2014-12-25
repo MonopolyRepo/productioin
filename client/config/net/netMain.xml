@@ -28,6 +28,9 @@
 		<lookup-method name="addEventListener" ref="exchangeCancelEventListener"/>
 		<lookup-method name="addEventListener" ref="exchangeApplyEventListener"/>
 		
+		<lookup-method name="addEventListener" ref="recketNotifyEventListener"/>
+		<lookup-method name="addEventListener" ref="recketAnswerEventListener"/>
+		
 		<lookup-method name="addEventListener" ref="getUserDataEventListener"/>
 		
 		<lookup-method name="addEventListener" ref="leaveGameEventListener"/>
@@ -192,6 +195,9 @@
 		<lookup-method name="addPacket" ref="exchangePacket"/>
 		<lookup-method name="addPacket" ref="exchangeCancelPacket"/>
 		<lookup-method name="addPacket" ref="exchangeApplyPacket"/>
+		
+		<lookup-method name="addPacket" ref="recketNotifyPacket"/>
+		<lookup-method name="addPacket" ref="recketAnswerPacket"/>
 		
 		<lookup-method name="addPacket" ref="userDataPacket"/>
 		
