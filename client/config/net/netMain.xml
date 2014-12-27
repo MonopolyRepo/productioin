@@ -23,6 +23,7 @@
 		<lookup-method name="addEventListener" ref="compassEventListener"/>
 		<lookup-method name="addEventListener" ref="jailNotifyEventListener"/>
 		<lookup-method name="addEventListener" ref="jailDiceEventListener"/>
+		<lookup-method name="addEventListener" ref="jailPayNotigyEventListener"/>
 		
 		<lookup-method name="addEventListener" ref="exchangeEventListener"/>
 		<lookup-method name="addEventListener" ref="exchangeCancelEventListener"/>
@@ -116,6 +117,11 @@
 		<property name="fieldOperationsService" ref="fieldOperationsService"/>
 	</bean>
 	
+	<bean id="jailPayNotigyEventListener" class="net.events.JailPayNotigyEventListener">
+		<property name="type" value="50"/>
+		<property name="gameData" ref="gameData"/>
+	</bean>
+	
 	<bean id="jailNotifyEventListener" class="net.events.JailNotifyEventListener">
 		<property name="type" value="49"/>
 		<property name="gameData" ref="gameData"/>
@@ -191,6 +197,7 @@
 		<lookup-method name="addPacket" ref="gameCompassPacket"/>
 		<lookup-method name="addPacket" ref="jailNotifyPacket"/>
 		<lookup-method name="addPacket" ref="unjailDicePacket"/>
+		<lookup-method name="addPacket" ref="unjailPayPacket"/>
 		
 		<lookup-method name="addPacket" ref="exchangePacket"/>
 		<lookup-method name="addPacket" ref="exchangeCancelPacket"/>
