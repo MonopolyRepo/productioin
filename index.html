@@ -1,66 +1,154 @@
-<!DOCTYPE html>
-<html lang="en">
+<html>
+ 
 <head>
-	<meta charset="utf-8"/>
-	<title>MonopolyPrototype</title>
-	<meta name="description" content="" />
-	
-	
-	
-	<script src="js/swfobject.js"></script>
-	<script>
-		var flashvars = {
-		};
-		var params = {
-			menu: "false",
-			
-			allowFullscreen: "true",
-			allowScriptAccess: "always",
-			bgcolor: "",
-			wmode: "direct" // can cause issues with FP settings & webcam
-		};
-		var attributes = {
-			id:"MonopolyPrototype"
-		};
-		swfobject.embedSWF(
-			"MonopolyPrototype.swf?" + Math.random(), 
-			"altContent", "100%", "100%", "14.0.0", 
-			"expressInstall.swf", 
-			flashvars, params, attributes);
-	</script>
-	<style>
-		html, body { height:100%; overflow:hidden; }
-		body { margin:0; }
-	</style>
+    <script
+    src="//ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
+        <script src="js/swfobject.js"></script>
+            <link rel="stylesheet" href="style.css" />
+            <title></title>
+            <meta name="description" content="" />
+            <script>
+                var m_pref = "http://104.131.161.78/monopoly/";
+                if (window.location.protocol == "https:") {
+                    m_pref = "https://104.131.161.78/monopoly/";
+                }
+                var m_preloaderPath 	= m_pref + "MonopolyPrototype.swf";
+                var m_movieName 		= m_pref + "someflash.swf";
+				var m_swfID				= "MonopolyPrototype";
+				var m_swf				= null;
+ 
+				var fbAppID				= "601400096658911"; // facebook api id
+                var m_token 			= "";
+				var m_server 			= m_pref + "example.com/";
+				var fbChannelURL		= m_server + "fb/channel.html";
+                var m_friendsList 		= "[ ";
+				var m_httpVars 			= window.location.search.substring(1).split("&");
+				var m_urlvars				= {};
+				// for vk and ok
+				for (var i in m_httpVars) {
+					var s 		= String(m_httpVars[i]).split("=");
+					var key 	= String(s[0]);
+					var value 	= String(s[1]);
+					m_urlvars[key] = value;
+				}
+ 
+				// this means the social is vk or odnoklassniki
+ 
+				if (m_urlvars['viewer_id'] || m_urlvars['logged_user_id']) {
+					initIframe(m_urlvars); 
+				} else {
+ 
+					$(document).ready(function () {
+ 
+						$.ajaxSetup({
+							cache: true
+						});
+						$.getScript('//connect.facebook.net/en_UK/all.js', function () {
+ 
+							FB.init({
+								appId: fbAppID,
+								channelUrl: fbChannelURL
+							});
+							FB.getLoginStatus(function (response) {
+ 
+								if (response.status === 'connected') {
+ 
+									m_token = response.authResponse.accessToken;
+									connected = true;
+									var user = null;
+									FB.api('/me?fields=picture,first_name,last_name', function (userParams) {
+										user = userParams; 
+										FB.api('/me/friends?access_token=' + m_token + '&fields=installed,first_name,last_name,picture', function (friends) {
+											for (var i in friends.data) {
+ 
+												var firstName = friends.data[i].first_name;
+												var lastName = friends.data[i].last_name;
+												var picture = friends.data[i].picture.data.url;
+												var userID = friends.data[i].id;
+												m_friendsList += JSON.stringify({
+													'firstName': firstName,
+													'lastName': lastName,
+													'picture': picture,
+													'userID': userID
+												}) + ",";
+ 
+											}
+ 
+											m_friendsList += " ]";
+											//document.body.innerHTML = m_friendsList;
+ 
+											if (user != null) { 
+												initIframe({
+													"fb_user_id": user.id,
+													"first_name": user.first_name,
+													"last_name": user.last_name,
+													"token": token,
+													"picture": user.picture.data.url,
+													"friends": m_friendsList
+												});
+											}
+ 
+										});
+									});
+ 
+								}
+							})
+ 
+						});
+					});
+				} // end else
+ 
+                function initIframe(m_vars) {
+                    var rand = String(Math.floor(Math.random() * 100000));
+                    var m_flashvars = {};
+                    var str = "";
+                    for (var i in m_vars) {
+                        var key = i;
+                        var value = m_vars[i];
+                        m_flashvars[key] = value;
+                        str += key + "=" + value + "&";
+                    }
+ 
+                    m_flashvars['server'] = m_server;
+                    m_flashvars['main'] = m_movieName + "?rand=" + rand;
+ 
+                    var params = {
+                        menu: "false",
+                        scale: "noScale",
+                        allowFullscreen: "true",
+                        allowFullscreenInteractive: "true",
+                        allowScriptAccess: "always",
+                        bgcolor: "",
+                        wmode: "direct"
+                    };
+                    var attributes = {
+                        id: m_swfID
+                    };
+ 
+                    swfobject.embedSWF(
+                        m_preloaderPath + "?rand=" + rand,
+                        "altContent", "100%", "100%", "10.0.0",
+                        "expressInstall.swf",
+                        m_flashvars, params, attributes);
+			m_swf = document.getElementById(m_swfID);	
+                }
+            </script>
+            <style>
+                html, body {
+                    height:100%;
+                    overflow:hidden;
+                }
+                body {
+                    margin:0;
+                }
+            </style>
 </head>
+ 
 <body>
-	<div id="altContent">
-		<h1>MonopolyPrototype</h1>
-		<p><a href="http://www.adobe.com/go/getflashplayer">Get Adobe Flash player</a></p>
-	</div>
-	
-	<script>
-
-
-      window.fbAsyncInit = function() {
-        FB.init({
-          appId      : '601400096658911',
-          xfbml      : true,
-          version    : 'v2.1'
-        });
-      };
-	  
-
-
-      (function(d, s, id){
-         var js, fjs = d.getElementsByTagName(s)[0];
-         if (d.getElementById(id)) {return;}
-         js = d.createElement(s); js.id = id;
-         js.src = "//connect.facebook.net/en_US/sdk.js";
-         fjs.parentNode.insertBefore(js, fjs);
-       }(document, 'script', 'facebook-jssdk'));
-	   
-	   
-    </script>
+    <div
+    id="altContent">
+ 
+        </div>
 </body>
+ 
 </html>
