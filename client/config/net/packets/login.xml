@@ -19,7 +19,13 @@
 		<property name="streamOperator" ref="loginOperator"/>
 	</bean>
 	
-		<bean id="loginAnswer" class="core.net.packets.BytePacket">
+	<bean id="facebookLoginPacket" class="core.net.packets.BytePacket">
+		<property name="type" value="3"/>
+		<property name="headerOperator" ref="headerOperator"/>
+		<property name="streamOperator" ref="loginOperator"/>
+	</bean>
+	
+	<bean id="loginAnswer" class="core.net.packets.BytePacket">
 		<property name="type" value="1"/>
 		<property name="headerOperator" ref="headerOperator"/>
 		<property name="streamOperator" ref="loginAnswerOperator"/>

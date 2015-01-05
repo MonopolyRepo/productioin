@@ -8,6 +8,8 @@
 		<lookup-method ref="intOperator" name="addSerializer"/><!-- currentExp -->
 		<lookup-method ref="intOperator" name="addSerializer"/><!-- expToLevel -->
 		<lookup-method ref="intOperator" name="addSerializer"/><!-- energy -->
+		<lookup-method ref="intOperator" name="addSerializer"/><!-- energy max -->
+		<lookup-method ref="doubleOperator" name="addSerializer"/><!-- next energy time -->
     </bean>
 
     <bean id="userDataPacket" class="core.net.packets.BytePacket">

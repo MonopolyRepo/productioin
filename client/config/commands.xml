@@ -84,4 +84,10 @@
 		<property name="packetData" ref="riskChoosePacket"/>
 		<property name="connectionManager" ref="connectionManager"/>
 	</bean>
+	
+	<bean id="buyCommand" class="monopoly.core.commands.BuyCommand">
+		<property name="packetData" ref="buyPacket"/>
+		<property name="userDataManager" ref="userDataManager"/>
+		<property name="connectionManager" ref="connectionManager"/>
+	</bean>
 </beans>

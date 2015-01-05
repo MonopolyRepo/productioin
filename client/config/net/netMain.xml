@@ -36,6 +36,9 @@
 		
 		<lookup-method name="addEventListener" ref="leaveGameEventListener"/>
 		
+		<lookup-method name="addEventListener" ref="energyUpdateEventListener"/>
+		<lookup-method name="addEventListener" ref="paydBonusesUpdateEventListener"/>
+		
 
 		
 	</bean>
@@ -176,6 +179,7 @@
 	<bean id="LoginService" class="services.LoginService">
 		<property name="connectionManager" ref="connectionManager"/>
 		<property name="loginPacket" ref="loginPacket"/>
+		<property name="facebookLoginPacket" ref="facebookLoginPacket"/>
 	</bean>
 	<!-- end of services -->
 	
@@ -209,6 +213,9 @@
 		<lookup-method name="addPacket" ref="userDataPacket"/>
 		
 		<lookup-method name="addPacket" ref="leaveGamePacket"/>
+		
+		<lookup-method name="addPacket" ref="energyRegenPacket"/>
+		<lookup-method name="addPacket" ref="paydBonusStatusUpdatePacket"/>
 		
 		
 	</bean>

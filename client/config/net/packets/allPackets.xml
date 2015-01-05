@@ -5,4 +5,6 @@
 	<import resource="gameRequest.xml"/>
 	<import resource="userDataPackets.xml"/>
 	<import resource="game.xml"/>
+	<import resource="energy.xml"/>
+	<import resource="shop.xml"/>
 </beans>
