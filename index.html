@@ -54,7 +54,7 @@
 							});
 							FB.getLoginStatus(function (response) {
 								
-								console("FB.getLoginStatus " + response);
+								console.log("FB.getLoginStatus " + response);
 								if (response.status === 'connected') {
  
 									m_token = response.authResponse.accessToken;
