@@ -54,7 +54,8 @@
 							});
 							FB.getLoginStatus(function (response) {
 								
-								console.log("FB.getLoginStatus " + response);
+								console.log("FB.getLoginStatus " + response.status)
+								;
 								if (response.status === 'connected') {
  
 									m_token = response.authResponse.accessToken;
@@ -62,6 +63,9 @@
 									var user = null;
 									FB.api('/me?fields=picture,first_name,last_name', function (userParams) {
 										user = userParams; 
+										
+										console.log("user", user);
+										
 										FB.api('/me/friends?access_token=' + m_token + '&fields=installed,first_name,last_name,picture', function (friends) {
 											for (var i in friends.data) {
  
@@ -103,6 +107,8 @@
 				} // end else
  
                 function initIframe(m_vars) {
+				
+					console.log("initIframe", m_vars);
                     var rand = String(Math.floor(Math.random() * 100000));
                     var m_flashvars = {};
                     var str = "";
