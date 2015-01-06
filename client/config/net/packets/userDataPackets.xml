@@ -10,6 +10,7 @@
 		<lookup-method ref="intOperator" name="addSerializer"/><!-- energy -->
 		<lookup-method ref="intOperator" name="addSerializer"/><!-- energy max -->
 		<lookup-method ref="doubleOperator" name="addSerializer"/><!-- next energy time -->
+		<lookup-method ref="UTFStringOperator" name="addSerializer"/><!-- photo_url -->
     </bean>
 
     <bean id="userDataPacket" class="core.net.packets.BytePacket">
