@@ -113,7 +113,9 @@
 								}
 								else
 								{
-									 FB.login();
+									 FB.login(function(response) {
+										 checkAuthStatus(FB);
+									 },{scope: 'public_profile,email,user_friends'});
 									 console.log("fb login");
 								}
 								
