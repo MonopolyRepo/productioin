@@ -46,12 +46,13 @@
 						$.ajaxSetup({
 							cache: true
 						});
-						$.getScript('//connect.facebook.net/en_UK/all.js', function () {
+						$.getScript('https://connect.facebook.net/en_UK/all.js', function () {
  
 							FB.init({
 								appId: fbAppID,
 								//channelUrl: fbChannelURL
 							});
+							console.log("after init");
 							FB.getLoginStatus(function (response) {
 								
 								console.log("FB.getLoginStatus " + response.status)
