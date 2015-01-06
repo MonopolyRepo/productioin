@@ -8,7 +8,7 @@
             <title></title>
             <meta name="description" content="" />
             <script>
-				console.log("init");
+			
 				
                 var m_pref = "http://104.131.161.78/monopoly/";
                 if (window.location.protocol == "https:") {
@@ -46,18 +46,28 @@
 						$.ajaxSetup({
 							cache: true
 						});
-						$.getScript('https://connect.facebook.net/en_UK/all.js', function () {
+						$.getScript('//connect.facebook.net/en_UK/all.js', function () {
  
 							FB.init({
-								appId: fbAppID,
+								appId: fbAppID
+								
 								//channelUrl: fbChannelURL
 							});
-							console.log("after init");
-							FB.getLoginStatus(function (response) {
+							
+							checkAuthStatus(FB);
+							
+ 
+						});
+					});
+				} // end else
+				
+				function checkAuthStatus(FB)
+				{
+					FB.getLoginStatus(function (response) {
 								
-								console.log("FB.getLoginStatus " + response.status)
-								;
-								if (response.status === 'connected') {
+								console.log("FB.getLoginStatus " + response.status);
+								if (response.status === 'connected') 
+								{
  
 									m_token = response.authResponse.accessToken;
 									connected = true;
@@ -101,12 +111,15 @@
 									});
  
 								}
+								else
+								{
+									 FB.login();
+									 console.log("fb login");
+								}
+								
 							})
- 
-						});
-					});
-				} // end else
- 
+				}
+				
                 function initIframe(m_vars) {
 				
 					console.log("initIframe", m_vars);
