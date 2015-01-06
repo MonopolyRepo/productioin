@@ -6,6 +6,7 @@
     </bean>
 
     <bean id="gameStartOperator" class="core.external.io.StreamOperator">
+       <lookup-method ref="intOperator" name="addSerializer"/> <!-- table id -->
        <lookup-method ref="intOperator" name="addSerializer"/> <!-- game id -->
     </bean>
 

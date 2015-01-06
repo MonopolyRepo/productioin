@@ -17,8 +17,6 @@
 		<!-- message -->
 		<lookup-method ref="UTFStringOperator" name="addSerializer"/>
 		
-		<!-- userid -->
-		<lookup-method ref="intOperator" name="addDeserializer"/>
 		<!-- mesasge group -->
 		<lookup-method ref="intOperator" name="addDeserializer"/>
 		<!-- message -->

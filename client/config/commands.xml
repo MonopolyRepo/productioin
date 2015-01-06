@@ -90,4 +90,10 @@
 		<property name="userDataManager" ref="userDataManager"/>
 		<property name="connectionManager" ref="connectionManager"/>
 	</bean>
+	
+	<bean id="sendChatMessageCommand" class="monopoly.core.commands.SendChatMessageCommand">
+		<property name="packetData" ref="chatMessage"/>
+		<property name="connectionManager" ref="connectionManager"/>
+		<property name="chatModel" ref="chatModel"/>
+	</bean>
 </beans>

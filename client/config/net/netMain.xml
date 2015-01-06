@@ -51,7 +51,8 @@
 	
 	<bean id="chatMesasgeEventListener" class="net.events.ChatMessageEventListener">
 		<property name="type" value="10"/>
-		<!-- <property name="lobbyController" ref="LobbyWindow"/> -->
+		<property name="userDataManager" ref="userDataManager"/>
+		<property name="chatModel" ref="chatModel"/>
 	</bean>
 
 	<bean id="chatJoinEventListener" class="net.events.ChatJoinEventListener">
@@ -78,6 +79,7 @@
 		<property name="userDataManager" ref="userDataManager"/>
 		<property name="tableLayerModel" ref="tableLayerModel"/>
 		<property name="gameData" ref="gameData"/>
+		<property name="chatModel" ref="chatModel"/>
 		<!-- <property name="lobbyController" ref="LobbyWindow"/> -->
 	</bean>
 	
