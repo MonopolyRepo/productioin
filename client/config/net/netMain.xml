@@ -35,9 +35,12 @@
 		<lookup-method name="addEventListener" ref="getUserDataEventListener"/>
 		
 		<lookup-method name="addEventListener" ref="leaveGameEventListener"/>
+		<lookup-method name="addEventListener" ref="endGameEventListener"/>
 		
 		<lookup-method name="addEventListener" ref="energyUpdateEventListener"/>
 		<lookup-method name="addEventListener" ref="paydBonusesUpdateEventListener"/>
+		
+		<lookup-method name="addEventListener" ref="topListEventListener"/>
 		
 
 		
@@ -166,6 +169,11 @@
 		<property name="gameData" ref="gameData"/>
 	</bean>
 	
+	<bean id="endGameEventListener" class="net.events.EndGameEventListener">
+		<property name="type" value="57"/>
+		<property name="gameData" ref="gameData"/>
+	</bean>
+	
 	
 	
 	<!-- events/ events routing -->
@@ -215,11 +223,13 @@
 		<lookup-method name="addPacket" ref="userDataPacket"/>
 		
 		<lookup-method name="addPacket" ref="leaveGamePacket"/>
+		<lookup-method name="addPacket" ref="endGamePacket"/>
 		
 		<lookup-method name="addPacket" ref="energyRegenPacket"/>
 		<lookup-method name="addPacket" ref="paydBonusStatusUpdatePacket"/>
 		
 		
+		<lookup-method name="addPacket" ref="topListPacket"/>
 	</bean>
 		
 	<bean id="connectionManager" class="core.net.ConnectionManager" init-method="connect">

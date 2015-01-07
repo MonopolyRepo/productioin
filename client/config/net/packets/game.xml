@@ -90,6 +90,18 @@
 	<bean id="leaveGameOperator" class="core.external.io.StreamOperator">
 		<lookup-method ref="intOperator" name="addSerializer"/><!-- player id -->
     </bean>
+	
+	<bean id="endGameOperator" class="core.external.io.StreamOperator">
+		<lookup-method ref="intOperator" name="addSerializer"/><!-- player id -->
+		<lookup-method ref="intOperator" name="addSerializer"/><!-- status -->
+		<lookup-method ref="intOperator" name="addSerializer"/><!-- win value -->
+    </bean>
+	
+    <bean id="endGamePacket" class="core.net.packets.BytePacket">
+        <property name="type" value="57"/>
+        <property name="headerOperator" ref="headerOperator"/>
+        <property name="streamOperator" ref="endGameOperator"/>
+    </bean>
 
     <bean id="leaveGamePacket" class="core.net.packets.BytePacket">
         <property name="type" value="56"/>
