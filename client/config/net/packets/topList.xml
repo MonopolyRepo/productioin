@@ -9,10 +9,15 @@
 		<lookup-method ref="UTFStringOperator" name="addSerializer"/>	<!-- name -->
 		<lookup-method ref="intOperator" name="addSerializer"/>			<!-- level -->
 		<lookup-method ref="UTFStringOperator" name="addSerializer"/>	<!-- photo -->
+		<lookup-method ref="intOperator" name="addSerializer"/>			<!-- is vip active -->
 	</bean>
 	
 	<bean id="topListOperator" class="core.external.io.StreamOperator">
-		<lookup-method ref="topListDataOperator" name="addSerializer"/>
+		<lookup-method ref="topListDataOperator" name="addSerializer"/><!-- getWeekWinRateGameTop -->
+		<lookup-method ref="topListDataOperator" name="addSerializer"/><!-- getWinRateGameTop -->
+		<lookup-method ref="topListDataOperator" name="addSerializer"/><!-- getMoneyGameTop -->
+		<lookup-method ref="topListDataOperator" name="addSerializer"/><!-- getRealMoneyTop -->
+		<lookup-method ref="topListDataOperator" name="addSerializer"/><!-- getTopFriends -->
 	</bean>
 	
 	<bean id="requestTopListPacket" class="core.net.packets.BytePacket">
