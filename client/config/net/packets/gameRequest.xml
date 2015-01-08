@@ -4,10 +4,11 @@
 		<lookup-method ref="intOperator" name="addSerializer"/> <!-- game id -->
 		<lookup-method ref="intOperator" name="addSerializer"/> <!-- player id -->
     </bean>
-
+	
     <bean id="gameStartOperator" class="core.external.io.StreamOperator">
-       <lookup-method ref="intOperator" name="addSerializer"/> <!-- table id -->
-       <lookup-method ref="intOperator" name="addSerializer"/> <!-- game id -->
+       <lookup-method ref="intOperator" name="addSerializer"/> 		<!-- table id -->
+       <lookup-method ref="intOperator" name="addSerializer"/> 		<!-- game id -->
+       <lookup-method ref="intArrayOperator" name="addSerializer"/> <!-- game id -->	   
     </bean>
 
     <bean id="gameReuqstOperator" class="core.external.io.StreamOperator">

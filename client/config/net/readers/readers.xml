@@ -6,6 +6,11 @@
 	<bean class="core.external.io.Vector3DOperator" id="vector3DOperator"/>
 	<bean class="core.external.io.ArrayOperator" id="arrayOperator"/>
 	
+	<bean id="intArrayOperator" class="core.external.io.ArrayOperator">
+		<lookup-method ref="intOperator" name="addDeserializer"/>
+		<lookup-method ref="intOperator" name="addSerializer"/>
+	</bean>
+	
 	<bean id="headerOperator" class="core.external.io.StreamOperator">	
 		<lookup-method ref="intOperator" name="addSerializer"/>
 		<lookup-method ref="intOperator" name="addSerializer"/>

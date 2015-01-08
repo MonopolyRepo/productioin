@@ -52,11 +52,6 @@
 		<lookup-method ref="intOperator" name="addSerializer"/><!-- new field id -->
     </bean>
 	
-	<bean id="intArrayOperator" class="core.external.io.ArrayOperator">
-		<lookup-method ref="intOperator" name="addDeserializer"/>
-		<lookup-method ref="intOperator" name="addSerializer"/>
-	</bean>
-	
 	<bean id="exchangeOperator" class="core.external.io.StreamOperator">
 		<lookup-method ref="intOperator" name="addDeserializer"/><!-- player id -->
 		<lookup-method ref="intOperator" name="addDeserializer"/><!-- money want -->
