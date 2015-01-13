@@ -42,10 +42,19 @@
 		
 		<lookup-method name="addEventListener" ref="topListEventListener"/>
 		
+		
+		<lookup-method name="addEventListener" ref="dailyBonusEventListener"/>
+		
 
 		
 	</bean>
 		
+	<bean id="dailyBonusEventListener" class="net.events.DailyBonusEventListener">
+		<property name="type" value="4"/>
+		<property name="userDataManager" ref="userDataManager"/>
+	</bean>
+	
+	
 	<bean id="loginEventListener" class="net.events.LoginAnswerEventListener">
 		<property name="type" value="1"/>
 		<property name="scenesController" ref="scenesController"/>
@@ -228,6 +237,8 @@
 		<lookup-method name="addPacket" ref="energyRegenPacket"/>
 		<lookup-method name="addPacket" ref="paydBonusStatusUpdatePacket"/>
 		
+		
+		<lookup-method name="addPacket" ref="dailyBonusPacket"/>
 		
 		<lookup-method name="addPacket" ref="topListPacket"/>
 	</bean>

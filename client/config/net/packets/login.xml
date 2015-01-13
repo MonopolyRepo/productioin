@@ -13,6 +13,13 @@
 		<lookup-method ref="intOperator" name="addSerializer"/>
 	</bean>
 	
+	<bean id="dailyBonusOperator" class="core.external.io.StreamOperator">
+		<!-- id -->
+		<lookup-method ref="intOperator" name="addSerializer"/>
+		<!-- status -->
+		<lookup-method ref="intOperator" name="addSerializer"/>
+	</bean>
+	
 	<bean id="loginPacket" class="core.net.packets.BytePacket">
 		<property name="type" value="2"/>
 		<property name="headerOperator" ref="headerOperator"/>
@@ -30,4 +37,10 @@
 		<property name="headerOperator" ref="headerOperator"/>
 		<property name="streamOperator" ref="loginAnswerOperator"/>
 	</bean>
+	
+	<bean id="dailyBonusPacket" class="core.net.packets.BytePacket">
+        <property name="type" value="4"/>
+        <property name="headerOperator" ref="headerOperator"/>
+        <property name="streamOperator" ref="dailyBonusOperator"/>
+    </bean>
 </beans>
