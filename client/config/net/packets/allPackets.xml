@@ -8,4 +8,5 @@
 	<import resource="energy.xml"/>
 	<import resource="shop.xml"/>
 	<import resource="topList.xml"/>
+	<import resource="raid.xml"/>
 </beans>

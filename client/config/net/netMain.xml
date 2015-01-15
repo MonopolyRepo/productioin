@@ -45,6 +45,8 @@
 		
 		<lookup-method name="addEventListener" ref="dailyBonusEventListener"/>
 		
+		<lookup-method name="addEventListener" ref="raidResultEventListener"/>
+		
 
 		
 	</bean>
@@ -241,6 +243,8 @@
 		<lookup-method name="addPacket" ref="dailyBonusPacket"/>
 		
 		<lookup-method name="addPacket" ref="topListPacket"/>
+		
+		<lookup-method name="addPacket" ref="raidResultPacket"/>
 	</bean>
 		
 	<bean id="connectionManager" class="core.net.ConnectionManager" init-method="connect">

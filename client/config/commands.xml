@@ -97,6 +97,11 @@
 		<property name="chatModel" ref="chatModel"/>
 	</bean>
 	
+	<bean id="RaidCommand" class="monopoly.core.commands.RaidCommand">
+		<property name="packetData" ref="raidRequestPacket"/>
+		<property name="connectionManager" ref="connectionManager"/>
+	</bean>
+		
 	<bean id="topListRequestCommand" class="monopoly.core.commands.TopListRequestCommand">
 		<property name="packetData" ref="requestTopListPacket"/>
 		<property name="connectionManager" ref="connectionManager"/>
