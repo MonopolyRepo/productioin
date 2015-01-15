@@ -9,6 +9,11 @@
 		<lookup-method ref="intOperator" name="addSerializer"/><!-- expToLevel -->
 		<lookup-method ref="intOperator" name="addSerializer"/><!-- energy -->
 		<lookup-method ref="intOperator" name="addSerializer"/><!-- energy max -->
+		<lookup-method ref="intOperator" name="addSerializer"/><!-- games played -->
+		<lookup-method ref="intOperator" name="addSerializer"/><!-- games win -->
+		<lookup-method ref="intOperator" name="addSerializer"/><!-- games lose -->
+		<lookup-method ref="intOperator" name="addSerializer"/><!-- games draw -->
+		<lookup-method ref="intOperator" name="addSerializer"/><!-- total money -->
 		<lookup-method ref="doubleOperator" name="addSerializer"/><!-- next energy time -->
 		<lookup-method ref="UTFStringOperator" name="addSerializer"/><!-- photo_url -->
     </bean>

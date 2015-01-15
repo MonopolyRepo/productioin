@@ -10,6 +10,15 @@
 		<lookup-method ref="intOperator" name="addSerializer"/>			<!-- level -->
 		<lookup-method ref="UTFStringOperator" name="addSerializer"/>	<!-- photo -->
 		<lookup-method ref="intOperator" name="addSerializer"/>			<!-- is vip active -->
+		<lookup-method ref="intOperator" name="addSerializer"/>			<!-- current exp -->
+		<lookup-method ref="intOperator" name="addSerializer"/>			<!-- exp to level -->
+		<lookup-method ref="intOperator" name="addSerializer"/>			<!-- games played -->
+		<lookup-method ref="intOperator" name="addSerializer"/>			<!-- games win -->
+		<lookup-method ref="intOperator" name="addSerializer"/>			<!-- games lose -->
+		<lookup-method ref="intOperator" name="addSerializer"/>			<!-- games draw -->
+		<lookup-method ref="intOperator" name="addSerializer"/>			<!-- total money -->
+		<lookup-method ref="intOperator" name="addSerializer"/>			<!-- real money -->
+		<lookup-method ref="intOperator" name="addSerializer"/>			<!-- game money -->
 	</bean>
 	
 	<bean id="topListOperator" class="core.external.io.StreamOperator">
