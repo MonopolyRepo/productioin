@@ -14,6 +14,9 @@
 		<lookup-method ref="intOperator" name="addSerializer"/><!-- games lose -->
 		<lookup-method ref="intOperator" name="addSerializer"/><!-- games draw -->
 		<lookup-method ref="intOperator" name="addSerializer"/><!-- total money -->
+		<lookup-method ref="intOperator" name="addSerializer"/><!-- rank win rate -->
+		<lookup-method ref="intOperator" name="addSerializer"/><!-- rank money -->
+		<lookup-method ref="intOperator" name="addSerializer"/><!-- rank weekly -->
 		<lookup-method ref="doubleOperator" name="addSerializer"/><!-- next energy time -->
 		<lookup-method ref="UTFStringOperator" name="addSerializer"/><!-- photo_url -->
     </bean>

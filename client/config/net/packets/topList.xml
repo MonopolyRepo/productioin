@@ -19,6 +19,9 @@
 		<lookup-method ref="intOperator" name="addSerializer"/>			<!-- total money -->
 		<lookup-method ref="intOperator" name="addSerializer"/>			<!-- real money -->
 		<lookup-method ref="intOperator" name="addSerializer"/>			<!-- game money -->
+		<lookup-method ref="intOperator" name="addSerializer"/><!-- rank win rate -->
+		<lookup-method ref="intOperator" name="addSerializer"/><!-- rank money -->
+		<lookup-method ref="intOperator" name="addSerializer"/><!-- rank weekly -->
 	</bean>
 	
 	<bean id="topListOperator" class="core.external.io.StreamOperator">
