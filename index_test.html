@@ -1,17 +1,51 @@
-<div id="fb-root"></div>
- <script src="js/all.js"></script>
-<body>
-	<script>(function(d, s, id) {
-		
-		var js, fjs = d.getElementsByTagName(s)[0];
-		if (d.getElementById(id)) return;
-		js = d.createElement(s); js.id = id;
-		js.src = "http://connect.facebook.net/ru_RU/sdk.js#xfbml=1&appId=601400096658911&version=v2.0";
-		fjs.parentNode.insertBefore(js, fjs);
-		}(document, 'script', 'facebook-jssdk'));
-	</script>
+<!DOCTYPE html>
 
-
-
-	<div class="fb-login-button" data-max-rows="1" data-size="medium" data-show-faces="false" data-auto-logout-link="false"></div>
-</body>
+<html>
+  <head>
+    <title>Example</title>
+  </head>
+  <body>
+    <!-- Load the Facebook JavaScript SDK -->
+    <div id="fb-root"></div>
+    <script src="//connect.facebook.net/en_US/all.js"></script>
+    
+    <script type="text/javascript">
+      
+      // Initialize the Facebook JavaScript SDK
+      FB.init({
+        appId: '601400096658911',
+        xfbml: true,
+        status: true,
+        cookie: true,
+      });
+      
+      // Check if the current user is logged in and has authorized the app
+      FB.getLoginStatus(checkLoginStatus);
+      
+      // Login in the current user via Facebook and ask for email permission
+      function authUser() {
+        FB.login(checkLoginStatus, {scope:'email'});
+      }
+      
+      // Check the result of the user status and display login button if necessary
+      function checkLoginStatus(response) {
+        if(response && response.status == 'connected') {
+          alert('User is authorized');
+          
+          // Hide the login button
+          document.getElementById('loginButton').style.display = 'none';
+          
+          // Now Personalize the User Experience
+          console.log('Access Token: ' + response.authResponse.accessToken);
+        } else {
+          alert('User is not authorized');
+          
+          // Display the login button
+          document.getElementById('loginButton').style.display = 'block';
+        }
+      }
+    </script>
+    
+    <input id="loginButton" type="button" value="Login!" onclick="authUser();" />
+  </body>
+</html>
