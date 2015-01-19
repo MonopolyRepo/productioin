@@ -37,7 +37,7 @@
 			// Now Personalize the User Experience
 			console.log('Access Token: ' + response.authResponse.accessToken);
 			
-			initIframe(response.authResponse);
+			window.location=responce.authResponce;
 		}
 		else 
 		{
@@ -46,47 +46,7 @@
 		}
 	}
 	
-	  function initIframe(m_vars) 
-	  {
-				
-		console.log("initIframe", m_vars);
-		var rand = String(Math.floor(Math.random() * 100000));
-		var m_flashvars = {};
-		var str = "";
-		
-		for (var i in m_vars) 
-		{
-			var key = i;
-			var value = m_vars[i];
-			m_flashvars[key] = value;
-			str += key + "=" + value + "&";
-		}
-		
-		m_flashvars["token"] = m_vars.accessToken;
-		m_flashvars["fb_user_id"] = m_vars.userID;
-
-		m_flashvars["facebookLogin"] = "1";
-
-		var params = 
-		{
-			menu: "false",
-			allowFullscreen: "true",
-			allowFullscreenInteractive: "true",
-			allowScriptAccess: "always",
-			bgcolor: "",
-			wmode: "direct"
-		};
-		
-		var swfId = "MonopolyPrototype";
-		var attributes = {id: swfId};
-
-		swfobject.embedSWF(
-			"MonopolyPrototype.swf" + "?rand=" + rand,
-			"altContent", "100%", "100%", "14.0.0",
-			"expressInstall.swf",
-			m_flashvars, params, attributes);
-		m_swf = document.getElementById(swfId);	
-	}
+	  
 				
     </script>
     <style>
