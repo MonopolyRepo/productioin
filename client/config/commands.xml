@@ -107,5 +107,21 @@
 		<property name="connectionManager" ref="connectionManager"/>
 	</bean>
 	
+	<bean id="requestOfflineMessagesCommand" class="monopoly.core.commands.RequestOfflineMessagesCommand">
+		<property name="packetData" ref="requestOfflineMessagesPacket"/>
+		<property name="connectionManager" ref="connectionManager"/>
+	</bean>
+	
+	<bean id="changeGameStateCommand" class="monopoly.core.commands.ChangeGameStateCommand">
+		<property name="packetData" ref="playerStatePacket"/>
+		<property name="connectionManager" ref="connectionManager"/>
+	</bean>
+	
+	<bean id="addFriendCommand" class="monopoly.core.commands.AddFriendCommand">
+		<property name="packetData" ref="friendOperationPacket"/>
+		<property name="connectionManager" ref="connectionManager"/>
+		<property name="userDataManager" ref="userDataManager"/>
+	</bean>
+	
 	
 </beans>

@@ -17,10 +17,13 @@
 		<lookup-method ref="intOperator" name="addSerializer"/><!-- rank win rate -->
 		<lookup-method ref="intOperator" name="addSerializer"/><!-- rank money -->
 		<lookup-method ref="intOperator" name="addSerializer"/><!-- rank weekly -->
+		<lookup-method ref="intOperator" name="addSerializer"/><!-- vip active -->
+		<lookup-method ref="intOperator" name="addSerializer"/><!-- mafia active -->
+		<lookup-method ref="intOperator" name="addSerializer"/><!-- bonus active -->
 		<lookup-method ref="doubleOperator" name="addSerializer"/><!-- next energy time -->
 		<lookup-method ref="UTFStringOperator" name="addSerializer"/><!-- photo_url -->
     </bean>
-
+	
     <bean id="userDataPacket" class="core.net.packets.BytePacket">
         <property name="type" value="30"/>
         <property name="headerOperator" ref="headerOperator"/>

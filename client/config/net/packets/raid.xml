@@ -5,7 +5,6 @@
 	
 	<bean id="raidResultOperator" class="core.external.io.StreamOperator">
 		<lookup-method ref="intOperator" name="addSerializer"/>	<!-- request player id -->
-		<lookup-method ref="intOperator" name="addSerializer"/>	<!-- selected player id -->
 		<lookup-method ref="intOperator" name="addSerializer"/>	<!-- field index -->
 		<lookup-method ref="intOperator" name="addSerializer"/>	<!-- status -->
 	</bean>

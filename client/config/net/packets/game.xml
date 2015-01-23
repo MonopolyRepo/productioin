@@ -92,6 +92,26 @@
 		<lookup-method ref="intOperator" name="addSerializer"/><!-- win value -->
     </bean>
 	
+	<bean id="playerStateOperator" class="core.external.io.StreamOperator">
+		<lookup-method ref="intOperator" name="addDeserializer"/><!-- state id -->
+    </bean>
+	
+	<bean id="updateTurnOperator" class="core.external.io.StreamOperator">
+		<lookup-method ref="doubleOperator" name="addSerializer"/><!-- state id -->
+    </bean>
+	
+	<bean id="updateTurnTimerPacket" class="core.net.packets.BytePacket">
+        <property name="type" value="59"/>
+        <property name="headerOperator" ref="headerOperator"/>
+        <property name="streamOperator" ref="updateTurnOperator"/>
+    </bean>
+	
+	<bean id="playerStatePacket" class="core.net.packets.BytePacket">
+        <property name="type" value="58"/>
+        <property name="headerOperator" ref="headerOperator"/>
+        <property name="streamOperator" ref="playerStateOperator"/>
+    </bean>
+	
     <bean id="endGamePacket" class="core.net.packets.BytePacket">
         <property name="type" value="57"/>
         <property name="headerOperator" ref="headerOperator"/>
@@ -189,5 +209,9 @@
 		<property name="headerOperator" ref="headerOperator"/>
 		<property name="streamOperator" ref="changeFieldActionOperator"/>
 	</bean>
+	
+	<bean class="net.events.UpdateTurnTimerEventListener" id="updateTurnTimerEventListener">
+        <property name="type" value="59" />
+    </bean>
 	
 </beans>

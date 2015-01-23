@@ -1,0 +1,30 @@
+<beans>
+	<bean id="friendsListOperator" class="core.external.io.StreamOperator">
+		<lookup-method ref="intOperator" name="addSerializer"/>	<!-- player id -->
+	</bean>
+	
+	<bean id="friendOperatonOperator" class="core.external.io.StreamOperator">
+		<lookup-method ref="intOperator" name="addDeserializer"/>	<!-- player id -->
+		<lookup-method ref="intOperator" name="addDeserializer"/>	<!-- type -->
+	</bean>
+	
+	<bean id="friendOperationPacket" class="core.net.packets.BytePacket">
+        <property name="type" value="140"/>
+        <property name="headerOperator" ref="headerOperator"/>
+        <property name="streamOperator" ref="friendOperatonOperator"/>
+    </bean>
+
+    <bean id="friendListPacket" class="core.net.packets.BytePacket">
+        <property name="type" value="141"/>
+        <property name="headerOperator" ref="headerOperator"/>
+        <property name="streamOperator" ref="friendsListOperator"/>
+    </bean>
+	
+	<!--bean id="raidResultEventListener" class="net.events.RaidResultEventListener">
+		<property name="type" value="141"/>
+		<property name="gameData" ref="gameData"/>
+		<property name="gameField" ref="gameField"/>
+	</bean-->
+	
+
+</beans>

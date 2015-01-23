@@ -1,5 +1,6 @@
 <beans>
 	<import resource="chat.xml"/>
+	<import resource="offlineMessages.xml"/>
 	<import resource="login.xml"/>
 	<import resource="ping.xml"/>
 	<import resource="gameRequest.xml"/>
@@ -9,4 +10,5 @@
 	<import resource="shop.xml"/>
 	<import resource="topList.xml"/>
 	<import resource="raid.xml"/>
+	<import resource="friends.xml"/>
 </beans>

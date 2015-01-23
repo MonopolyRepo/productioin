@@ -9,6 +9,7 @@
 		<lookup-method ref="doubleOperator" name="addSerializer"/> <!-- vip expired date -->
 		<lookup-method ref="doubleOperator" name="addSerializer"/> <!-- mafia expired date -->
 		<lookup-method ref="doubleOperator" name="addSerializer"/> <!-- bonus expired date -->
+		<lookup-method ref="intOperator" name="addSerializer"/> <!-- userId -->
     </bean>
 
 	<bean class="core.net.packets.BytePacket" id="paydBonusStatusUpdatePacket">

@@ -47,8 +47,11 @@
 		
 		<lookup-method name="addEventListener" ref="raidResultEventListener"/>
 		
-
+		<lookup-method name="addEventListener" ref="updateTurnTimerEventListener"/>
 		
+		
+		
+		<lookup-method name="addEventListener" ref="offlineMessagesCountEventListener"/>
 	</bean>
 		
 	<bean id="dailyBonusEventListener" class="net.events.DailyBonusEventListener">
@@ -245,6 +248,11 @@
 		<lookup-method name="addPacket" ref="topListPacket"/>
 		
 		<lookup-method name="addPacket" ref="raidResultPacket"/>
+		
+		<lookup-method name="addPacket" ref="updateTurnTimerPacket"/>
+		
+		
+		<lookup-method name="addPacket" ref="offlineMessagesCountPacket"/>
 	</bean>
 		
 	<bean id="connectionManager" class="core.net.ConnectionManager" init-method="connect">
