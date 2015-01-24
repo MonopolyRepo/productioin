@@ -11,6 +11,8 @@
 		<property name="connectionManager" ref="connectionManager"/>
 	</bean>
 	
+	<bean id="buyFieldCancelCommand" class="monopoly.core.commands.BuyFieldCancelCommand"/>
+	
 	<bean id="buyFieldCommand" class="monopoly.core.commands.BuyFieldCommand">
 		<property name="packetData" ref="buyFieldPacket"/>
 		<property name="connectionManager" ref="connectionManager"/>
@@ -114,6 +116,11 @@
 	
 	<bean id="changeGameStateCommand" class="monopoly.core.commands.ChangeGameStateCommand">
 		<property name="packetData" ref="playerStatePacket"/>
+		<property name="connectionManager" ref="connectionManager"/>
+	</bean>
+	
+	<bean id="requestFriendsCommand" class="monopoly.core.commands.RequestFriendsCommand">
+		<property name="packetData" ref="requestFriendsListPacket"/>
 		<property name="connectionManager" ref="connectionManager"/>
 	</bean>
 	

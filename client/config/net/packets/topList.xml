@@ -4,32 +4,12 @@
 		<lookup-method ref="intOperator" name="addDeserializer"/><!-- from -->
 	</bean>
 	
-	<bean id="topListDataOperator" class="core.external.io.ArrayOperator">
-		<lookup-method ref="intOperator" name="addSerializer"/>			<!-- id -->
-		<lookup-method ref="UTFStringOperator" name="addSerializer"/>	<!-- name -->
-		<lookup-method ref="intOperator" name="addSerializer"/>			<!-- level -->
-		<lookup-method ref="UTFStringOperator" name="addSerializer"/>	<!-- photo -->
-		<lookup-method ref="intOperator" name="addSerializer"/>			<!-- is vip active -->
-		<lookup-method ref="intOperator" name="addSerializer"/>			<!-- current exp -->
-		<lookup-method ref="intOperator" name="addSerializer"/>			<!-- exp to level -->
-		<lookup-method ref="intOperator" name="addSerializer"/>			<!-- games played -->
-		<lookup-method ref="intOperator" name="addSerializer"/>			<!-- games win -->
-		<lookup-method ref="intOperator" name="addSerializer"/>			<!-- games lose -->
-		<lookup-method ref="intOperator" name="addSerializer"/>			<!-- games draw -->
-		<lookup-method ref="intOperator" name="addSerializer"/>			<!-- total money -->
-		<lookup-method ref="intOperator" name="addSerializer"/>			<!-- real money -->
-		<lookup-method ref="intOperator" name="addSerializer"/>			<!-- game money -->
-		<lookup-method ref="intOperator" name="addSerializer"/><!-- rank win rate -->
-		<lookup-method ref="intOperator" name="addSerializer"/><!-- rank money -->
-		<lookup-method ref="intOperator" name="addSerializer"/><!-- rank weekly -->
-	</bean>
-	
 	<bean id="topListOperator" class="core.external.io.StreamOperator">
-		<lookup-method ref="topListDataOperator" name="addSerializer"/><!-- getWeekWinRateGameTop -->
-		<lookup-method ref="topListDataOperator" name="addSerializer"/><!-- getWinRateGameTop -->
-		<lookup-method ref="topListDataOperator" name="addSerializer"/><!-- getMoneyGameTop -->
-		<lookup-method ref="topListDataOperator" name="addSerializer"/><!-- getRealMoneyTop -->
-		<lookup-method ref="topListDataOperator" name="addSerializer"/><!-- getTopFriends -->
+		<lookup-method ref="otherUserDataOperator" name="addSerializer"/><!-- getWeekWinRateGameTop -->
+		<lookup-method ref="otherUserDataOperator" name="addSerializer"/><!-- getWinRateGameTop -->
+		<lookup-method ref="otherUserDataOperator" name="addSerializer"/><!-- getMoneyGameTop -->
+		<lookup-method ref="otherUserDataOperator" name="addSerializer"/><!-- getRealMoneyTop -->
+		<lookup-method ref="otherUserDataOperator" name="addSerializer"/><!-- getTopFriends -->
 	</bean>
 	
 	<bean id="requestTopListPacket" class="core.net.packets.BytePacket">
