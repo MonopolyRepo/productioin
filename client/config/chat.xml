@@ -2,6 +2,7 @@
 
 	<bean id="chatModel" class="gameui.lobbyscene.chatLayer.datavalue.ChatModel">
 		<property name="userDataManager" ref="userDataManager"/>
+		<property name="gameData" ref="gameData"/>
 	</bean>
 	
 </beans>

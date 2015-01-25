@@ -10,6 +10,7 @@
 	<bean id="lobbyScene" class="gameui.lobbyscene.LobbyScene"/>
 	
 	<bean id="gameData" class="monopoly.core.GameData"/>
+	
 	<bean id="gameField" class="gamefield.GameField" init-method="initialize">
 		<property name="size" value="40"/>
 	</bean>
