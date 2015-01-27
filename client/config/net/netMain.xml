@@ -39,6 +39,7 @@
 		
 		<lookup-method name="addEventListener" ref="energyUpdateEventListener"/>
 		<lookup-method name="addEventListener" ref="paydBonusesUpdateEventListener"/>
+		<lookup-method name="addEventListener" ref="bonusForGameUpdateEventListener"/>
 		
 		<lookup-method name="addEventListener" ref="topListEventListener"/>
 		
@@ -245,6 +246,7 @@
 		
 		<lookup-method name="addPacket" ref="energyRegenPacket"/>
 		<lookup-method name="addPacket" ref="paydBonusStatusUpdatePacket"/>
+		<lookup-method name="addPacket" ref="bonusForGameUpdatePacket"/>
 		
 		
 		<lookup-method name="addPacket" ref="dailyBonusPacket"/>
