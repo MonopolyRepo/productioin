@@ -130,5 +130,15 @@
 		<property name="userDataManager" ref="userDataManager"/>
 	</bean>
 	
+	<bean id="BuyPresentCommand" class="monopoly.core.commands.BuyPresentCommand">
+		<property name="packetData" ref="presentBuyPacket"/>
+		<property name="connectionManager" ref="connectionManager"/>
+	</bean>
+	
+	<bean id="requestPresentsCommand" class="monopoly.core.commands.RequestPresentsCommand">
+		<property name="packetData" ref="presentsRequestPacket"/>
+		<property name="connectionManager" ref="connectionManager"/>
+	</bean>
+	
 	
 </beans>

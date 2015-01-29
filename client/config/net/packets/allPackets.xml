@@ -11,4 +11,5 @@
 	<import resource="topList.xml"/>
 	<import resource="raid.xml"/>
 	<import resource="friends.xml"/>
+	<import resource="presents.xml"/>
 </beans>

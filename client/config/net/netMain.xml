@@ -55,6 +55,10 @@
 		<lookup-method name="addEventListener" ref="friendsListEventListener"/>
 		
 		
+		<lookup-method name="addEventListener" ref="presentsListEventListener"/>
+		<lookup-method name="addEventListener" ref="presentsUsersListEventListener"/>
+		
+		
 		
 		<lookup-method name="addEventListener" ref="offlineMessagesCountEventListener"/>
 	</bean>
@@ -259,6 +263,10 @@
 		
 		
 		<lookup-method name="addPacket" ref="friendListPacket"/>
+		
+		
+		<lookup-method name="addPacket" ref="presentsListPacket"/>
+		<lookup-method name="addPacket" ref="presentUsersPacket"/>
 		
 		
 		<lookup-method name="addPacket" ref="offlineMessagesCountPacket"/>
