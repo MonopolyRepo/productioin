@@ -125,6 +125,9 @@
                 function initIframe(m_vars) {
 				
 					console.log("initIframe", m_vars);
+					var version = 0;
+					
+					
                     var rand = String(Math.floor(Math.random() * 100000));
                     var m_flashvars = {};
                     var str = "";
@@ -136,9 +139,10 @@
                     }
  
                     m_flashvars['server'] = m_server;
-                    m_flashvars['main'] = m_movieName + "?rand=" + rand;
+                    m_flashvars['main'] = m_movieName + "?version=" + version;
 					m_flashvars["facebookLogin"] = "1";
-					m_flashvars["version"] = "0";
+					
+					m_flashvars["version"] = version;
  
                     var params = {
                         menu: "false",
@@ -153,11 +157,11 @@
                     };
  
                     swfobject.embedSWF(
-                        m_preloaderPath + "?rand=" + rand,
+                        m_preloaderPath + "?version=" + version,
                         "altContent", "100%", "100%", "14.0.0",
                         "expressInstall.swf",
                         m_flashvars, params, attributes);
-			m_swf = document.getElementById(m_swfID);	
+					m_swf = document.getElementById(m_swfID);	
                 }
             </script>
             <style>
