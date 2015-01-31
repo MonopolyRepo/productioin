@@ -57,6 +57,7 @@
 		
 		<lookup-method name="addEventListener" ref="presentsListEventListener"/>
 		<lookup-method name="addEventListener" ref="presentsUsersListEventListener"/>
+		<lookup-method name="addEventListener" ref="shopPresentsListEventListener"/>
 		
 		
 		
@@ -267,6 +268,7 @@
 		
 		<lookup-method name="addPacket" ref="presentsListPacket"/>
 		<lookup-method name="addPacket" ref="presentUsersPacket"/>
+		<lookup-method name="addPacket" ref="shopPresentsListPacket"/>
 		
 		
 		<lookup-method name="addPacket" ref="offlineMessagesCountPacket"/>

@@ -11,6 +11,15 @@
 		<lookup-method ref="intOperator" name="addSerializer"/>	<!-- receiverId -->
 		<lookup-method ref="intOperator" name="addSerializer"/>	<!-- presentId -->
     </bean>
+	
+	 <bean id="shopPresetnsListOperator" class="core.external.io.StreamOperator">
+		<lookup-method ref="shopPresentDataArray" name="addSerializer"/>	
+    </bean>
+	
+	<bean id="shopPresentDataArray" class="core.external.io.ArrayOperator">
+		<lookup-method ref="intOperator" name="addSerializer"/>	<!-- presentId -->
+		<lookup-method ref="intOperator" name="addSerializer"/>	<!-- price -->
+    </bean>
 
     <bean id="presentBuyRequest" class="core.external.io.StreamOperator">
 		<lookup-method ref="intOperator" name="addDeserializer"/>	<!-- receiverId -->
@@ -45,6 +54,12 @@
         <property name="streamOperator" ref="otherUserDataOperator"/>
     </bean>
 	
+	<bean id="shopPresentsListPacket" class="core.net.packets.BytePacket">
+        <property name="type" value="154"/>
+        <property name="headerOperator" ref="headerOperator"/>
+        <property name="streamOperator" ref="shopPresetnsListOperator"/>
+    </bean>
+	
 	<bean id="presentsUsersListEventListener" class="net.events.PresentsUsersListEventListener">
 		<property name="type" value="153"/>
 		<property name="userDataManager" ref="userDataManager"/>
@@ -52,6 +67,11 @@
 
 	<bean id="presentsListEventListener" class="net.events.PresentsListEventListener">
 		<property name="type" value="150"/>
+		<property name="userDataManager" ref="userDataManager"/>
+	</bean>
+	
+	<bean id="shopPresentsListEventListener" class="net.events.ShopPresentsListEventListener">
+		<property name="type" value="154"/>
 		<property name="userDataManager" ref="userDataManager"/>
 	</bean>
 

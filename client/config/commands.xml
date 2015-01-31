@@ -133,6 +133,7 @@
 	<bean id="BuyPresentCommand" class="monopoly.core.commands.BuyPresentCommand">
 		<property name="packetData" ref="presentBuyPacket"/>
 		<property name="connectionManager" ref="connectionManager"/>
+		<property name="userDataManager" ref="userDataManager"/>
 	</bean>
 	
 	<bean id="requestPresentsCommand" class="monopoly.core.commands.RequestPresentsCommand">
