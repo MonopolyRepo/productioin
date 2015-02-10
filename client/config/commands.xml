@@ -114,6 +114,16 @@
 		<property name="connectionManager" ref="connectionManager"/>
 	</bean>
 	
+	<bean id="offlineMessageOperationCommand" class="monopoly.core.commands.OfflineMessageOperationCommand">
+		<property name="packetData" ref="messageOperationPacket"/>
+		<property name="connectionManager" ref="connectionManager"/>
+	</bean>
+	
+	<bean id="offlineMessageSendCommand" class="monopoly.core.commands.OfflineMessageSendCommand">
+		<property name="packetData" ref="sendMessagePacket"/>
+		<property name="connectionManager" ref="connectionManager"/>
+	</bean>
+	
 	<bean id="changeGameStateCommand" class="monopoly.core.commands.ChangeGameStateCommand">
 		<property name="packetData" ref="playerStatePacket"/>
 		<property name="connectionManager" ref="connectionManager"/>
@@ -139,6 +149,32 @@
 	<bean id="requestPresentsCommand" class="monopoly.core.commands.RequestPresentsCommand">
 		<property name="packetData" ref="presentsRequestPacket"/>
 		<property name="connectionManager" ref="connectionManager"/>
+	</bean>
+	
+	<bean id="requestObserveGameCommand" class="monopoly.core.commands.RequestObserveGameCommand">
+		<property name="packetData" ref="requestObserveGamePacket"/>
+		<property name="connectionManager" ref="connectionManager"/>
+	</bean>
+	
+	<bean id="requestGamesListCommand" class="monopoly.core.commands.RequestGamesListCommand">
+		<property name="packetData" ref="requestGamesListPacket"/>
+		<property name="connectionManager" ref="connectionManager"/>
+	</bean>
+	
+	<bean id="mortgageCommand" class="monopoly.core.commands.MortgageCommand">
+		<property name="packetData" ref="mortgagePacket"/>
+		<property name="connectionManager" ref="connectionManager"/>
+		
+		<property name="gameData" ref="gameData"/>
+		<property name="fieldOperationsService" ref="fieldOperationsService"/>
+	</bean>
+	
+	<bean id="repurchaseCommand" class="monopoly.core.commands.RepurchaseCommand">
+		<property name="packetData" ref="repurchasePacket"/>
+		<property name="connectionManager" ref="connectionManager"/>
+		
+		<property name="gameData" ref="gameData"/>
+		<property name="fieldOperationsService" ref="fieldOperationsService"/>
 	</bean>
 	
 	

@@ -51,6 +51,16 @@
         <property name="headerOperator" ref="headerOperator"/>
         <property name="streamOperator" ref="gameStartOperator"/>
     </bean>
+	
+	<bean id="gameClosePacket" class="core.net.packets.BytePacket">
+        <property name="type" value="25"/>
+        <property name="headerOperator" ref="headerOperator"/>
+    </bean>
+	
+	<bean class="net.events.GameCloseEventListener" id="gameCloseEventListener">
+        <property name="type" value="25" />
+    </bean>
+
 
 
 </beans>

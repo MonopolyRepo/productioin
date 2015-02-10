@@ -100,6 +100,16 @@
 		<lookup-method ref="doubleOperator" name="addSerializer"/><!-- state id -->
     </bean>
 	
+	<bean id="cardInfoOperator" class="core.external.io.StreamOperator">
+		<lookup-method ref="intOperator" name="addSerializer"/><!-- card index -->
+    </bean>
+	
+	 <bean id="cardInfoPacket" class="core.net.packets.BytePacket">
+        <property name="type" value="60"/>
+        <property name="headerOperator" ref="headerOperator"/>
+        <property name="streamOperator" ref="cardInfoOperator"/>
+    </bean>
+	
 	<bean id="updateTurnTimerPacket" class="core.net.packets.BytePacket">
         <property name="type" value="59"/>
         <property name="headerOperator" ref="headerOperator"/>
@@ -212,6 +222,12 @@
 	
 	<bean class="net.events.UpdateTurnTimerEventListener" id="updateTurnTimerEventListener">
         <property name="type" value="59" />
+    </bean>
+	
+	<bean class="net.events.CardInfoEventListener" id="cardInfoEventListener">
+        <property name="type" value="60" />
+        <property name="gameData" ref="gameData" />
+        <property name="gameField" ref="gameField" />
     </bean>
 	
 </beans>

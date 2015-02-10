@@ -1,8 +1,19 @@
 <beans>
 	
-	<bean id="offlineMessagesCountOperator" class="core.external.io.StreamOperator">
+	<bean id="messagesCountOperator" class="core.external.io.StreamOperator">
 		<lookup-method ref="intOperator" name="addSerializer"/> <!-- inbox count -->
+		<lookup-method ref="intOperator" name="addSerializer"/> <!-- inbox readed count -->
 		<lookup-method ref="intOperator" name="addSerializer"/> <!-- outbox count -->
+	</bean>
+	
+	<bean id="sendMessageOperator" class="core.external.io.StreamOperator">
+		<lookup-method ref="intOperator" name="addDeserializer"/> <!-- receiver id -->
+		<lookup-method ref="UTFStringOperator" name="addDeserializer"/> <!-- message -->
+	</bean>
+	
+	<bean id="messageOperationOperator" class="core.external.io.StreamOperator">
+		<lookup-method ref="intOperator" name="addDeserializer"/> <!-- message id -->
+		<lookup-method ref="intOperator" name="addDeserializer"/> <!-- operation -->
 	</bean>
 	
 	<bean id="requestOfflineMessagesOperator" class="core.external.io.StreamOperator">
@@ -11,10 +22,24 @@
 		<lookup-method ref="intOperator" name="addDeserializer"/> <!-- to -->
 	</bean>
 	
+	<bean id="messagesListOperator" class="core.external.io.StreamOperator">
+		<lookup-method ref="intOperator" name="addSerializer"/>  <!-- group id -->
+		<lookup-method ref="messageDataOperator" name="addSerializer"/>  <!-- messages list -->
+	</bean>
+	
+	<bean id="messageDataOperator" class="core.external.io.ArrayOperator">
+		<lookup-method ref="intOperator" name="addSerializer"/> 		<!-- uid -->
+		<lookup-method ref="intOperator" name="addSerializer"/>			<!-- sender id -->
+		<lookup-method ref="intOperator" name="addSerializer"/>		 	<!-- receiver id -->
+		<lookup-method ref="intOperator" name="addSerializer"/> 		<!-- readed -->
+		<lookup-method ref="doubleOperator" name="addSerializer"/> 		<!-- date -->
+		<lookup-method ref="UTFStringOperator" name="addSerializer"/>	<!-- message -->
+	</bean>
+	
 	<bean id="offlineMessagesCountPacket" class="core.net.packets.BytePacket">
         <property name="type" value="130"/>
         <property name="headerOperator" ref="headerOperator"/>
-        <property name="streamOperator" ref="offlineMessagesCountOperator"/>
+        <property name="streamOperator" ref="messagesCountOperator"/>
     </bean>
 	
 	<bean id="requestOfflineMessagesPacket" class="core.net.packets.BytePacket">
@@ -22,9 +47,32 @@
         <property name="headerOperator" ref="headerOperator"/>
         <property name="streamOperator" ref="requestOfflineMessagesOperator"/>
     </bean>
+
+    <bean id="messagesListPacket" class="core.net.packets.BytePacket">
+        <property name="type" value="133"/>
+        <property name="headerOperator" ref="headerOperator"/>
+        <property name="streamOperator" ref="messagesListOperator"/>
+    </bean>
+
+    <bean id="messageOperationPacket" class="core.net.packets.BytePacket">
+        <property name="type" value="134"></property>
+        <property name="headerOperator" ref="headerOperator"/>
+        <property name="streamOperator" ref="messageOperationOperator"/>
+    </bean>
+
+    <bean id="sendMessagePacket" class="core.net.packets.BytePacket">
+        <property name="type" value="135"></property>
+        <property name="headerOperator" ref="headerOperator"/>
+        <property name="streamOperator" ref="sendMessageOperator"/>
+    </bean>
 	
 	<bean id="offlineMessagesCountEventListener" class="net.events.OfflineMessagesCountEventListener">
 		<property name="type" value="130"/>
+	</bean>
+	
+	<bean id="offlineMessagesListEventListener" class="net.events.OfflineMessagesListEventListener">
+		<property name="type" value="133"/>
+		<property name="userDataManager" ref="userDataManager"/>
 	</bean>
 	
 
