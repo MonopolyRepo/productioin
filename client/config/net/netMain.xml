@@ -75,6 +75,7 @@
 													
 		<lookup-method name="addEventListener" ref="offlineMessagesCountEventListener"/>
 		<lookup-method name="addEventListener" ref="offlineMessagesListEventListener"/>
+		<lookup-method name="addEventListener" ref="singleMessageEventListener"/>
 	</bean>
 		
 	<bean id="dailyBonusEventListener" class="net.events.DailyBonusEventListener">
@@ -295,13 +296,14 @@
 		<lookup-method name="addPacket" ref="shopPresentsListPacket"/>
 		
 		
+		<lookup-method name="addPacket" ref="singleMessagePacket"/>
 		<lookup-method name="addPacket" ref="offlineMessagesCountPacket"/>
 		<lookup-method name="addPacket" ref="messagesListPacket"/>
 	</bean>
 		
 	<bean id="connectionManager" class="core.net.ConnectionManager" init-method="connect">
-		<!----><property name="server" value="(String)104.131.161.78"/><!---->
-		<!---><property name="server" value="(String)192.168.2.111"/><!---->
+		<!---><property name="server" value="(String)104.131.161.78"/><!---->
+		<!----><property name="server" value="(String)192.168.2.111"/><!---->
 		<property name="port" value="8881"/>
 		<property name="dataReader" ref="dataReader"/>
 		<property name="scenesController" ref="scenesController"/>

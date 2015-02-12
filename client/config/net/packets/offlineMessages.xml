@@ -27,6 +27,10 @@
 		<lookup-method ref="messageDataOperator" name="addSerializer"/>  <!-- messages list -->
 	</bean>
 	
+	<bean id="singleMessageOperator" class="core.external.io.StreamOperator">
+		<lookup-method ref="messageDataOperator" name="addSerializer"/>  <!-- messages list -->
+	</bean>
+	
 	<bean id="messageDataOperator" class="core.external.io.ArrayOperator">
 		<lookup-method ref="intOperator" name="addSerializer"/> 		<!-- uid -->
 		<lookup-method ref="intOperator" name="addSerializer"/>			<!-- sender id -->
@@ -66,6 +70,18 @@
         <property name="streamOperator" ref="sendMessageOperator"/>
     </bean>
 	
+	<bean id="singleMessagePacket" class="core.net.packets.BytePacket">
+        <property name="type" value="136"/>
+        <property name="headerOperator" ref="headerOperator"/>
+        <property name="streamOperator" ref="singleMessageOperator"/>
+    </bean>
+
+    <bean id="messageReadedPacket" class="core.net.packets.BytePacket">
+        <property name="type" value="137"/>
+        <property name="headerOperator" ref="headerOperator"/>
+        <property name="streamOperator" ref="singleMessageOperator"/>
+    </bean>
+	
 	<bean id="offlineMessagesCountEventListener" class="net.events.OfflineMessagesCountEventListener">
 		<property name="type" value="130"/>
 	</bean>
@@ -74,6 +90,15 @@
 		<property name="type" value="133"/>
 		<property name="userDataManager" ref="userDataManager"/>
 	</bean>
+	
+	<bean id="singleMessageEventListener" class="net.events.SingleMessageEventListener">
+		<property name="type" value="136"/>
+	</bean>
+	
+	<!--bean id="messageReadedEventListener" class="net.events.MessageReadedEventListener">
+		<property name="type" value="137"/>
+	</bean-->
+	
 	
 
 	
