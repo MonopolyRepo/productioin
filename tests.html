@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <title>Example</title>
+  </head>
+  <body>
+    <!-- Load the Facebook JavaScript SDK -->
+    <div id="fb-root"></div>
+    <script src="//connect.facebook.net/en_US/all.js"></script>
+    
+    <script type="text/javascript">
+      
+	var appId = "601400096658911";
+	var url = "http://bizimdepo.mobi/game01/index_test.html";
+	// Initialize the Facebook JavaScript SDK
+	FB.init({appId:appId, xfbml: true, status: true, cookie: true});
+
+	// Check if the current user is logged in and has authorized the app
+	FB.getLoginStatus(checkLoginStatus);
+
+
+	// Login in the current user via Facebook and ask for email permission
+	function authUser() 
+	{
+		FB.login(checkLoginStatus, {scope:'email'});
+	}
+
+	function getUrlVars() {
+		var vars = {};
+		var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(m,key,value) {
+			vars[key] = value;
+		});
+		return vars;
+	}
+
+	
+	// Check the result of the user status and display login button if necessary
+	function checkLoginStatus(response) 
+	{
+		if(response && response.status == 'connected') {
+			console.log('User is authorized');
+
+		
+			var currentUrlVars = getUrlVars();
+			console.log(currentUrlVars);
+			
+			if(currentUrlVars != null && currentUrlVars["accessToken"] && currentUrlVars["userID"])
+			{
+				console.log("recivied token then shut up");
+				return;
+			}	
+			// Now Personalize the User Experience
+			console.log('Access Token: ' + response.authResponse.accessToken);
+			
+			var urlVars = "";
+			
+			for(var vr in response.authResponse)
+			{
+				urlVars+=vr+"="+response.authResponse[vr] + "&";
+			}
+			
+			console.log("urlvars", urlVars);
+			urlVars = urlVars.substr(0, urlVars.length-1);
+			window.location=url+"?"+urlVars
+		}
+		else 
+		{
+			console.log('User is not authorized');
+			window.location="https://www.facebook.com/dialog/oauth?client_id="+appId+"&redirect_uri="+url+"&response_type=token";
+		}
+	}
+	
+	  
+				
+    </script>
+    <style>
+		html, body {
+			height:100%;
+			overflow:hidden;
+		}
+		body {
+			margin:0;
+		}
+	</style>
+	
+	<div class="fb-login-button" data-max-rows="1" data-size="medium" data-show-faces="true" data-auto-logout-link="true"></div>
+      <div id="altContent">
+		  
+	  </div>
+  </body>
+</html>
