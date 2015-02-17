@@ -39,30 +39,12 @@
 	function checkLoginStatus(response) 
 	{
 		if(response && response.status == 'connected') {
-			console.log('User is authorized');
-
-		
-			var currentUrlVars = getUrlVars();
-			console.log(currentUrlVars);
 			
-			if(currentUrlVars != null && currentUrlVars["accessToken"] && currentUrlVars["userID"])
-			{
-				console.log("recivied token then shut up");
-				return;
-			}	
-			// Now Personalize the User Experience
-			console.log('Access Token: ' + response.authResponse.accessToken);
-			
-			var urlVars = "";
-			
-			for(var vr in response.authResponse)
-			{
-				urlVars+=vr+"="+response.authResponse[vr] + "&";
-			}
-			
-			console.log("urlvars", urlVars);
-			urlVars = urlVars.substr(0, urlVars.length-1);
-			window.location=url+"?"+urlVars
+			 FB.ui({method: 'apprequests',
+				  message: 'YOUR_MESSAGE_HERE'
+				}, function(response){
+					console.log(response);
+				});
 		}
 		else 
 		{
