@@ -41,11 +41,11 @@
 		if(response && response.status == 'connected') {
 			
 			FB.ui({
-				  method: 'pay',
-				  action: 'purchaseitem',
-				  product: 'https://bizimdepo.mobi/game01/products.html',
-				  quantity: 10,                 // optional, defaults to 1
-				  request_id: Math.random() // optional, must be unique for each payment
+					method: 'pay',
+					action: 'purchaseitem',
+					product: 'https://bizimdepo.mobi/game01/products.html',
+					quantity: 10,                 // optional, defaults to 1
+					pricepoint_id: "this_is_a_test_pricepoint"
 				}
 				
 			);
