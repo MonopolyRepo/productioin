@@ -40,11 +40,15 @@
 	{
 		if(response && response.status == 'connected') {
 			
-			 FB.ui({method: 'apprequests',
-				  message: 'YOUR_MESSAGE_HERE'
-				}, function(response){
-					console.log(response);
-				});
+			FB.ui({
+				  method: 'pay',
+				  action: 'purchaseitem',
+				  product: 'http://www.friendsmash.com/og/coins.html',
+				  quantity: 10,                 // optional, defaults to 1
+				  request_id: 'YOUR_REQUEST_ID' // optional, must be unique for each payment
+				}
+				
+			);
 		}
 		else 
 		{
