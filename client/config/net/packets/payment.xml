@@ -17,7 +17,7 @@
 	<bean class="core.net.packets.BytePacket" id="exchangeMoneyPacket">
         <property name="type" value="181"/>
         <property ref="headerOperator" name="headerOperator"/>
-        <property ref="paymentAcceptOperator" name="streamOperator"/>
+        <property ref="exchangeMoneyOperator" name="streamOperator"/>
     </bean>
 			
 	<bean class="net.events.PaymentAcceptEventListener" id="paymentAcceptEventListener">
