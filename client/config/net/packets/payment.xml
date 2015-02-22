@@ -4,8 +4,18 @@
 		<lookup-method ref="intOperator" name="addSerializer"/> <!-- gold amount -->
 	</bean>
 	
+	<bean id="exchangeMoneyOperator" class="core.external.io.StreamOperator">
+		<lookup-method ref="intOperator" name="addDeserializer"/> <!-- gold amount -->
+	</bean>
+	
     <bean class="core.net.packets.BytePacket" id="paymentAcceptPacket">
         <property name="type" value="180"/>
+        <property ref="headerOperator" name="headerOperator"/>
+        <property ref="paymentAcceptOperator" name="streamOperator"/>
+    </bean>
+	
+	<bean class="core.net.packets.BytePacket" id="exchangeMoneyPacket">
+        <property name="type" value="181"/>
         <property ref="headerOperator" name="headerOperator"/>
         <property ref="paymentAcceptOperator" name="streamOperator"/>
     </bean>
@@ -14,5 +24,7 @@
         <property name="type" value="180" />
         <property name="userDataManager" ref="userDataManager" />
     </bean>
+	
+	
 	
 </beans>

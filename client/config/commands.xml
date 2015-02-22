@@ -169,6 +169,12 @@
 		<property name="fieldOperationsService" ref="fieldOperationsService"/>
 	</bean>
 	
+	<bean id="exchangeGoldCommand" class="monopoly.core.commands.ExchangeGoldCommand">
+		<property name="userDataManager" ref="userDataManager"/>
+		<property name="packetData" ref="exchangeMoneyPacket"/>
+		<property name="connectionManager" ref="connectionManager"/>
+	</bean>
+	
 	<bean id="repurchaseCommand" class="monopoly.core.commands.RepurchaseCommand">
 		<property name="packetData" ref="repurchasePacket"/>
 		<property name="connectionManager" ref="connectionManager"/>
