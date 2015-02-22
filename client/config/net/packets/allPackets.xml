@@ -14,4 +14,5 @@
 	<import resource="friends.xml"/>
 	<import resource="presents.xml"/>
 	<import resource="mortgage.xml"/>
+	<import resource="payment.xml"/>
 </beans>

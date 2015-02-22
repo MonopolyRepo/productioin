@@ -1,0 +1,18 @@
+<beans>
+	
+	<bean id="paymentAcceptOperator" class="core.external.io.StreamOperator">
+		<lookup-method ref="intOperator" name="addSerializer"/> <!-- gold amount -->
+	</bean>
+	
+    <bean class="core.net.packets.BytePacket" id="paymentAcceptPacket">
+        <property name="type" value="180"/>
+        <property ref="headerOperator" name="headerOperator"/>
+        <property ref="paymentAcceptOperator" name="streamOperator"/>
+    </bean>
+			
+	<bean class="net.events.PaymentAcceptEventListener" id="paymentAcceptEventListener">
+        <property name="type" value="180" />
+        <property name="userDataManager" ref="userDataManager" />
+    </bean>
+	
+</beans>
