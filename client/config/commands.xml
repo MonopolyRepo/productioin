@@ -183,5 +183,15 @@
 		<property name="fieldOperationsService" ref="fieldOperationsService"/>
 	</bean>
 	
+	<bean id="banCommand" class="monopoly.core.commands.BanCommand">
+		<property name="packetData" ref="banPacket"/>
+		<property name="connectionManager" ref="connectionManager"/>
+	</bean>
+	
+	<bean id="banChatCommand" class="monopoly.core.commands.BanChatCommand">
+		<property name="packetData" ref="banChatPacket"/>
+		<property name="connectionManager" ref="connectionManager"/>
+	</bean>
+	
 	
 </beans>

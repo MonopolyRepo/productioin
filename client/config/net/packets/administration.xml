@@ -1,0 +1,26 @@
+<beans>
+	
+	<bean id="banChatOperator" class="core.external.io.StreamOperator">
+		<lookup-method ref="intOperator" name="addDeserializer"/> <!-- userid -->
+		<lookup-method ref="intOperator" name="addDeserializer"/> <!-- time -->
+	</bean>
+	
+	<bean id="banOperator" class="core.external.io.StreamOperator">
+		<lookup-method ref="intOperator" name="addDeserializer"/> <!-- userid -->
+		<lookup-method ref="intOperator" name="addDeserializer"/> <!-- time -->
+	</bean>
+	
+	<bean id="banChatPacket" class="core.net.packets.BytePacket">
+		<property name="type" value="200"/>
+		<property name="headerOperator" ref="headerOperator"/>
+		<property name="streamOperator" ref="banChatOperator"/>
+	</bean>
+	
+	<bean id="banPacket" class="core.net.packets.BytePacket">
+		<property name="type" value="201"/>
+		<property name="headerOperator" ref="headerOperator"/>
+		<property name="streamOperator" ref="banOperator"/>
+	</bean>
+	
+	
+</beans>
