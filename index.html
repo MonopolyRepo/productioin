@@ -1,5 +1,5 @@
 <html>
- 
+<meta charset='UTF-8'/>
 <head>
     <script
     src="js/jquery.js"></script>
@@ -125,7 +125,7 @@
                 function initIframe(m_vars) {
 				
 					console.log("initIframe", m_vars);
-					var version = 17;
+					var version = 18;
 					
 					
                     var rand = String(Math.floor(Math.random() * 100000));
@@ -150,7 +150,7 @@
                         allowFullscreenInteractive: "true",
                         allowScriptAccess: "always",
                         bgcolor: "",
-                        wmode: "direct"
+                        wmode: "opaque"
                     };
                     var attributes = {
                         id: m_swfID
