@@ -1,0 +1,34 @@
+<beans>
+	
+	<bean id="drawPollOperator" class="core.external.io.StreamOperator">
+		
+		<lookup-method ref="intOperator" name="addSerializer"/><!-- userid -->
+		
+	</bean>
+	
+	<bean id="drawRequestPacket" class="core.net.packets.BytePacket">
+        <property name="type" value="190"/>
+        <property name="headerOperator" ref="headerOperator"/>
+        <property name="streamOperator" ref="drawPollOperator"/>
+    </bean>
+
+    <bean id="drawAccpetPacket" class="core.net.packets.BytePacket">
+        <property name="type" value="191"/>
+        <property name="headerOperator" ref="headerOperator"/>
+    </bean>
+
+    <bean id="drawRejectPacket" class="core.net.packets.BytePacket">
+        <property name="type" value="192"/>
+        <property name="headerOperator" ref="headerOperator"/>
+    </bean>
+	
+	<bean class="net.events.DrawRequestEventListener" id="drawRequestEventListener">
+        <property name="type" value="190" />
+    </bean>
+	
+	<bean class="net.events.DrawRejectEventListener" id="drawRejectEventListener">
+        <property name="type" value="192" />
+    </bean>
+	
+	
+</beans>

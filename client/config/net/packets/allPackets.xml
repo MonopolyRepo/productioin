@@ -15,5 +15,6 @@
 	<import resource="presents.xml"/>
 	<import resource="mortgage.xml"/>
 	<import resource="payment.xml"/>
+	<import resource="draw.xml"/>
 	<import resource="administration.xml"/>
 </beans>

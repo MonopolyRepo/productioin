@@ -193,5 +193,19 @@
 		<property name="connectionManager" ref="connectionManager"/>
 	</bean>
 	
+	<bean id="drawRequestCommand" class="monopoly.core.commands.DrawRequestCommand">
+		<property name="packetData" ref="drawRequestPacket"/>
+		<property name="connectionManager" ref="connectionManager"/>
+	</bean>
+	
+	<bean id="drawRejectCommand" class="monopoly.core.commands.DrawRejectCommand">
+		<property name="packetData" ref="drawRejectPacket"/>
+		<property name="connectionManager" ref="connectionManager"/>
+	</bean>
+	
+	<bean id="drawAccpetCommand" class="monopoly.core.commands.DrawAccpetCommand">
+		<property name="packetData" ref="drawAccpetPacket"/>
+		<property name="connectionManager" ref="connectionManager"/>
+	</bean>
 	
 </beans>

@@ -78,6 +78,10 @@
 		<lookup-method name="addEventListener" ref="singleMessageEventListener"/>
 		
 		
+		<lookup-method name="addEventListener" ref="drawRequestEventListener"/>
+		<lookup-method name="addEventListener" ref="drawRejectEventListener"/>
+		
+		
 		<lookup-method name="addEventListener" ref="paymentAcceptEventListener"/>
 	</bean>
 		
@@ -304,12 +308,16 @@
 		<lookup-method name="addPacket" ref="messagesListPacket"/>
 		
 		
+		<lookup-method name="addPacket" ref="drawRequestPacket"/>
+		<lookup-method name="addPacket" ref="drawRejectPacket"/>
+		
+		
 		<lookup-method name="addPacket" ref="paymentAcceptPacket"/>
 	</bean>
 		
 	<bean id="connectionManager" class="core.net.ConnectionManager" init-method="connect">
-		<!---><property name="server" value="(String)104.131.161.78"/><!---->
-		<!----><property name="server" value="(String)192.168.2.111"/><!---->
+		<!----><property name="server" value="(String)104.131.161.78"/><!---->
+		<!---><property name="server" value="(String)192.168.2.111"/><!---->
 		<property name="port" value="8881"/>
 		<property name="dataReader" ref="dataReader"/>
 		<property name="scenesController" ref="scenesController"/>
