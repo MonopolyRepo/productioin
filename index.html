@@ -125,7 +125,7 @@
                 function initIframe(m_vars) {
 				
 					console.log("initIframe", m_vars);
-					var version = 25;
+					var version = 26;
 					
 					
                     var rand = String(Math.floor(Math.random() * 100000));
@@ -150,7 +150,7 @@
                         allowFullscreenInteractive: "true",
                         allowScriptAccess: "always",
                         bgcolor: "",
-                        wmode: "opaque"
+                        wmode: "direct"
                     };
                     var attributes = {
                         id: m_swfID
@@ -158,7 +158,7 @@
  
                     swfobject.embedSWF(
                         m_preloaderPath + "?version=" + version,
-                        "altContent", "100%", "100%", "14.0.0",
+                        "altContent", "100%", "100%", "15.0.0",
                         "expressInstall.swf",
                         m_flashvars, params, attributes);
 					m_swf = document.getElementById(m_swfID);	
