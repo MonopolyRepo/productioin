@@ -17,4 +17,5 @@
 	<import resource="payment.xml"/>
 	<import resource="draw.xml"/>
 	<import resource="administration.xml"/>
+	<import resource="error.xml"/>
 </beans>

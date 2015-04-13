@@ -83,6 +83,9 @@
 		
 		
 		<lookup-method name="addEventListener" ref="paymentAcceptEventListener"/>
+		
+		
+		<lookup-method name="addEventListener" ref="errorEventListener"/>
 	</bean>
 		
 	<bean id="dailyBonusEventListener" class="net.events.DailyBonusEventListener">
@@ -313,11 +316,14 @@
 		
 		
 		<lookup-method name="addPacket" ref="paymentAcceptPacket"/>
+		
+		
+		<lookup-method name="addPacket" ref="errorPacket"/>
 	</bean>
 		
 	<bean id="connectionManager" class="core.net.ConnectionManager" init-method="connect">
-		<!----><property name="server" value="(String)104.131.161.78"/><!---->
-		<!---><property name="server" value="(String)192.168.2.111"/><!---->
+		<!---><property name="server" value="(String)104.131.161.78"/><!---->
+		<!----><property name="server" value="(String)192.168.2.111"/><!---->
 		<property name="port" value="8881"/>
 		<property name="dataReader" ref="dataReader"/>
 		<property name="scenesController" ref="scenesController"/>

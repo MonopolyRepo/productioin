@@ -1,0 +1,21 @@
+<beans>
+	
+	<bean id="errorOperator" class="core.external.io.StreamOperator">
+		<lookup-method ref="intOperator" name="addSerializer"/><!-- error id -->
+		<lookup-method ref="intOperator" name="addSerializer"/><!-- extra data -->
+	</bean>
+
+	<bean id="errorPacket" class="core.net.packets.BytePacket">
+		<property name="type" value="300"/>
+		<property name="headerOperator" ref="headerOperator"/>
+		<property name="streamOperator" ref="errorOperator"/>
+	</bean>
+	
+	<bean class="net.events.ErrorEventListener" id="errorEventListener">
+        <property name="type" value="300" />
+    </bean>
+	
+	
+	
+	
+</beans>
