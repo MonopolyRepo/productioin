@@ -37,10 +37,10 @@
 				// this means the social is vk or odnoklassniki
  
 				if (m_urlvars['viewer_id'] || m_urlvars['logged_user_id']) {
-					console.log("init iframe");
+					
 					initIframe(m_urlvars);
 				} else {
-					console.log("init not iframe");
+					
 					$(document).ready(function () {
  
 						$.ajaxSetup({
@@ -49,7 +49,8 @@
 						$.getScript('//connect.facebook.net/en_UK/all.js', function () {
  
 							FB.init({
-								appId: fbAppID
+								appId: fbAppID,
+								hideFlashCallback : onFlashHide
 								
 								//channelUrl: fbChannelURL
 							});
@@ -65,7 +66,7 @@
 				{
 					FB.getLoginStatus(function (response) {
 								
-								console.log("FB.getLoginStatus " + response.status);
+								
 								if (response.status === 'connected') 
 								{
  
@@ -75,7 +76,6 @@
 									FB.api('/me?fields=picture,first_name,last_name', function (userParams) {
 										user = userParams; 
 										
-										console.log("user", user);
 										
 										FB.api('/me/friends?access_token=' + m_token + '&fields=installed,first_name,last_name,picture', function (friends) {
 											for (var i in friends.data) {
@@ -116,15 +116,68 @@
 									 FB.login(function(response) {
 										 checkAuthStatus(FB);
 									 },{scope: 'public_profile,email,user_friends'});
-									 console.log("fb login");
+									 
 								}
 								
 							})
 				}
 				
-                function initIframe(m_vars) {
+				function updateAppScreenshot(data)
+				{
+					document.getElementById('screenshotObject').src = 'data:image/jpeg;base64,' + data;
+					
+					
+				}
 				
-					console.log("initIframe", m_vars);
+				function displayFlashScreenshot() 
+				{
+					var flashObject = document.getElementById(m_swfID);
+					
+					flashObject.appHide();
+					
+					
+					// Set the screenshot img dimensions to match the Flash object tag.
+					document.getElementById('screenshotObject').width = 760;//flashObject.offsetWidth;
+					document.getElementById('screenshotObject').height = 760;//flashObject.offsetHeight;
+					
+					document.getElementById('imageContent').style.left = (flashObject.offsetWidth - 760)/2;
+					
+					
+					// Move the Flash object off the screen and place the screenshot img
+					document.getElementById('flashContent').style.top = '-10000px';
+					document.getElementById('imageContent').style.top = '';
+				}
+
+				function hideFlashScreenshot() 
+				{
+				
+					var flashObject = document.getElementById(m_swfID);
+				
+					flashObject.appShow();
+					// Move the screenshot img off the screen and place the Flash object
+					document.getElementById('flashContent').style.top = '';
+					document.getElementById('imageContent').style.top = '-10000px';
+				}
+
+				function onFlashHide(info) 
+				{
+					
+					throw new Exception();
+					return;
+					if(info.state == 'opened') 
+					{
+						displayFlashScreenshot();
+					} 
+					else 
+					{
+						hideFlashScreenshot();
+					}
+				}
+				
+                function initIframe(m_vars) 
+				{
+				
+					
 					var version = 37;
 					
 					
@@ -158,7 +211,7 @@
  
                     swfobject.embedSWF(
                         m_preloaderPath + "?version=" + version,
-                        "altContent", "100%", "100%", "15.0.0",
+                        "flashHolder", "100%", "100%", "16.0.0",
                         "expressInstall.swf",
                         m_flashvars, params, attributes);
 					m_swf = document.getElementById(m_swfID);	
@@ -169,6 +222,9 @@
                     height:100%;
                     overflow:hidden;
                 }
+				body {
+					background-color:#000000;
+				}
                 body {
                     margin:0;
                 }
@@ -176,10 +232,23 @@
 </head>
  
 <body>
-    <div
-    id="altContent">
- 
+	
+	 <div id="allContent">
+		 
+	  <div id="imageContent" style="position:absolute; top: -10000px;">
+        <img id="screenshotObject" src="blank.gif" style="margin: 0 auto;" />
+      </div>
+		 
+      <div id="flashContent">
+        <div id="flashHolder">
+          <p><a href="http://www.adobe.com/go/getflashplayer"><img 
+            src="http://www.adobe.com/images/shared/download_buttons/get_flash_player.gif" 
+            alt="Get Adobe Flash player" /></a></p>
         </div>
+      </div>
+     
+    </div>  
+	
 </body>
  
 </html>
