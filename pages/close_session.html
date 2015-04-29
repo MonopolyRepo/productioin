@@ -30,7 +30,8 @@
 
 			function onGetLoginStatus() 
 			{
-				FB.logout(onLogOutComplete);
+				if(response && response.status == 'connected') 
+					FB.logout(onLogOutComplete);
 			}
 			
 			function onLogOutComplete() 
