@@ -24,6 +24,8 @@
 		{
 			var currentUrlVars = getUrlVars();
 			
+			console.log(response.status);
+			
 			if(currentUrlVars != null && currentUrlVars["accessToken"] && currentUrlVars["userID"])
 			{
 				return;
