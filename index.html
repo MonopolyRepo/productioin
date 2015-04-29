@@ -1,8 +1,7 @@
 <html>
 <meta charset='UTF-8'/>
 <head>
-    <script
-    src="js/jquery.js"></script>
+    <script src="js/jquery.js"></script>
         <script src="js/swfobject.js"></script>
            
             <title></title>
@@ -55,7 +54,19 @@
 								//channelUrl: fbChannelURL
 							});
 							
-							checkAuthStatus(FB);
+							if(m_urlvars['paymentDialog'] == "1")
+							{
+								
+								FB.ui({
+																method: 'pay',
+																action: 'purchaseitem',
+																product: 'https://bizimdepo.mobi/game01/products/10gold.html'//,
+																//quantity: 10,                 // optional, defaults to 1
+																//pricepoint_id: "this_is_a_test_pricepoint"
+									});
+							}
+							else
+								checkAuthStatus(FB);
 							
  
 						});
