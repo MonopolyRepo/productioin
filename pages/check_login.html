@@ -2,17 +2,25 @@
 <html>
 	
     <div id="fb-root"></div>
-    <script src="//connect.facebook.net/en_US/all.js"></script>
-    <script src="fbInit.js"></script>
-    
-    <script type="text/javascript">
-      
+	<script src="../js/jquery.js"></script>
+	<script type="text/javascript">
+	  
 	var appId = "601400096658911";
-	var answerUrl = "https://bizimdepo.mobi/game01/pages/answer_checkLogin.html?isLogin=";
+	var url = "https://bizimdepo.mobi/game01/pages/answer_auth.html";
 	
-	FB.init({appId:appId, xfbml: true, status: true, cookie: true});
-	FB.getLoginStatus(checkLoginStatus);
+	$(document).ready(function () 
+	{
 
+		$.ajaxSetup({
+			cache: true
+		});
+		$.getScript('//connect.facebook.net/en_UK/all.js', function () 
+		{
+			FB.init({appId:appId, xfbml: true, status: true, cookie: true});
+			FB.getLoginStatus(checkLoginStatus);
+		});
+	});
+	
 	function getUrlVars() 
 	{
 		var vars = {};
