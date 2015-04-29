@@ -30,6 +30,8 @@
 			{
 				if(response && response.status == 'connected') 
 					FB.logout(onLogOutComplete);
+				else
+					window.location = url;
 			}
 			
 			function onLogOutComplete() 
