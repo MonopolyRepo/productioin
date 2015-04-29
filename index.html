@@ -56,12 +56,13 @@
 							
 							if(m_urlvars['paymentDialog'] == "1")
 							{
-								document.getElementById('allContent').style.top = '-10000px';
+								document.getElementById('flashContent').style.top = '-10000px';
+								
 								
 								FB.ui({
 										method: 'pay',
 										action: 'purchaseitem',
-										product: m_urlvars['product']//'https://bizimdepo.mobi/game01/products/10gold.html'//,
+										product: decodeURI(m_urlvars['product'])//'https://bizimdepo.mobi/game01/products/10gold.html'//,
 										//quantity: 10,                 // optional, defaults to 1
 										//pricepoint_id: "this_is_a_test_pricepoint"
 									}, payHandler);
@@ -76,7 +77,7 @@
 				
 				function payHandler(response)
 				{
-					window.location = 'https://bizimdepo.mobi/game01/pages/answer_pay.html';
+					window.top.location = 'https://bizimdepo.mobi/game01/pages/answer_pay.html';
 				}
 				
 				function checkAuthStatus(FB)
