@@ -60,7 +60,7 @@
 								FB.ui({
 										method: 'pay',
 										action: 'purchaseitem',
-										product: 'https://bizimdepo.mobi/game01/products/10gold.html'//,m_urlvars['product']
+										product: m_urlvars['product']//'https://bizimdepo.mobi/game01/products/10gold.html'//,
 										//quantity: 10,                 // optional, defaults to 1
 										//pricepoint_id: "this_is_a_test_pricepoint"
 									}, payHandler);
@@ -75,7 +75,7 @@
 				
 				function payHandler(response)
 				{
-					console.log(response);
+					window.location = 'https://bizimdepo.mobi/game01/pages/answer_pay.html';
 				}
 				
 				function checkAuthStatus(FB)
