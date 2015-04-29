@@ -23,12 +23,10 @@
 				{
 					FB.init({appId:appId, xfbml: true, status: true, cookie: true});
 					FB.getLoginStatus(onGetLoginStatus);
-
-					FB.logout(onLogOutComplete);
 				});
 			});
 
-			function onGetLoginStatus() 
+			function onGetLoginStatus(response) 
 			{
 				if(response && response.status == 'connected') 
 					FB.logout(onLogOutComplete);
