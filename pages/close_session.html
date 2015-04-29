@@ -21,7 +21,7 @@
 				
 				$.getScript('//connect.facebook.net/en_UK/all.js', function () 
 				{
-					FB.init(appId);
+					FB.init({appId:appId, xfbml: true, status: true, cookie: true});
 					FB.logout(onLogOutComplete);
 				});
 			});
