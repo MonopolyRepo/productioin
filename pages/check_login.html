@@ -6,7 +6,10 @@
 	<script type="text/javascript">
 	  
 	var appId = "601400096658911";
-	var url = "https://bizimdepo.mobi/game01/pages/check_login.html?isLogin=";
+	var url = "https://bizimdepo.mobi/game01/pages/answer_checkLogin.html?isLogin=";
+	
+	var urlVars = "";
+	var currentUrlVars = getUrlVars();
 	
 	$(document).ready(function () 
 	{
@@ -16,6 +19,12 @@
 		});
 		$.getScript('//connect.facebook.net/en_UK/all.js', function () 
 		{
+			
+			
+			
+			if(currentUrlVars.isLogin != null)
+				return;
+			
 			FB.init({appId:appId, xfbml: true, status: true, cookie: true});
 			FB.getLoginStatus(checkLoginStatus);
 		});
@@ -34,8 +43,7 @@
 	{
 		if(response && response.status == 'connected')
 		{
-			var currentUrlVars = getUrlVars();
-			var urlVars = "";
+			
 			
 			for(var vr in response.authResponse)
 			{
