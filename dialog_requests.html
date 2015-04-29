@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <title>Example</title>
+  </head>
+  <body>
+    <!-- Load the Facebook JavaScript SDK -->
+    <div id="fb-root"></div>
+    <script src="//connect.facebook.net/en_US/all.js"></script>
+    
+    <script type="text/javascript">
+      
+	var appId = "601400096658911";
+	var url = "http://bizimdepo.mobi/game01/dialog_requests.html";
+	
+	FB.init({appId:appId, xfbml: true, status: true, cookie: true});
+	
+	window.location="https://www.facebook.com/dialog/apprequests?app_id=601400096658911&e2e=%7B%7D&frictionless=false&message=text&redirect_uri="+url+"&sdk=joey";
+	//FB.ui({ method: 'apprequests', message: "text" } );
+	  
+				
+    </script>
+    <style>
+		html, body {
+			height:100%;
+			overflow:hidden;
+		}
+		body {
+			margin:0;
+		}
+	</style>
+	
+  </body>
+</html>
