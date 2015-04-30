@@ -62,7 +62,7 @@
 								FB.ui({
 										method: 'pay',
 										action: 'purchaseitem',
-										product: decodeURI(m_urlvars['product'])//'https://bizimdepo.mobi/game01/products/10gold.html'//,
+										product: decodeURIComponent(m_urlvars['product'])//'https://bizimdepo.mobi/game01/products/10gold.html'//,
 										//quantity: 10,                 // optional, defaults to 1
 										//pricepoint_id: "this_is_a_test_pricepoint"
 									}, payHandler);
