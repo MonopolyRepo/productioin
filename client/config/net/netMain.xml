@@ -8,6 +8,8 @@
 		
 		<lookup-method name="addEventListener" ref="loginEventListener"/>
 		
+		<lookup-method name="addEventListener" ref="googlePlayAnswerEventListener"/>
+		
 		<lookup-method name="addEventListener" ref="chatMesasgeEventListener"/>
 		<lookup-method name="addEventListener" ref="chatJoinEventListener"/>
 		
@@ -243,6 +245,8 @@
 	
 	<bean id="dataReader" class="core.net.DataReader">
 		<property name="eventRouter" ref="socketDataRouter"/>
+		<lookup-method name="addPacket" ref="googlePlayAnswerPacket"/>
+		
 		<lookup-method name="addPacket" ref="loginAnswer"/>
 		<lookup-method name="addPacket" ref="chatMessage"/>
 		<lookup-method name="addPacket" ref="chatJoin"/>

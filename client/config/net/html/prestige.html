@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title></title>
+</head>
+<body>
+	<script src="jquery-1.11.2.js"></script>
+	
+	<script>
+	
+		var guildPageURL = "https://portal.sf.mail.ru/community/members/";
+		var userPageURL = "https://portal.sf.mail.ru/user/avatar/";
+		
+		var guildId = "216212364532383995";
+	
+		function getPageContent()
+		{
+			$("#result").load(guildPageURL + guildId, onGuildPageLoaded);
+		}
+		
+		function onGuildPageLoaded(responce, status)
+		{
+			console.log(status);
+		}
+		
+		function process()
+		{
+			getPageContent();
+		}
+		
+	
+	</script>
+	
+	<div id="result">
+		
+	</div>
+
+	<button data-textonly="false" data-textvisible="false" data-msgtext="" onclick="javaScript:process()" data-inline="true">init</button>
+	
+</body>
+</html>
