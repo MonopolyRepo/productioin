@@ -2,12 +2,12 @@
 	
 	<bean id="banChatOperator" class="core.external.io.StreamOperator">
 		<lookup-method ref="intOperator" name="addDeserializer"/> <!-- userid -->
-		<lookup-method ref="intOperator" name="addDeserializer"/> <!-- time -->
+		<lookup-method ref="doubleOperator" name="addDeserializer"/> <!-- time -->
 	</bean>
 	
 	<bean id="banOperator" class="core.external.io.StreamOperator">
 		<lookup-method ref="intOperator" name="addDeserializer"/> <!-- userid -->
-		<lookup-method ref="intOperator" name="addDeserializer"/> <!-- time -->
+		<lookup-method ref="doubleOperator" name="addDeserializer"/> <!-- time -->
 	</bean>
 	
 	<bean id="banChatPacket" class="core.net.packets.BytePacket">

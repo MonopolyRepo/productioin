@@ -4,7 +4,7 @@
 	
 	
 	<!-- events/ events routing -->
-	<bean id="socketDataRouter" class="net.events.SocketDataEventRouter">
+	<bean id="socketDataRouter" class="core.net.events.SocketDataEventRouter">
 		
 		<lookup-method name="addEventListener" ref="loginEventListener"/>
 		
