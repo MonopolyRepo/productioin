@@ -31,6 +31,7 @@
 	
 	<bean id="buyFieldOperator" class="core.external.io.StreamOperator">
 		<lookup-method ref="intOperator" name="addSerializer"/><!-- player id -->
+		<lookup-method ref="intOperator" name="addSerializer"/><!-- field id -->
     </bean>
 	
 	<bean id="sellFieldOperator" class="core.external.io.StreamOperator">
