@@ -8,11 +8,14 @@
 		<lookup-method ref="intOperator" name="addSerializer"/><!-- dice1 -->
 		<lookup-method ref="intOperator" name="addSerializer"/><!-- dice2 -->
 		<lookup-method ref="intOperator" name="addSerializer"/><!-- currentField -->
+		<lookup-method ref="intOperator" name="addSerializer"/><!-- current money -->
 	</bean>
 	
 	<bean id="gamePlayerStatusOperator" class="core.external.io.StreamOperator">
 		<lookup-method ref="intOperator" name="addSerializer"/><!-- player id -->
 		<lookup-method ref="intOperator" name="addSerializer"/><!-- new money value -->
+		<lookup-method ref="intOperator" name="addSerializer"/><!-- change money value -->
+		<lookup-method ref="intOperator" name="addSerializer"/><!-- reason -->
 	</bean>
 	
 	<bean id="jailNotifyOperator" class="core.external.io.StreamOperator">
@@ -83,6 +86,11 @@
 		<lookup-method ref="intArrayOperator" name="addSerializer"/><!-- fields offer -->
 	</bean>
 	
+	<bean id="animationEndOperator" class="core.external.io.StreamOperator">
+		<lookup-method ref="intOperator" name="addSerializer"/><!-- player id -->
+		<lookup-method ref="intOperator" name="addSerializer"/><!-- field id -->
+    </bean>
+	
 	<bean id="leaveGameOperator" class="core.external.io.StreamOperator">
 		<lookup-method ref="intOperator" name="addSerializer"/><!-- player id -->
     </bean>
@@ -103,6 +111,26 @@
 	
 	<bean id="cardInfoOperator" class="core.external.io.StreamOperator">
 		<lookup-method ref="intOperator" name="addSerializer"/><!-- card index -->
+    </bean>
+	
+	<bean id="payForStayOperator" class="core.external.io.StreamOperator">
+		<lookup-method ref="intOperator" name="addSerializer"/><!-- fieldId -->
+		<lookup-method ref="intOperator" name="addSerializer"/><!-- payerId -->
+		<lookup-method ref="intOperator" name="addSerializer"/><!-- receiverId -->
+		<lookup-method ref="intOperator" name="addSerializer"/><!-- value -->
+    </bean>
+    
+    <bean id="payForStayPacket" class="core.net.packets.BytePacket">
+        <property name="type" value="61"/>
+        <property name="headerOperator" ref="headerOperator"/>
+        <property name="streamOperator" ref="payForStayOperator"/>
+		
+    </bean>
+	
+	<bean class="net.events.PayForStayEventLitener" id="payForStayEventLitener">
+        <property name="type" value="61" />
+		<property name="gameData" ref="gameData" />
+		<property name="gameField" ref="gameField" />
     </bean>
 	
 	 <bean id="cardInfoPacket" class="core.net.packets.BytePacket">
@@ -207,6 +235,7 @@
 	<bean id="animationEndPacket" class="core.net.packets.BytePacket">
         <property name="type" value="43"/>
         <property name="headerOperator" ref="headerOperator"/>
+        <property name="streamOperator" ref="animationEndOperator"/>
     </bean>
 	
 	<bean id="gamePlayerStatusPacket" class="core.net.packets.BytePacket">
@@ -220,6 +249,12 @@
 		<property name="headerOperator" ref="headerOperator"/>
 		<property name="streamOperator" ref="changeFieldActionOperator"/>
 	</bean>
+	
+	<bean class="net.events.AnimationEndEventLitener" id="animationEndEventLitener">
+		  <property name="type" value="43" />
+		   <property name="gameData" ref="gameData"/>
+		   <property name="gameField" ref="gameField"/>
+    </bean>
 	
 	<bean class="net.events.UpdateTurnTimerEventListener" id="updateTurnTimerEventListener">
         <property name="type" value="59" />

@@ -87,6 +87,10 @@
 		<lookup-method name="addEventListener" ref="paymentAcceptEventListener"/>
 		
 		
+		<lookup-method name="addEventListener" ref="animationEndEventLitener"/>
+		<lookup-method name="addEventListener" ref="payForStayEventLitener"/>
+		
+		
 		<lookup-method name="addEventListener" ref="errorEventListener"/>
 	</bean>
 		
@@ -320,6 +324,10 @@
 		
 		
 		<lookup-method name="addPacket" ref="paymentAcceptPacket"/>
+		
+		
+		<lookup-method name="addPacket" ref="animationEndPacket"/>
+		<lookup-method name="addPacket" ref="payForStayPacket"/>
 		
 		
 		<lookup-method name="addPacket" ref="errorPacket"/>
