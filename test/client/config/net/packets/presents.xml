@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans>
+
+    <bean id="presetnsListOperator" class="core.external.io.StreamOperator">
+		<lookup-method ref="intOperator" name="addSerializer"/>	<!-- userid -->
+		<lookup-method ref="presentDataArray" name="addSerializer"/>	<!-- usersData -->
+    </bean>
+	
+	<bean id="presentDataArray" class="core.external.io.ArrayOperator">
+		<lookup-method ref="intOperator" name="addSerializer"/>	<!-- senderId -->
+		<lookup-method ref="intOperator" name="addSerializer"/>	<!-- receiverId -->
+		<lookup-method ref="intOperator" name="addSerializer"/>	<!-- presentId -->
+    </bean>
+	
+	 <bean id="shopPresetnsListOperator" class="core.external.io.StreamOperator">
+		<lookup-method ref="shopPresentDataArray" name="addSerializer"/>	
+    </bean>
+	
+	<bean id="shopPresentDataArray" class="core.external.io.ArrayOperator">
+		<lookup-method ref="intOperator" name="addSerializer"/>	<!-- presentId -->
+		<lookup-method ref="intOperator" name="addSerializer"/>	<!-- price -->
+    </bean>
+
+    <bean id="presentBuyRequest" class="core.external.io.StreamOperator">
+		<lookup-method ref="intOperator" name="addDeserializer"/>	<!-- receiverId -->
+		<lookup-method ref="intOperator" name="addDeserializer"/>	<!-- presentId -->
+    </bean>
+
+	<bean id="presentRequestOperator" class="core.external.io.StreamOperator">
+		<lookup-method ref="intOperator" name="addDeserializer"/>	<!-- player id -->
+	</bean>
+	
+    <bean id="presentsListPacket" class="core.net.packets.BytePacket">
+        <property name="type" value="150"/>
+        <property name="headerOperator" ref="headerOperator"/>
+        <property name="streamOperator" ref="presetnsListOperator"/>
+    </bean>
+
+    <bean id="presentsRequestPacket" class="core.net.packets.BytePacket">
+        <property name="type" value="151"/>
+        <property name="headerOperator" ref="headerOperator"/>
+        <property name="streamOperator" ref="presentRequestOperator"/>
+    </bean>
+
+    <bean id="presentBuyPacket" class="core.net.packets.BytePacket">
+        <property name="type" value="152"/>
+        <property name="headerOperator" ref="headerOperator"/>
+        <property name="streamOperator" ref="presentBuyRequest"/>
+    </bean>
+	
+	<bean id="presentUsersPacket" class="core.net.packets.BytePacket">
+        <property name="type" value="153"/>
+        <property name="headerOperator" ref="headerOperator"/>
+        <property name="streamOperator" ref="otherUserDataOperator"/>
+    </bean>
+	
+	<bean id="shopPresentsListPacket" class="core.net.packets.BytePacket">
+        <property name="type" value="154"/>
+        <property name="headerOperator" ref="headerOperator"/>
+        <property name="streamOperator" ref="shopPresetnsListOperator"/>
+    </bean>
+	
+	<bean id="presentsUsersListEventListener" class="net.events.PresentsUsersListEventListener">
+		<property name="type" value="153"/>
+		<property name="userDataManager" ref="userDataManager"/>
+	</bean>
+
+	<bean id="presentsListEventListener" class="net.events.PresentsListEventListener">
+		<property name="type" value="150"/>
+		<property name="userDataManager" ref="userDataManager"/>
+	</bean>
+	
+	<bean id="shopPresentsListEventListener" class="net.events.ShopPresentsListEventListener">
+		<property name="type" value="154"/>
+		<property name="userDataManager" ref="userDataManager"/>
+	</bean>
+
+</beans>

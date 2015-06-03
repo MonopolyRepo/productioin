@@ -1,0 +1,41 @@
+<beans>
+	<bean class="core.external.io.IntOperator" id="intOperator"/>
+	<bean class="core.external.io.DoubleOperator" id="doubleOperator"/>
+	<bean class="core.external.io.PointOperator" id="pointOperator"/>
+	<bean class="core.external.io.UTFStringOperator" id="UTFStringOperator"/>
+	<bean class="core.external.io.Vector3DOperator" id="vector3DOperator"/>
+	<bean class="core.external.io.ArrayOperator" id="arrayOperator"/>
+	
+	<bean id="intArrayOperator" class="core.external.io.ArrayOperator">
+		<lookup-method ref="intOperator" name="addDeserializer"/>
+		<lookup-method ref="intOperator" name="addSerializer"/>
+	</bean>
+	
+	<bean id="headerOperator" class="core.external.io.StreamOperator">	
+		<lookup-method ref="intOperator" name="addSerializer"/>
+		<lookup-method ref="intOperator" name="addSerializer"/>
+		
+		<lookup-method ref="intOperator" name="addDeserializer"/>
+		<lookup-method ref="intOperator" name="addDeserializer"/>
+	</bean>
+	
+	<bean id="otherUserDataOperator" class="core.external.io.ArrayOperator">
+		<lookup-method ref="intOperator" name="addSerializer"/>			<!-- id -->
+		<lookup-method ref="UTFStringOperator" name="addSerializer"/>	<!-- name -->
+		<lookup-method ref="intOperator" name="addSerializer"/>			<!-- level -->
+		<lookup-method ref="UTFStringOperator" name="addSerializer"/>	<!-- photo -->
+		<lookup-method ref="intOperator" name="addSerializer"/>			<!-- is vip active -->
+		<lookup-method ref="intOperator" name="addSerializer"/>			<!-- current exp -->
+		<lookup-method ref="intOperator" name="addSerializer"/>			<!-- exp to level -->
+		<lookup-method ref="intOperator" name="addSerializer"/>			<!-- games played -->
+		<lookup-method ref="intOperator" name="addSerializer"/>			<!-- games win -->
+		<lookup-method ref="intOperator" name="addSerializer"/>			<!-- games lose -->
+		<lookup-method ref="intOperator" name="addSerializer"/>			<!-- games draw -->
+		<lookup-method ref="intOperator" name="addSerializer"/>			<!-- total money -->
+		<lookup-method ref="intOperator" name="addSerializer"/>			<!-- real money -->
+		<lookup-method ref="intOperator" name="addSerializer"/>			<!-- game money -->
+		<lookup-method ref="intOperator" name="addSerializer"/><!-- rank win rate -->
+		<lookup-method ref="intOperator" name="addSerializer"/><!-- rank money -->
+		<lookup-method ref="intOperator" name="addSerializer"/><!-- rank weekly -->
+	</bean>
+</beans>

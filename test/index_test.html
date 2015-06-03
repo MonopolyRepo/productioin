@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <title>Example</title>
+  </head>
+  <body>
+    <div id="fb-root"></div>
+    <script src="//connect.facebook.net/en_US/all.js"></script>
+    
+    <script type="text/javascript">
+      
+	var appId = "601400096658911";
+	var url = "https://bizimdepo.mobi/game01/index_test.html";
+	
+	FB.init({appId:appId, xfbml: true, status: true, cookie: true});
+	FB.getLoginStatus(checkLoginStatus);
+
+	function getUrlVars() {
+		var vars = {};
+		var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(m,key,value) {
+			vars[key] = value;
+		});
+		return vars;
+	}
+
+	function checkLoginStatus(response) 
+	{
+		if(response && response.status == 'connected') 
+		{
+			var currentUrlVars = getUrlVars();
+			
+			if(currentUrlVars != null && currentUrlVars["accessToken"] && currentUrlVars["userID"])
+			{
+				console.log("recivied token then shut up");
+				return;
+			}	
+			
+			var urlVars = "";
+			
+			for(var vr in response.authResponse)
+			{
+				urlVars+=vr+"="+response.authResponse[vr] + "&";
+			}
+			
+			urlVars = urlVars.substr(0, urlVars.length-1);
+			window.location=url+"?"+urlVars
+		}
+		else 
+		{
+			window.location="https://www.facebook.com/dialog/oauth?client_id="+appId+"&redirect_uri="+url+"&response_type=token";
+		}
+	}
+				
+    </script>
+  </body>
+</html>

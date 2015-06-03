@@ -1,0 +1,349 @@
+<beans>
+	<import resource="readers/readers.xml"/>
+	<import resource="packets/allPackets.xml"/>
+	
+	
+	<!-- events/ events routing -->
+	<bean id="socketDataRouter" class="core.net.events.SocketDataEventRouter">
+		
+		<lookup-method name="addEventListener" ref="loginEventListener"/>
+		
+		<lookup-method name="addEventListener" ref="googlePlayAnswerEventListener"/>
+		
+		<lookup-method name="addEventListener" ref="chatMesasgeEventListener"/>
+		<lookup-method name="addEventListener" ref="chatJoinEventListener"/>
+		
+		<lookup-method name="addEventListener" ref="sitToTableEventListener"/>
+		<lookup-method name="addEventListener" ref="leaveTableEventListener"/>
+		<lookup-method name="addEventListener" ref="notifyGameStartEventListener"/>
+		
+		<lookup-method name="addEventListener" ref="cardInfoEventListener"/>
+		
+		<lookup-method name="addEventListener" ref="getTurnEventListener"/>
+		<lookup-method name="addEventListener" ref="buyFieldEventListener"/>
+		<lookup-method name="addEventListener" ref="sellFieldEventListener"/>
+		<lookup-method name="addEventListener" ref="upgradeFieldEventListener"/>
+		<lookup-method name="addEventListener" ref="repurchaseFieldEventListener"/>
+		<lookup-method name="addEventListener" ref="mortgageFieldEventListener"/>
+		<lookup-method name="addEventListener" ref="gamePlayerStatusEventListener"/>
+		<lookup-method name="addEventListener" ref="compassEventListener"/>
+		<lookup-method name="addEventListener" ref="jailNotifyEventListener"/>
+		<lookup-method name="addEventListener" ref="jailDiceEventListener"/>
+		<lookup-method name="addEventListener" ref="jailPayNotigyEventListener"/>
+		
+		<lookup-method name="addEventListener" ref="exchangeEventListener"/>
+		<lookup-method name="addEventListener" ref="exchangeCancelEventListener"/>
+		<lookup-method name="addEventListener" ref="exchangeApplyEventListener"/>
+		
+		<lookup-method name="addEventListener" ref="recketNotifyEventListener"/>
+		<lookup-method name="addEventListener" ref="recketAnswerEventListener"/>
+		
+		<lookup-method name="addEventListener" ref="getUserDataEventListener"/>
+		
+		<lookup-method name="addEventListener" ref="leaveGameEventListener"/>
+		<lookup-method name="addEventListener" ref="endGameEventListener"/>
+		
+		<lookup-method name="addEventListener" ref="energyUpdateEventListener"/>
+		<lookup-method name="addEventListener" ref="paydBonusesUpdateEventListener"/>
+		<lookup-method name="addEventListener" ref="bonusForGameUpdateEventListener"/>
+		
+		<lookup-method name="addEventListener" ref="topListEventListener"/>
+		
+		
+		<lookup-method name="addEventListener" ref="dailyBonusEventListener"/>
+		
+		<lookup-method name="addEventListener" ref="raidResultEventListener"/>
+		
+		<lookup-method name="addEventListener" ref="updateTurnTimerEventListener"/>
+		
+		
+		
+		<lookup-method name="addEventListener" ref="gameCloseEventListener"/>
+		
+		
+		<lookup-method name="addEventListener" ref="observeGameInfoEventListener"/>
+		<lookup-method name="addEventListener" ref="gamesListEventListener"/>
+		
+		
+		
+		<lookup-method name="addEventListener" ref="friendsListEventListener"/>
+		
+		
+		<lookup-method name="addEventListener" ref="presentsListEventListener"/>
+		<lookup-method name="addEventListener" ref="presentsUsersListEventListener"/>
+		<lookup-method name="addEventListener" ref="shopPresentsListEventListener"/>
+		
+		
+													
+		<lookup-method name="addEventListener" ref="offlineMessagesCountEventListener"/>
+		<lookup-method name="addEventListener" ref="offlineMessagesListEventListener"/>
+		<lookup-method name="addEventListener" ref="singleMessageEventListener"/>
+		
+		
+		<lookup-method name="addEventListener" ref="drawRequestEventListener"/>
+		<lookup-method name="addEventListener" ref="drawRejectEventListener"/>
+		
+		
+		<lookup-method name="addEventListener" ref="paymentAcceptEventListener"/>
+		
+		
+		<lookup-method name="addEventListener" ref="animationEndEventLitener"/>
+		<lookup-method name="addEventListener" ref="payForStayEventLitener"/>
+		
+		
+		<lookup-method name="addEventListener" ref="errorEventListener"/>
+	</bean>
+		
+	<bean id="dailyBonusEventListener" class="net.events.DailyBonusEventListener">
+		<property name="type" value="4"/>
+		<property name="userDataManager" ref="userDataManager"/>
+	</bean>
+	
+	
+	<bean id="loginEventListener" class="net.events.LoginAnswerEventListener">
+		<property name="type" value="1"/>
+		<property name="scenesController" ref="scenesController"/>
+		<property name="userDataManager" ref="userDataManager"/>
+	</bean>
+	
+	<bean id="chatMesasgeEventListener" class="net.events.ChatMessageEventListener">
+		<property name="type" value="10"/>
+		<property name="userDataManager" ref="userDataManager"/>
+		<property name="chatModel" ref="chatModel"/>
+	</bean>
+
+	<bean id="chatJoinEventListener" class="net.events.ChatJoinEventListener">
+		<property name="type" value="11"/>
+		<!-- <property name="lobbyController" ref="LobbyWindow"/> -->
+	</bean>
+	
+	<bean id="sitToTableEventListener" class="net.events.SitToTableEventListener">
+		<property name="type" value="22"/>
+		<property name="userDataManager" ref="userDataManager"/>
+		<property name="tableLayerModel" ref="tableLayerModel"/>
+		<!-- <property name="lobbyController" ref="LobbyWindow"/> -->
+	</bean>
+	
+	<bean id="leaveTableEventListener" class="net.events.LeaveTableEventListener">
+		<property name="type" value="23"/>
+		<property name="userDataManager" ref="userDataManager"/>
+		<property name="tableLayerModel" ref="tableLayerModel"/>
+		<!-- <property name="lobbyController" ref="LobbyWindow"/> -->
+	</bean>
+	
+	<bean id="notifyGameStartEventListener" class="net.events.NotifyGameStartEventListener">
+		<property name="type" value="24"/>
+		<property name="userDataManager" ref="userDataManager"/>
+		<property name="tableLayerModel" ref="tableLayerModel"/>
+		<property name="gameData" ref="gameData"/>
+		<property name="chatModel" ref="chatModel"/>
+		<!-- <property name="lobbyController" ref="LobbyWindow"/> -->
+	</bean>
+	
+	<bean id="getUserDataEventListener" class="net.events.GetUserDataEventListener">
+		<property name="type" value="30"/>
+		<property name="userDataManager" ref="userDataManager"/>
+	</bean>
+	
+	<bean id="getTurnEventListener" class="net.events.GetTurnEventListener">
+		<property name="type" value="40"/>
+		<property name="gameData" ref="gameData"/>
+		<property name="gameField" ref="gameField"/>
+		<property name="userDataManager" ref="userDataManager"/>
+	</bean>
+	
+	<bean id="compassEventListener" class="net.events.CompassEventListener">
+		<property name="type" value="45"/>
+		<property name="gameData" ref="gameData"/>
+		<property name="gameField" ref="gameField"/>
+		<property name="userDataManager" ref="userDataManager"/>
+	</bean>
+	
+	<bean id="upgradeFieldEventListener" class="net.events.UpgradeFieldEventListener">
+		<property name="type" value="46"/>
+		<property name="gameData" ref="gameData"/>
+		<property name="gameField" ref="gameField"/>
+	</bean>
+	
+	<bean id="buyFieldEventListener" class="net.events.BuyFieldEventListener">
+		<property name="type" value="41"/>
+		<property name="gameData" ref="gameData"/>
+		<property name="gameField" ref="gameField"/>
+		<property name="fieldOperationsService" ref="fieldOperationsService"/>
+	</bean>
+	
+	<bean id="sellFieldEventListener" class="net.events.SellFieldEventListener">
+		<property name="type" value="47"/>
+		<property name="gameData" ref="gameData"/>
+		<property name="gameField" ref="gameField"/>
+		<property name="fieldOperationsService" ref="fieldOperationsService"/>
+	</bean>
+	
+	<bean id="jailPayNotigyEventListener" class="net.events.JailPayNotigyEventListener">
+		<property name="type" value="50"/>
+		<property name="gameData" ref="gameData"/>
+	</bean>
+	
+	<bean id="jailNotifyEventListener" class="net.events.JailNotifyEventListener">
+		<property name="type" value="49"/>
+		<property name="gameData" ref="gameData"/>
+	</bean>
+	
+	<bean id="jailDiceEventListener" class="net.events.JailDiceEventListener">
+		<property name="type" value="48"/>
+		<property name="gameData" ref="gameData"/>
+		<property name="gameField" ref="gameField"/>
+	</bean>
+	
+	<bean id="gamePlayerStatusEventListener" class="net.events.GamePlayerStatusEventListener">
+		<property name="type" value="44"/>
+		<property name="gameData" ref="gameData"/>
+	</bean>
+	
+	<bean class="net.events.ExchangeEventListener" id="exchangeEventListener">
+        <property name="type" value="51" />
+        <property name="gameData" ref="gameData"/>
+        <property name="gameField" ref="gameField"/>
+    </bean>
+	
+	<bean class="net.events.ExchangeApplyEventListener" id="exchangeApplyEventListener">
+        <property name="type" value="55" />
+        <property name="gameData" ref="gameData"/>
+        <property name="gameField" ref="gameField"/>
+    </bean>
+	
+	<bean class="net.events.ExchangeCancelEventListener" id="exchangeCancelEventListener">
+        <property name="type" value="53" />
+        <property name="gameData" ref="gameData"/>
+        <property name="gameField" ref="gameField"/>
+    </bean>
+	
+	<bean id="leaveGameEventListener" class="net.events.LeaveGameEventListener">
+		<property name="type" value="56"/>
+		<property name="gameData" ref="gameData"/>
+	</bean>
+	
+	<bean id="endGameEventListener" class="net.events.EndGameEventListener">
+		<property name="type" value="57"/>
+		<property name="gameData" ref="gameData"/>
+	</bean>
+	
+	
+	
+	<!-- events/ events routing -->
+
+	<!-- services
+	<bean id="ChatService" class="services.ChatService">
+		<property name="connectionManager" ref="connectionManager"/>
+		<property name="chatMessage" ref="chatMessage"/>
+		<property name="gameModel" ref="gameModel"/>
+	</bean>
+	 -->
+	 
+	<bean id="LoginService" class="services.LoginService">
+		<property name="connectionManager" ref="connectionManager"/>
+		<property name="loginPacket" ref="loginPacket"/>
+		<property name="facebookLoginPacket" ref="facebookLoginPacket"/>
+	</bean>
+	<!-- end of services -->
+	
+	<bean id="dataReader" class="core.net.DataReader">
+		<property name="eventRouter" ref="socketDataRouter"/>
+		<lookup-method name="addPacket" ref="googlePlayAnswerPacket"/>
+		
+		<lookup-method name="addPacket" ref="loginAnswer"/>
+		<lookup-method name="addPacket" ref="chatMessage"/>
+		<lookup-method name="addPacket" ref="chatJoin"/>
+		
+		<lookup-method name="addPacket" ref="gameJoinPacket"/>
+		<lookup-method name="addPacket" ref="gameLeavePacket"/>
+		<lookup-method name="addPacket" ref="gameStartPacket"/>
+		
+		<lookup-method name="addPacket" ref="cardInfoPacket"/>
+		
+		<lookup-method name="addPacket" ref="doTurnPacket"/>
+		<lookup-method name="addPacket" ref="buyFieldPacket"/>
+		<lookup-method name="addPacket" ref="sellFieldPacket"/>
+		<lookup-method name="addPacket" ref="upgradeFieldPacket"/>
+		<lookup-method name="addPacket" ref="mortgagePacket"/>
+		<lookup-method name="addPacket" ref="repurchasePacket"/>
+		<lookup-method name="addPacket" ref="gamePlayerStatusPacket"/>
+		<lookup-method name="addPacket" ref="gameCompassPacket"/>
+		<lookup-method name="addPacket" ref="jailNotifyPacket"/>
+		<lookup-method name="addPacket" ref="unjailDicePacket"/>
+		<lookup-method name="addPacket" ref="unjailPayPacket"/>
+		
+		<lookup-method name="addPacket" ref="exchangePacket"/>
+		<lookup-method name="addPacket" ref="exchangeCancelPacket"/>
+		<lookup-method name="addPacket" ref="exchangeApplyPacket"/>
+		
+		<lookup-method name="addPacket" ref="recketNotifyPacket"/>
+		<lookup-method name="addPacket" ref="recketAnswerPacket"/>
+		
+		<lookup-method name="addPacket" ref="userDataPacket"/>
+		
+		<lookup-method name="addPacket" ref="leaveGamePacket"/>
+		<lookup-method name="addPacket" ref="endGamePacket"/>
+		
+		<lookup-method name="addPacket" ref="energyRegenPacket"/>
+		<lookup-method name="addPacket" ref="paydBonusStatusUpdatePacket"/>
+		<lookup-method name="addPacket" ref="bonusForGameUpdatePacket"/>
+		
+		
+		<lookup-method name="addPacket" ref="dailyBonusPacket"/>
+		
+		<lookup-method name="addPacket" ref="topListPacket"/>
+		
+		<lookup-method name="addPacket" ref="raidResultPacket"/>
+		
+		<lookup-method name="addPacket" ref="updateTurnTimerPacket"/>
+		
+		
+		<lookup-method name="addPacket" ref="gameClosePacket"/>
+		
+		
+		<lookup-method name="addPacket" ref="restoreGamePacket"/>
+		<lookup-method name="addPacket" ref="gamesListPacket"/>
+		
+		
+		<lookup-method name="addPacket" ref="friendListPacket"/>
+		
+		
+		<lookup-method name="addPacket" ref="presentsListPacket"/>
+		<lookup-method name="addPacket" ref="presentUsersPacket"/>
+		<lookup-method name="addPacket" ref="shopPresentsListPacket"/>
+		
+		
+		<lookup-method name="addPacket" ref="singleMessagePacket"/>
+		<lookup-method name="addPacket" ref="offlineMessagesCountPacket"/>
+		<lookup-method name="addPacket" ref="messagesListPacket"/>
+		
+		
+		<lookup-method name="addPacket" ref="drawRequestPacket"/>
+		<lookup-method name="addPacket" ref="drawRejectPacket"/>
+		
+		
+		<lookup-method name="addPacket" ref="paymentAcceptPacket"/>
+		
+		
+		<lookup-method name="addPacket" ref="animationEndPacket"/>
+		<lookup-method name="addPacket" ref="payForStayPacket"/>
+		
+		
+		<lookup-method name="addPacket" ref="errorPacket"/>
+	</bean>
+		
+	<bean id="connectionManager" class="core.net.ConnectionManager" init-method="connect">
+		<!----><property name="server" value="(String)104.131.161.78"/><!---->` 
+		<!---><property name="server" value="(String)192.168.2.111"/><!---->
+		<property name="port" value="8882"/>
+		<property name="dataReader" ref="dataReader"/>
+		<property name="scenesController" ref="scenesController"/>
+		<property name="pingSender" ref="pingSender"/>
+	</bean>
+	
+	<bean id="pingSender" class="net.PingSender">
+		<property name="pingPacket" ref="pingPacket"/>
+	</bean>
+	
+</beans>

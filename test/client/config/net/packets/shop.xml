@@ -1,0 +1,53 @@
+<beans>
+	
+    <bean id="buyOperator" class="core.external.io.StreamOperator">
+		<lookup-method ref="intOperator" name="addDeserializer"/><!-- buy type -->
+		<lookup-method ref="intOperator" name="addDeserializer"/><!-- buy value -->
+    </bean>
+	
+	 <bean id="paydBonusStatusUpdateOperator" class="core.external.io.StreamOperator">
+		<lookup-method ref="doubleOperator" name="addSerializer"/> <!-- vip expired date -->
+		<lookup-method ref="doubleOperator" name="addSerializer"/> <!-- mafia expired date -->
+		<lookup-method ref="doubleOperator" name="addSerializer"/> <!-- bonus expired date -->
+		<lookup-method ref="intOperator" name="addSerializer"/> <!-- userId -->
+    </bean>
+	
+	<bean id="bonusForGameUpdateOperator" class="core.external.io.StreamOperator">
+		<lookup-method ref="intOperator" name="addSerializer"/> <!-- mafia active -->
+		<lookup-method ref="intOperator" name="addSerializer"/> <!-- bonus active -->
+		<lookup-method ref="intOperator" name="addSerializer"/> <!-- userId -->
+    </bean>
+	
+	<bean class="core.net.packets.BytePacket" id="bonusForGameUpdatePacket">
+        <property name="type" value="102"/>
+        <property ref="headerOperator" name="headerOperator"/>
+        <property ref="bonusForGameUpdateOperator" name="streamOperator"/>
+    </bean>
+
+	<bean class="core.net.packets.BytePacket" id="paydBonusStatusUpdatePacket">
+        <property name="type" value="101"/>
+        <property ref="headerOperator" name="headerOperator"/>
+        <property ref="paydBonusStatusUpdateOperator" name="streamOperator"/>
+    </bean>
+
+    <bean class="core.net.packets.BytePacket" id="buyPacket">
+        <property name="type" value="100"/>
+        <property ref="headerOperator" name="headerOperator"/>
+        <property ref="buyOperator" name="streamOperator"/>
+    </bean>
+	
+	
+	
+		
+	<bean class="net.events.PaydBonusesUpdateEventListener" id="paydBonusesUpdateEventListener">
+        <property name="type" value="101" />
+        <property name="userDataManager" ref="userDataManager" />
+    </bean>
+	
+	<bean class="net.events.BonusForGameUpdateEventListener" id="bonusForGameUpdateEventListener">
+        <property name="type" value="102" />
+        <property name="userDataManager" ref="userDataManager" />
+    </bean>
+	
+	
+</beans>

@@ -1,0 +1,20 @@
+<beans>
+	
+    <bean id="energyOperator" class="core.external.io.StreamOperator">
+		<lookup-method ref="intOperator" name="addSerializer"/><!-- energy amount -->
+		<lookup-method ref="doubleOperator" name="addSerializer"/><!-- next regen time -->
+    </bean>
+
+
+    <bean class="core.net.packets.BytePacket" id="energyRegenPacket">
+        <property name="type" value="90"/>
+        <property ref="headerOperator" name="headerOperator"/>
+        <property ref="energyOperator" name="streamOperator"/>
+    </bean>
+	
+	<bean class="net.events.EnergyUpdateEventListener" id="energyUpdateEventListener">
+        <property name="type" value="90" />
+        <property name="userDataManager" ref="userDataManager" />
+    </bean>
+	
+</beans>

@@ -1,0 +1,55 @@
+<beans>
+	
+	<bean id="paymentAcceptOperator" class="core.external.io.StreamOperator">
+		<lookup-method ref="intOperator" name="addSerializer"/> <!-- gold amount -->
+	</bean>
+	
+	<bean id="exchangeMoneyOperator" class="core.external.io.StreamOperator">
+		<lookup-method ref="intOperator" name="addDeserializer"/> <!-- gold amount -->
+	</bean>
+	
+	<bean id="googlePlayBuyOperator" class="core.external.io.StreamOperator">
+		<lookup-method ref="UTFStringOperator" name="addDeserializer"/> <!-- signed data -->
+		<lookup-method ref="UTFStringOperator" name="addDeserializer"/> <!-- signature -->
+	</bean>
+	
+	<bean id="googlePlayStatus" class="core.external.io.StreamOperator">
+		<lookup-method ref="UTFStringOperator" name="addSerializer"/> <!-- productId -->
+		<lookup-method ref="intOperator" name="addSerializer"/> <!-- status -->
+	</bean>
+	
+	<bean class="core.net.packets.BytePacket" id="googlePlayPayment">
+        <property name="type" value="182"/>
+        <property ref="headerOperator" name="headerOperator"/>
+        <property ref="googlePlayBuyOperator" name="streamOperator"/>
+    </bean>
+	
+	<bean class="core.net.packets.BytePacket" id="googlePlayAnswerPacket">
+        <property name="type" value="183"/>
+        <property ref="headerOperator" name="headerOperator"/>
+        <property ref="googlePlayStatus" name="streamOperator"/>
+    </bean>
+	
+    <bean class="core.net.packets.BytePacket" id="paymentAcceptPacket">
+        <property name="type" value="180"/>
+        <property ref="headerOperator" name="headerOperator"/>
+        <property ref="paymentAcceptOperator" name="streamOperator"/>
+    </bean>
+	
+	<bean class="core.net.packets.BytePacket" id="exchangeMoneyPacket">
+        <property name="type" value="181"/>
+        <property ref="headerOperator" name="headerOperator"/>
+        <property ref="exchangeMoneyOperator" name="streamOperator"/>
+    </bean>
+			
+	<bean class="net.events.PaymentAcceptEventListener" id="paymentAcceptEventListener">
+        <property name="type" value="180" />
+        <property name="userDataManager" ref="userDataManager" />
+    </bean>
+	
+	<bean class="net.events.GooglePlayAnswerEventListener" id="googlePlayAnswerEventListener">
+        <property name="type" value="183" />
+        <property name="userDataManager" ref="userDataManager" />
+    </bean>
+	
+</beans>

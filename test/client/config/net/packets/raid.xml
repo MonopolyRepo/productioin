@@ -1,0 +1,32 @@
+<beans>
+	<bean id="raidRequestOperator" class="core.external.io.StreamOperator">
+		<lookup-method ref="intOperator" name="addDeserializer"/>	<!-- player id -->
+	</bean>
+	
+	<bean id="raidResultOperator" class="core.external.io.StreamOperator">
+		<lookup-method ref="intOperator" name="addSerializer"/>	<!-- request player id -->
+		<lookup-method ref="intOperator" name="addSerializer"/>	<!-- field index -->
+		<lookup-method ref="intOperator" name="addSerializer"/>	<!-- status -->
+	</bean>
+	
+	<bean id="raidRequestPacket" class="core.net.packets.BytePacket">
+		<property name="type" value="120"/>
+		<property name="headerOperator" ref="headerOperator"/>
+		<property name="streamOperator" ref="raidRequestOperator"/>
+	</bean>
+		
+	<bean id="raidResultPacket" class="core.net.packets.BytePacket">
+		<property name="type" value="121"/>
+		<property name="headerOperator" ref="headerOperator"/>
+		<property name="streamOperator" ref="raidResultOperator"/>
+	</bean>
+	
+	
+	<bean id="raidResultEventListener" class="net.events.RaidResultEventListener">
+		<property name="type" value="121"/>
+		<property name="gameData" ref="gameData"/>
+		<property name="gameField" ref="gameField"/>
+	</bean>
+	
+
+</beans>

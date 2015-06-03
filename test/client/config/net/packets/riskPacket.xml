@@ -1,0 +1,15 @@
+<beans>
+	
+    <bean id="riskChooseOperator" class="core.external.io.StreamOperator">
+		<lookup-method ref="intOperator" name="addDeserializer"/><!-- risk -->
+		<lookup-method ref="intOperator" name="addDeserializer"/><!-- money amount -->
+    </bean>
+
+    <bean id="riskChoosePacket" class="core.net.packets.BytePacket">
+        <property name="type" value="90"/>
+        <property name="headerOperator" ref="headerOperator"/>
+        <property name="streamOperator" ref="riskChooseOperator"/>
+    </bean>
+
+	
+</beans>

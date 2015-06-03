@@ -1,0 +1,8 @@
+<beans>
+
+	<bean id="fieldOperationsService" class="monopoly.services.FieldOperationsService" init-method="initialize">
+		<property name="gameField" ref="gameField"/>
+		<property name="gameData" ref="gameData"/>
+	</bean>
+	
+</beans>

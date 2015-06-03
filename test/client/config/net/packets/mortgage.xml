@@ -1,0 +1,39 @@
+<beans>
+	
+	<bean id="mortgageOperator" class="core.external.io.StreamOperator">
+		<lookup-method ref="intOperator" name="addDeserializer"/><!-- userid -->
+		
+		<lookup-method ref="intOperator" name="addSerializer"/><!-- userid -->
+		<lookup-method ref="intOperator" name="addSerializer"/><!-- field id -->
+	</bean>
+	
+	<bean id="mortgagePacket" class="core.net.packets.BytePacket">
+		<property name="type" value="170"/>
+		<property name="headerOperator" ref="headerOperator"/>
+		<property name="streamOperator" ref="mortgageOperator"/>
+	</bean>
+	
+	<bean id="repurchasePacket" class="core.net.packets.BytePacket">
+		<property name="type" value="171"/>
+		<property name="headerOperator" ref="headerOperator"/>
+		<property name="streamOperator" ref="mortgageOperator"/>
+	</bean>
+	
+	<bean class="net.events.MortgageFieldEventListener" id="mortgageFieldEventListener">
+        <property name="type" value="170" />
+		<property name="gameData" ref="gameData"/>
+		<property name="gameField" ref="gameField"/>
+		<property name="fieldOperationsService" ref="fieldOperationsService"/>
+    </bean>
+	
+	<bean class="net.events.RepurchaseFieldEventListener" id="repurchaseFieldEventListener">
+        <property name="type" value="171" />
+		<property name="gameData" ref="gameData"/>
+		<property name="gameField" ref="gameField"/>
+		<property name="fieldOperationsService" ref="fieldOperationsService"/>
+    </bean>
+	
+	
+	
+	
+</beans>

@@ -1,0 +1,211 @@
+<beans>
+	<bean id="commandManager" class="monopoly.core.commands.CommandsManager"/>
+	
+	<bean id="takeSittingPlaceCommand" class="monopoly.core.commands.TakeSittingPlaceCommand">
+		<property name="packetData" ref="gameRequestPacket"/>
+		<property name="connectionManager" ref="connectionManager"/>
+	</bean>
+	
+	<bean id="freeSittingPlace" class="monopoly.core.commands.FreeSittingPlace">
+		<property name="packetData" ref="gameLeavePacket"/>
+		<property name="connectionManager" ref="connectionManager"/>
+	</bean>
+	
+	<bean id="buyFieldCancelCommand" class="monopoly.core.commands.BuyFieldCancelCommand"/>
+	
+	<bean id="buyFieldCommand" class="monopoly.core.commands.BuyFieldCommand">
+		<property name="packetData" ref="buyFieldPacket"/>
+		<property name="connectionManager" ref="connectionManager"/>
+		
+		<property name="gameField" ref="gameField"/>
+		<property name="gameData" ref="gameData"/>
+		<property name="fieldOperationsService" ref="fieldOperationsService"/>
+	</bean>
+	
+	<bean id="sellFieldCommand" class="monopoly.core.commands.SellFieldCommand">
+		<property name="packetData" ref="sellFieldPacket"/>
+		<property name="connectionManager" ref="connectionManager"/>
+		
+		<property name="gameData" ref="gameData"/>
+		<property name="fieldOperationsService" ref="fieldOperationsService"/>
+	</bean>
+	
+	<bean id="endTurnCommand" class="monopoly.core.commands.EndTurnCommand">
+		<property name="packetData" ref="endTurnPacket"/>
+		<property name="connectionManager" ref="connectionManager"/>
+	</bean>
+	
+	<bean id="animationEndCommand" class="monopoly.core.commands.AnimationEndCommand">
+		<property name="packetData" ref="animationEndPacket"/>
+		<property name="connectionManager" ref="connectionManager"/>
+	</bean>
+	
+	<bean id="upgradeCommand" class="monopoly.core.commands.UpgradeCommand">
+		<property name="packetData" ref="upgradeFieldPacket"/>
+		<property name="connectionManager" ref="connectionManager"/>
+		
+		<property name="gameData" ref="gameData"/>
+	</bean>
+	
+	<bean id="unjailPayCommand" class="monopoly.core.commands.UnjailPayCommand">
+		<property name="packetData" ref="unjailPayPacket"/>
+		<property name="connectionManager" ref="connectionManager"/>
+		
+		<property name="gameData" ref="gameData"/>
+	</bean>
+	
+	<bean id="unjailDiceCommand" class="monopoly.core.commands.UnjailDiceCommand">
+		<property name="packetData" ref="unjailDicePacket"/>
+		<property name="connectionManager" ref="connectionManager"/>
+	</bean>
+	
+	<bean id="popUpCancelCommand" class="monopoly.core.commands.PopUpCancelCommand">
+	</bean>
+	
+	<bean id="exchangeFieldsCommand" class="monopoly.core.commands.ExchangeFieldsCommand">
+		<property name="packetData" ref="exchangePacket"/>
+		<property name="connectionManager" ref="connectionManager"/>
+	</bean>
+	
+	<bean id="exchangeCancelCommand" class="monopoly.core.commands.ExchangeCancelCommand">
+		<property name="packetData" ref="exchangeCancelPacket"/>
+		<property name="connectionManager" ref="connectionManager"/>
+	</bean>
+	
+	<bean id="exchangeAcceptCommand" class="monopoly.core.commands.ExchangeAcceptCommand">
+		<property name="packetData" ref="exchangeAcceptPacket"/>
+		<property name="connectionManager" ref="connectionManager"/>
+	</bean>
+	
+	<bean id="recketAnswerCommand" class="monopoly.core.commands.RecketAnswerCommand">
+		<property name="packetData" ref="recketAnswerPacket"/>
+		<property name="connectionManager" ref="connectionManager"/>
+	</bean>
+	
+	<bean id="riskChooseCommand" class="monopoly.core.commands.RiskChooseCommand">
+		<property name="packetData" ref="riskChoosePacket"/>
+		<property name="connectionManager" ref="connectionManager"/>
+	</bean>
+	
+	<bean id="buyCommand" class="monopoly.core.commands.BuyCommand">
+		<property name="packetData" ref="buyPacket"/>
+		<property name="userDataManager" ref="userDataManager"/>
+		<property name="connectionManager" ref="connectionManager"/>
+	</bean>
+	
+	<bean id="sendChatMessageCommand" class="monopoly.core.commands.SendChatMessageCommand">
+		<property name="packetData" ref="chatMessage"/>
+		<property name="connectionManager" ref="connectionManager"/>
+		<property name="chatModel" ref="chatModel"/>
+	</bean>
+	
+	<bean id="RaidCommand" class="monopoly.core.commands.RaidCommand">
+		<property name="packetData" ref="raidRequestPacket"/>
+		<property name="connectionManager" ref="connectionManager"/>
+	</bean>
+		
+	<bean id="topListRequestCommand" class="monopoly.core.commands.TopListRequestCommand">
+		<property name="packetData" ref="requestTopListPacket"/>
+		<property name="connectionManager" ref="connectionManager"/>
+	</bean>
+	
+	<bean id="requestOfflineMessagesCommand" class="monopoly.core.commands.RequestOfflineMessagesCommand">
+		<property name="packetData" ref="requestOfflineMessagesPacket"/>
+		<property name="connectionManager" ref="connectionManager"/>
+	</bean>
+	
+	<bean id="offlineMessageOperationCommand" class="monopoly.core.commands.OfflineMessageOperationCommand">
+		<property name="packetData" ref="messageOperationPacket"/>
+		<property name="connectionManager" ref="connectionManager"/>
+	</bean>
+	
+	<bean id="offlineMessageSendCommand" class="monopoly.core.commands.OfflineMessageSendCommand">
+		<property name="packetData" ref="sendMessagePacket"/>
+		<property name="connectionManager" ref="connectionManager"/>
+	</bean>
+	
+	<bean id="changeGameStateCommand" class="monopoly.core.commands.ChangeGameStateCommand">
+		<property name="packetData" ref="playerStatePacket"/>
+		<property name="connectionManager" ref="connectionManager"/>
+	</bean>
+	
+	<bean id="requestFriendsCommand" class="monopoly.core.commands.RequestFriendsCommand">
+		<property name="packetData" ref="requestFriendsListPacket"/>
+		<property name="connectionManager" ref="connectionManager"/>
+	</bean>
+	
+	<bean id="addFriendCommand" class="monopoly.core.commands.AddFriendCommand">
+		<property name="packetData" ref="friendOperationPacket"/>
+		<property name="connectionManager" ref="connectionManager"/>
+		<property name="userDataManager" ref="userDataManager"/>
+	</bean>
+	
+	<bean id="BuyPresentCommand" class="monopoly.core.commands.BuyPresentCommand">
+		<property name="packetData" ref="presentBuyPacket"/>
+		<property name="connectionManager" ref="connectionManager"/>
+		<property name="userDataManager" ref="userDataManager"/>
+	</bean>
+	
+	<bean id="requestPresentsCommand" class="monopoly.core.commands.RequestPresentsCommand">
+		<property name="packetData" ref="presentsRequestPacket"/>
+		<property name="connectionManager" ref="connectionManager"/>
+	</bean>
+	
+	<bean id="requestObserveGameCommand" class="monopoly.core.commands.RequestObserveGameCommand">
+		<property name="packetData" ref="requestObserveGamePacket"/>
+		<property name="connectionManager" ref="connectionManager"/>
+	</bean>
+	
+	<bean id="requestGamesListCommand" class="monopoly.core.commands.RequestGamesListCommand">
+		<property name="packetData" ref="requestGamesListPacket"/>
+		<property name="connectionManager" ref="connectionManager"/>
+	</bean>
+	
+	<bean id="mortgageCommand" class="monopoly.core.commands.MortgageCommand">
+		<property name="packetData" ref="mortgagePacket"/>
+		<property name="connectionManager" ref="connectionManager"/>
+		
+		<property name="gameData" ref="gameData"/>
+		<property name="fieldOperationsService" ref="fieldOperationsService"/>
+	</bean>
+	
+	<bean id="exchangeGoldCommand" class="monopoly.core.commands.ExchangeGoldCommand">
+		<property name="userDataManager" ref="userDataManager"/>
+		<property name="packetData" ref="exchangeMoneyPacket"/>
+		<property name="connectionManager" ref="connectionManager"/>
+	</bean>
+	
+	<bean id="repurchaseCommand" class="monopoly.core.commands.RepurchaseCommand">
+		<property name="packetData" ref="repurchasePacket"/>
+		<property name="connectionManager" ref="connectionManager"/>
+		
+		<property name="gameData" ref="gameData"/>
+		<property name="fieldOperationsService" ref="fieldOperationsService"/>
+	</bean>
+	
+	<bean id="banCommand" class="monopoly.core.commands.BanCommand">
+		<property name="packetData" ref="banPacket"/>
+		<property name="connectionManager" ref="connectionManager"/>
+	</bean>
+	
+	<bean id="banChatCommand" class="monopoly.core.commands.BanChatCommand">
+		<property name="packetData" ref="banChatPacket"/>
+		<property name="connectionManager" ref="connectionManager"/>
+	</bean>
+	
+	<bean id="drawRequestCommand" class="monopoly.core.commands.DrawRequestCommand">
+		<property name="packetData" ref="drawRequestPacket"/>
+		<property name="connectionManager" ref="connectionManager"/>
+	</bean>
+	
+	<bean id="drawRejectCommand" class="monopoly.core.commands.DrawRejectCommand">
+		<property name="packetData" ref="drawRejectPacket"/>
+		<property name="connectionManager" ref="connectionManager"/>
+	</bean>
+	
+	<bean id="drawAccpetCommand" class="monopoly.core.commands.DrawAccpetCommand">
+		<property name="packetData" ref="drawAccpetPacket"/>
+		<property name="connectionManager" ref="connectionManager"/>
+	</bean>
+	
+</beans>

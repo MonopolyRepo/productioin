@@ -1,0 +1,32 @@
+<beans>
+	<bean id="requestTopListOperator" class="core.external.io.StreamOperator">
+		<lookup-method ref="intOperator" name="addDeserializer"/><!-- id -->
+		<lookup-method ref="intOperator" name="addDeserializer"/><!-- from -->
+	</bean>
+	
+	<bean id="topListOperator" class="core.external.io.StreamOperator">
+		<lookup-method ref="otherUserDataOperator" name="addSerializer"/><!-- getWeekWinRateGameTop -->
+		<lookup-method ref="otherUserDataOperator" name="addSerializer"/><!-- getWinRateGameTop -->
+		<lookup-method ref="otherUserDataOperator" name="addSerializer"/><!-- getMoneyGameTop -->
+		<lookup-method ref="otherUserDataOperator" name="addSerializer"/><!-- getRealMoneyTop -->
+		<lookup-method ref="otherUserDataOperator" name="addSerializer"/><!-- getTopFriends -->
+	</bean>
+	
+	<bean id="requestTopListPacket" class="core.net.packets.BytePacket">
+		<property name="type" value="110"/>
+		<property name="headerOperator" ref="headerOperator"/>
+		<property name="streamOperator" ref="requestTopListOperator"/>
+	</bean>
+	
+	<bean id="topListPacket" class="core.net.packets.BytePacket">
+		<property name="type" value="111"/>
+		<property name="headerOperator" ref="headerOperator"/>
+		<property name="streamOperator" ref="topListOperator"/>
+	</bean>
+	
+	<bean id="topListEventListener" class="net.events.TopListEventListener">
+		<property name="type" value="111"/>
+		<property name="userDataManager" ref="userDataManager"/>
+	</bean>
+
+</beans>

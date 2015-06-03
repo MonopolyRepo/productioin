@@ -1,0 +1,33 @@
+<beans>
+    <bean id="userDataOperator" class="core.external.io.StreamOperator">
+		<lookup-method ref="intOperator" name="addSerializer"/><!-- id -->
+		<lookup-method ref="UTFStringOperator" name="addSerializer"/><!-- login -->
+		<lookup-method ref="intOperator" name="addSerializer"/><!-- money real -->
+		<lookup-method ref="intOperator" name="addSerializer"/><!-- money game -->
+		<lookup-method ref="intOperator" name="addSerializer"/><!-- level -->
+		<lookup-method ref="intOperator" name="addSerializer"/><!-- currentExp -->
+		<lookup-method ref="intOperator" name="addSerializer"/><!-- expToLevel -->
+		<lookup-method ref="intOperator" name="addSerializer"/><!-- energy -->
+		<lookup-method ref="intOperator" name="addSerializer"/><!-- energy max -->
+		<lookup-method ref="intOperator" name="addSerializer"/><!-- games played -->
+		<lookup-method ref="intOperator" name="addSerializer"/><!-- games win -->
+		<lookup-method ref="intOperator" name="addSerializer"/><!-- games lose -->
+		<lookup-method ref="intOperator" name="addSerializer"/><!-- games draw -->
+		<lookup-method ref="intOperator" name="addSerializer"/><!-- total money -->
+		<lookup-method ref="intOperator" name="addSerializer"/><!-- rank win rate -->
+		<lookup-method ref="intOperator" name="addSerializer"/><!-- rank money -->
+		<lookup-method ref="intOperator" name="addSerializer"/><!-- rank weekly -->
+		<lookup-method ref="intOperator" name="addSerializer"/><!-- vip active -->
+		<lookup-method ref="intOperator" name="addSerializer"/><!-- mafia active -->
+		<lookup-method ref="intOperator" name="addSerializer"/><!-- bonus active -->
+		<lookup-method ref="doubleOperator" name="addSerializer"/><!-- next energy time -->
+		<lookup-method ref="UTFStringOperator" name="addSerializer"/><!-- photo_url -->
+		<lookup-method ref="intOperator" name="addSerializer"/><!-- rightsLevel -->
+    </bean>
+	
+    <bean id="userDataPacket" class="core.net.packets.BytePacket">
+        <property name="type" value="30"/>
+        <property name="headerOperator" ref="headerOperator"/>
+        <property name="streamOperator" ref="userDataOperator"/>
+    </bean>
+</beans>

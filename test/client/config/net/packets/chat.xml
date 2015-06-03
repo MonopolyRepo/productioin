@@ -1,0 +1,39 @@
+<beans>
+	
+	<bean id="joinOperator" class="core.external.io.StreamOperator">
+		<!-- userid -->
+		<lookup-method ref="intOperator" name="addSerializer"/>
+		<!-- nickname -->
+		<lookup-method ref="UTFStringOperator" name="addSerializer"/>
+		<!-- message group -->
+		<lookup-method ref="intOperator" name="addSerializer"/>
+	</bean>
+	
+	<bean id="chatMessageOperator" class="core.external.io.StreamOperator">
+		<!-- userid -->
+		<lookup-method ref="intOperator" name="addSerializer"/>
+		<!-- mesasge group -->
+		<lookup-method ref="intOperator" name="addSerializer"/>
+		<!-- message -->
+		<lookup-method ref="UTFStringOperator" name="addSerializer"/>
+		
+		<!-- mesasge group -->
+		<lookup-method ref="intOperator" name="addDeserializer"/>
+		<!-- message -->
+		<lookup-method ref="UTFStringOperator" name="addDeserializer"/>
+	</bean>
+	
+	<bean id="chatMessage" class="core.net.packets.BytePacket">
+		<property name="type" value="10"/>
+		<property name="headerOperator" ref="headerOperator"/>
+		<property name="streamOperator" ref="chatMessageOperator"/>
+	</bean>
+	
+	<bean id="chatJoin" class="core.net.packets.BytePacket">
+		<property name="type" value="11"/>
+		<property name="headerOperator" ref="headerOperator"/>
+		<property name="streamOperator" ref="joinOperator"/>
+	</bean>
+	
+	
+</beans>

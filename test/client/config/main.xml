@@ -1,0 +1,23 @@
+<beans>
+	<import resource="vfssettings.xml"/>
+	<import resource="commands.xml"/>
+	<import resource="services.xml"/>
+	
+	<import resource="chat.xml"/>
+	
+	<import resource="scenes/scenes.xml"/>
+	<import resource="net/netMain.xml"/>
+	
+	<eventScope name="global"/>
+	<eventScope name="game"/>
+	
+	<bean id="tableController" class="gameui.lobbyscene.table.logic.TableController">
+		<property name="userDataManager" ref="userDataManager"/>
+	</bean>
+	
+	<bean id="tableLayerModel" class="gameui.lobbyscene.table.datavalue.TableLayerModel"/>
+	<bean id="userDataManager" class="UserDataManager"/>
+	
+	<bean id="worldTime" class="WorldTimeController"/>
+	
+</beans>

@@ -1,0 +1,75 @@
+<beans>
+	<bean id="requestObserveGameOperator" class="core.external.io.StreamOperator">
+		<lookup-method ref="intOperator" name="addDeserializer"/> <!-- game id -->
+	</bean>
+	
+	<bean id="gameRestoreOperator" class="core.external.io.StreamOperator">
+		<lookup-method ref="intOperator" name="addSerializer"/> <!-- game id -->
+		<lookup-method ref="doubleOperator" name="addSerializer"/> <!-- current turn timer -->
+		<lookup-method ref="intOperator" name="addSerializer"/> <!-- turn -->
+		<lookup-method ref="intOperator" name="addSerializer"/> <!-- current player id -->
+		<lookup-method ref="playerDataOperator" name="addSerializer"/> <!-- players data -->
+		<lookup-method ref="fieldDataOperator" name="addSerializer"/> <!-- fields data -->
+	</bean>
+	
+	<bean id="playerDataOperator" class="core.external.io.ArrayOperator">
+		<lookup-method ref="intOperator" name="addSerializer"/> <!-- player id -->
+		<lookup-method ref="intOperator" name="addSerializer"/> <!-- money value -->
+		<lookup-method ref="intOperator" name="addSerializer"/> <!-- current field -->
+		<lookup-method ref="intOperator" name="addSerializer"/> <!-- sitting place -->
+		<lookup-method ref="intOperator" name="addSerializer"/> <!-- is play -->
+	</bean>
+	
+	<bean id="fieldDataOperator" class="core.external.io.ArrayOperator">
+		<lookup-method ref="intOperator" name="addSerializer"/> <!-- field id -->
+		<lookup-method ref="intOperator" name="addSerializer"/> <!-- owner id -->
+		<lookup-method ref="intOperator" name="addSerializer"/> <!-- level -->
+		<lookup-method ref="intOperator" name="addSerializer"/> <!-- is mortgaged -->
+	</bean>
+	
+	<bean id="gamesListOperator" class="core.external.io.StreamOperator">>
+		<lookup-method ref="gameInfoOperator" name="addSerializer"/>
+	</bean>
+	
+	<bean id="gameInfoOperator" class="core.external.io.ArrayOperator">
+		<lookup-method ref="intOperator" name="addSerializer"/> <!-- game id -->
+		<lookup-method ref="intOperator" name="addSerializer"/> <!-- game size -->
+	</bean>
+	
+	
+	<bean id="requestObserveGamePacket" class="core.net.packets.BytePacket">
+        <property name="type" value="160"/>
+        <property name="headerOperator" ref="headerOperator"/>
+        <property name="streamOperator" ref="requestObserveGameOperator"/>
+    </bean>
+	
+    <bean id="restoreGamePacket" class="core.net.packets.BytePacket">
+        <property name="type" value="161"/>
+        <property name="headerOperator" ref="headerOperator"/>
+        <property name="streamOperator" ref="gameRestoreOperator"/>
+    </bean>
+	
+	<bean id="requestGamesListPacket" class="core.net.packets.BytePacket">
+        <property name="type" value="162"/>
+        <property name="headerOperator" ref="headerOperator"/>
+    </bean>
+	
+	<bean id="gamesListPacket" class="core.net.packets.BytePacket">
+        <property name="type" value="163"/>
+        <property name="headerOperator" ref="headerOperator"/>
+        <property name="streamOperator" ref="gamesListOperator"/>
+    </bean>
+	
+	<bean class="net.events.GamesListEventListener" id="gamesListEventListener">
+        <property name="type" value="163" />
+    </bean>
+	
+	<bean class="net.events.ObserveGameInfoEventListener" id="observeGameInfoEventListener">
+        <property name="type" value="161" />
+        <property name="userDataManager" ref="userDataManager" />
+        <property name="chatModel" ref="chatModel" />
+        <property name="gameData" ref="gameData" />
+        <property name="gameField" ref="gameField" />
+    </bean>
+	
+</beans>

@@ -1,0 +1,21 @@
+<beans>
+	<import resource="chat.xml"/>
+	<import resource="offlineMessages.xml"/>
+	<import resource="login.xml"/>
+	<import resource="ping.xml"/>
+	<import resource="gameRequest.xml"/>
+	<import resource="gameRestore.xml"/>
+	<import resource="userDataPackets.xml"/>
+	<import resource="game.xml"/>
+	<import resource="energy.xml"/>
+	<import resource="shop.xml"/>
+	<import resource="topList.xml"/>
+	<import resource="raid.xml"/>
+	<import resource="friends.xml"/>
+	<import resource="presents.xml"/>
+	<import resource="mortgage.xml"/>
+	<import resource="payment.xml"/>
+	<import resource="draw.xml"/>
+	<import resource="administration.xml"/>
+	<import resource="error.xml"/>
+</beans>
