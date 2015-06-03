@@ -25,7 +25,7 @@
 			console.log(authResponse);
 			if(authResponse.accessToken != null && authResponse.userID != null)
 			{
-				buildFlashMovie(authResponse);
+				buildFlashMovie(authResponse.accessToken, authResponse.userID);
 			
 				return;
 			}	
@@ -36,7 +36,7 @@
 		}
 	}
 	
-	function buildFlashMovie(vars)
+	function buildFlashMovie(token, uid)
 	{
 		var version = 50;
 		var flashvars = {
@@ -44,17 +44,10 @@
 		};
 		
 		
-		for (var i in vars) 
-		{
-			var key = i;
-			var value = vars[i];
-			flashvars[key] = value;
-			
-		}
-		
-		flashvars["facebookLogin"] = "2";
-		
-		flashvars["version"] = version;
+		flashvars.token = token;
+		flashvars.fb_user_id = uid;
+		flashvars.facebookLogin = "2";
+		flashvars.version = version;
 		
 		var params = {
 			menu: "false",
