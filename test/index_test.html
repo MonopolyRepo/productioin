@@ -32,7 +32,8 @@
 			
 			if(currentUrlVars != null && currentUrlVars["accessToken"] && currentUrlVars["userID"])
 			{
-				console.log("recivied token then shut up");
+				buildFlashMovie();
+			
 				return;
 			}	
 			
@@ -50,6 +51,31 @@
 		{
 			window.location="https://www.facebook.com/dialog/oauth?client_id="+appId+"&redirect_uri="+url+"&response_type=token";
 		}
+	}
+	
+	function buildFlashMovie()
+	{
+		var version = 49;
+		var flashvars = {
+			version:version
+		};
+		var params = {
+			menu: "false",
+			
+			allowFullscreen: "true",
+			allowFullscreenInteractive: "true",
+			allowScriptAccess: "always",
+			bgcolor: "",
+			wmode: "direct" // can cause issues with FP settings & webcam
+		};
+		var attributes = {
+			id:"Bin_web"
+		};
+		swfobject.embedSWF(
+			"Bin_web.swf?" + version, 
+			"altContent", "100%", "100%", "15.0.0", 
+			"expressInstall.swf", 
+			flashvars, params, attributes);
 	}
 				
     </script>
