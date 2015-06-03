@@ -36,7 +36,7 @@
 		}
 	}
 	
-	function buildFlashMovie(m_vars)
+	function buildFlashMovie(vars)
 	{
 		var version = 50;
 		var flashvars = {
@@ -44,17 +44,17 @@
 		};
 		
 		
-		for (var i in m_vars) 
+		for (var i in vars) 
 		{
 			var key = i;
-			var value = m_vars[i];
-			m_flashvars[key] = value;
+			var value = vars[i];
+			flashvars[key] = value;
 			str += key + "=" + value + "&";
 		}
 		
 		flashvars["facebookLogin"] = "2";
 		
-		m_flashvars["version"] = version;
+		flashvars["version"] = version;
 		
 		var params = {
 			menu: "false",
