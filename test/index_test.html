@@ -11,24 +11,16 @@
     <script type="text/javascript">
       
 	var appId = "601400096658911";
-	var url = "https://bizimdepo.mobi/game01/index_test.html";
+	var url = "https://bizimdepo.mobi/game01/test/index_test.html";
 	
 	FB.init({appId:appId, xfbml: true, status: true, cookie: true});
 	FB.getLoginStatus(checkLoginStatus);
-
-	function getUrlVars() {
-		var vars = {};
-		var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(m,key,value) {
-			vars[key] = value;
-		});
-		return vars;
-	}
 
 	function checkLoginStatus(response) 
 	{
 		if(response && response.status == 'connected') 
 		{
-			if(currentUrlVars != null && currentUrlVars["accessToken"] && currentUrlVars["userID"])
+			if(response["accessToken"] && response["userID"])
 			{
 				buildFlashMovie();
 			
