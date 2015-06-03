@@ -20,6 +20,9 @@
 	{
 		if(response && response.status == 'connected') 
 		{
+			console.log(response["accessToken"]);
+			console.log(response["#accessToken"]);
+			console.log(response["userID"]);
 			if(response["accessToken"] && response["userID"])
 			{
 				buildFlashMovie();
