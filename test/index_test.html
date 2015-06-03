@@ -28,24 +28,12 @@
 	{
 		if(response && response.status == 'connected') 
 		{
-			var currentUrlVars = getUrlVars();
-			
 			if(currentUrlVars != null && currentUrlVars["accessToken"] && currentUrlVars["userID"])
 			{
 				buildFlashMovie();
 			
 				return;
 			}	
-			
-			var urlVars = "";
-			
-			for(var vr in response.authResponse)
-			{
-				urlVars+=vr+"="+response.authResponse[vr] + "&";
-			}
-			
-			urlVars = urlVars.substr(0, urlVars.length-1);
-			window.location=url+"?"+urlVars
 		}
 		else 
 		{
