@@ -22,7 +22,7 @@
 		if(response && response.status == 'connected') 
 		{
 			var authResponse = response.authResponse;
-
+			console.log(authResponse);
 			if(authResponse["accessToken"] && authResponse["userID"])
 			{
 				buildFlashMovie();
