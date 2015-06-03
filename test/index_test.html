@@ -2,7 +2,7 @@
 
 <html>
   <head>
-    <title>Example</title>
+    <title>test</title>
   </head>
 <body>
 	<div id="fb-root"></div>
@@ -25,7 +25,7 @@
 			console.log(authResponse);
 			if(authResponse.accessToken != null && authResponse.userID != null)
 			{
-				buildFlashMovie();
+				buildFlashMovie(authResponse);
 			
 				return;
 			}	
@@ -36,12 +36,26 @@
 		}
 	}
 	
-	function buildFlashMovie()
+	function buildFlashMovie(m_vars)
 	{
-		var version = 49;
+		var version = 50;
 		var flashvars = {
 			version:version
 		};
+		
+		
+		for (var i in m_vars) 
+		{
+			var key = i;
+			var value = m_vars[i];
+			m_flashvars[key] = value;
+			str += key + "=" + value + "&";
+		}
+		
+		flashvars["facebookLogin"] = "2";
+		
+		m_flashvars["version"] = version;
+		
 		var params = {
 			menu: "false",
 			
@@ -55,7 +69,7 @@
 			id:"Bin_web"
 		};
 		swfobject.embedSWF(
-			"Bin_web.swf?" + version, 
+			"Bin_web.swf?test=true&" + version, 
 			"flashHolder", "100%", "760", "17.0.0", 
 			"expressInstall.swf", 
 			flashvars, params, attributes);
