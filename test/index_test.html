@@ -64,9 +64,10 @@
 		};
 		
 		var screenHeight = 760;
+		var windowHeight = $(document).height();
 		
-		if(screen.height + 25 < 760)
-			screenHeight = screen.height - 25;
+		if(windowHeight + 25 < 760)
+			screenHeight = windowHeight - 25;
 		
 		swfobject.embedSWF(
 			"Bin_web.swf?test=true&" + version, 
@@ -76,13 +77,15 @@
 	}
 	
 	window.onresize = function(event) {
+		
 		var screenHeight = 760;
+		var windowHeight = $(document).height();
 		
-		if(screen.height + 25 < 760)
-			screenHeight = screen.height - 25;
+		if(windowHeight + 25 < 760)
+			screenHeight = windowHeight - 25;
 			
+		console.log(screenHeight);
 		
-		console.log(screenHeight, document.height, document.height, $(document).height(), screen.height);
 		document.getElementById("Bin_web").height = screenHeight;
 	};
 	
