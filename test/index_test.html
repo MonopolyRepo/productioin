@@ -82,7 +82,7 @@
 	
 	window.onresize = function(event) {
 	
-		var appHeight = 760;
+		var appHeight = document.getElementById("Bin_web").height;
 		var infoHeight = 25;
 		
 		var contentHeight = appHeight;
@@ -91,6 +91,9 @@
 		
 		if(windowHeight < fullContentHeight)
 			contentHeight = contentHeight - infoHeight;
+			
+		if(contentHeight > 760)
+			contentHeight = 760;
 			
 		console.log(contentHeight);
 		
