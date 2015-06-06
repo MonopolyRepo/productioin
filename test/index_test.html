@@ -66,11 +66,12 @@
 		var appHeight = 760;
 		var infoHeight = 45;
 		
-		var contentHeight = appHeight + infoHeight;
+		var contentHeight = appHeight;
+		var fullContentHeight = appHeight + infoHeight;
 		var windowHeight = $(document).height();
 		
-		if(windowHeight < contentHeight)
-			contentHeight = windowHeight - infoHeight;
+		if(windowHeight < fullContentHeight)
+			contentHeight = contentHeight - infoHeight;
 		
 		swfobject.embedSWF(
 			"Bin_web.swf?test=true&" + version, 
@@ -80,15 +81,16 @@
 	}
 	
 	window.onresize = function(event) {
-		
+	
 		var appHeight = 760;
 		var infoHeight = 45;
 		
-		var contentHeight = appHeight + infoHeight;
+		var contentHeight = appHeight;
+		var fullContentHeight = appHeight + infoHeight;
 		var windowHeight = $(document).height();
 		
-		if(windowHeight < contentHeight)
-			contentHeight = windowHeight - infoHeight;
+		if(windowHeight < fullContentHeight)
+			contentHeight = contentHeight - infoHeight;
 			
 		console.log(contentHeight);
 		
