@@ -38,7 +38,7 @@
 	
 	function buildFlashMovie(token, uid)
 	{
-		var version = 50;
+		var version = 51;
 		var flashvars = {
 			version:version
 		};
@@ -61,13 +61,28 @@
 		var attributes = {
 			id:"Bin_web"
 		};
+		
+		var screenHeight = 760;
+		
+		if(screen.height + 25 < 760)
+			screenHeight = screen.height - 25;
+		
 		swfobject.embedSWF(
 			"Bin_web.swf?test=true&" + version, 
-			"flashHolder", "100%", "760", "17.0.0", 
+			"flashHolder", "100%", screenHeight, "17.0.0", 
 			"expressInstall.swf", 
 			flashvars, params, attributes);
 	}
-				
+	
+	window.onresize = function(event) {
+		var screenHeight = 760;
+		
+		if(screen.height + 25 < 760)
+			screenHeight = screen.height - 25;
+			
+		document.getElementById('flashHolder').style.top = screenHeight+'px';
+	};
+	
     </script>
 	
 	<style>
