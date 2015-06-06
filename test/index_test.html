@@ -63,30 +63,36 @@
 			id:"Bin_web"
 		};
 		
-		var screenHeight = 760;
+		var appHeight = 760;
+		var infoHeight = 25;
+		
+		var contentHeight = appHeight + infoHeight;
 		var windowHeight = $(document).height();
 		
-		if(windowHeight + 25 < 760)
-			screenHeight = windowHeight - 25;
+		if(widowHeight < contentHeight)
+			contentHeight = windowHeight - infoHeight;
 		
 		swfobject.embedSWF(
 			"Bin_web.swf?test=true&" + version, 
-			"flashHolder", "100%", screenHeight, "17.0.0", 
+			"flashHolder", "100%", contentHeight, "17.0.0", 
 			"expressInstall.swf", 
 			flashvars, params, attributes);
 	}
 	
 	window.onresize = function(event) {
 		
-		var screenHeight = 760;
+		var appHeight = 760;
+		var infoHeight = 25;
+		
+		var contentHeight = appHeight + infoHeight;
 		var windowHeight = $(document).height();
 		
-		if(windowHeight + 25 < 760)
-			screenHeight = windowHeight - 25;
+		if(widowHeight < contentHeight)
+			contentHeight = windowHeight - infoHeight;
 			
-		console.log(screenHeight);
+		console.log(contentHeight);
 		
-		document.getElementById("Bin_web").height = screenHeight;
+		document.getElementById("Bin_web").height = contentHeight;
 	};
 	
     </script>
