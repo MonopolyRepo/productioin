@@ -1,0 +1,1 @@
+23:22:20 (InitClass.java:69) - init settings dbname=monopoly2 port=8882 webPort=6790
