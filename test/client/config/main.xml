@@ -5,8 +5,9 @@
 	
 	<import resource="chat.xml"/>
 	
-	<import resource="scenes/scenes.xml"/>
 	<import resource="net/netMain.xml"/>
+	
+	<import resource="scenes/scenes.xml"/>
 	
 	<eventScope name="global"/>
 	<eventScope name="game"/>
