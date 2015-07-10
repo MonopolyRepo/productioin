@@ -29,11 +29,16 @@
 	
 	<bean id="gamesListOperator" class="core.external.io.StreamOperator">>
 		<lookup-method ref="gameInfoOperator" name="addSerializer"/>
+		<lookup-method ref="gameInfoUsersList" name="addSerializer"/>
 	</bean>
 	
 	<bean id="gameInfoOperator" class="core.external.io.ArrayOperator">
 		<lookup-method ref="intOperator" name="addSerializer"/> <!-- game id -->
 		<lookup-method ref="intOperator" name="addSerializer"/> <!-- game size -->
+	</bean>
+	
+	<bean id="gameInfoUsersList" class="core.external.io.ArrayOperator">
+		<lookup-method ref="intOperator" name="addSerializer"/> <!-- user id -->
 	</bean>
 	
 	

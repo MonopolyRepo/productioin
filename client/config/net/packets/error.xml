@@ -4,11 +4,24 @@
 		<lookup-method ref="intOperator" name="addSerializer"/><!-- error id -->
 		<lookup-method ref="intOperator" name="addSerializer"/><!-- extra data -->
 	</bean>
+	
+	<bean id="catchErrorOperator" class="core.external.io.StreamOperator">
+		<lookup-method ref="intOperator" name="addDeserializer"/><!-- error id -->
+		<lookup-method ref="UTFStringOperator" name="addDeserializer"/><!-- errorClass -->
+		<lookup-method ref="UTFStringOperator" name="addDeserializer"/><!-- errorText -->
+		<lookup-method ref="UTFStringOperator" name="addDeserializer"/><!-- stuck trace -->
+	</bean>
 
 	<bean id="errorPacket" class="core.net.packets.BytePacket">
 		<property name="type" value="300"/>
 		<property name="headerOperator" ref="headerOperator"/>
 		<property name="streamOperator" ref="errorOperator"/>
+	</bean>
+	
+	<bean id="catchErrorPacket" class="core.net.packets.BytePacket">
+		<property name="type" value="301"/>
+		<property name="headerOperator" ref="headerOperator"/>
+		<property name="streamOperator" ref="catchErrorOperator"/>
 	</bean>
 	
 	<bean class="net.events.ErrorEventListener" id="errorEventListener">
