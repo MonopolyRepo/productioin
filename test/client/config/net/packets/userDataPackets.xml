@@ -23,6 +23,8 @@
 		<lookup-method ref="doubleOperator" name="addSerializer"/><!-- next energy time -->
 		<lookup-method ref="UTFStringOperator" name="addSerializer"/><!-- photo_url -->
 		<lookup-method ref="intOperator" name="addSerializer"/><!-- rightsLevel -->
+		<lookup-method ref="intOperator" name="addSerializer"/><!-- avatar id -->
+		<lookup-method ref="intOperator" name="addSerializer"/><!-- is use avatar -->
     </bean>
 	
     <bean id="userDataPacket" class="core.net.packets.BytePacket">
