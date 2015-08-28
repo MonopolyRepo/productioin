@@ -92,6 +92,8 @@
 		
 		
 		<lookup-method name="addEventListener" ref="errorEventListener"/>
+		
+		<lookup-method name="addEventListener" ref="localeEventListener"/>
 	</bean>
 		
 	<bean id="dailyBonusEventListener" class="net.events.DailyBonusEventListener">
@@ -331,6 +333,8 @@
 		
 		
 		<lookup-method name="addPacket" ref="errorPacket"/>
+		
+		<lookup-method name="addPacket" ref="localePacket"/>
 	</bean>
 		
 	<bean id="connectionManager" class="core.net.ConnectionManager" init-method="connect">

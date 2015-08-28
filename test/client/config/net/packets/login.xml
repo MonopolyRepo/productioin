@@ -20,6 +20,10 @@
 		<lookup-method ref="intOperator" name="addSerializer"/>
 	</bean>
 	
+	<bean id="localeOperator" class="core.external.io.StreamOperator">
+		<lookup-method ref="UTFStringOperator" name="addSerializer"/>
+	</bean>
+	
 	<bean id="loginPacket" class="core.net.packets.BytePacket">
 		<property name="type" value="2"/>
 		<property name="headerOperator" ref="headerOperator"/>
@@ -43,4 +47,14 @@
         <property name="headerOperator" ref="headerOperator"/>
         <property name="streamOperator" ref="dailyBonusOperator"/>
     </bean>
+	
+	<bean id="localePacket" class="core.net.packets.BytePacket">
+        <property name="type" value="5"/>
+        <property name="headerOperator" ref="headerOperator"/>
+        <property name="streamOperator" ref="localeOperator"/>
+    </bean>
+	
+	<bean id="localeEventListener" class="net.events.LocaleEventListener">
+		<property name="type" value="5"/>
+	</bean>
 </beans>
