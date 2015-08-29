@@ -340,7 +340,7 @@
 	<bean id="connectionManager" class="core.net.ConnectionManager" init-method="connect">
 		<!----><property name="server" value="(String)104.131.161.78"/><!---->
 		<!---><property name="server" value="(String)192.168.1.33"/><!-->
-		<property name="port" value="8882"/>
+		<property name="port" value="8882" />
 		<property name="dataReader" ref="dataReader"/>
 		<property name="scenesController" ref="scenesController"/>
 		<property name="pingSender" ref="pingSender"/>
