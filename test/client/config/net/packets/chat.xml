@@ -23,6 +23,17 @@
 		<lookup-method ref="UTFStringOperator" name="addDeserializer"/>
 	</bean>
 	
+	<bean id="typingColorOperator" class="core.external.io.StreamOperator">
+		<!-- userid -->
+		<lookup-method ref="intOperator" name="addSerializer"/>
+		<!-- color index -->
+		<lookup-method ref="intOperator" name="addSerializer"/>
+		
+		
+		<!-- Color index -->
+		<lookup-method ref="intOperator" name="addDeserializer"/>
+	</bean>
+	
 	<bean id="chatMessage" class="core.net.packets.BytePacket">
 		<property name="type" value="10"/>
 		<property name="headerOperator" ref="headerOperator"/>
@@ -35,5 +46,14 @@
 		<property name="streamOperator" ref="joinOperator"/>
 	</bean>
 	
+	<bean id="typingColorPacket" class="core.net.packets.BytePacket">
+		<property name="type" value="12"/>
+		<property name="headerOperator" ref="headerOperator"/>
+		<property name="streamOperator" ref="typingColorOperator"/>
+	</bean>
+	
+	<bean id="changeTypingColorEventListener" class="net.events.ChangeTypingColorEventListener">
+		<property name="type" value="12"/>
+	</bean>
 	
 </beans>

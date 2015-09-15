@@ -25,6 +25,7 @@
 		<lookup-method ref="intOperator" name="addSerializer"/><!-- rightsLevel -->
 		<lookup-method ref="intOperator" name="addSerializer"/><!-- avatar id -->
 		<lookup-method ref="intOperator" name="addSerializer"/><!-- is use avatar -->
+		<lookup-method ref="intOperator" name="addSerializer"/><!-- typing color -->
     </bean>
 	
     <bean id="userDataPacket" class="core.net.packets.BytePacket">
