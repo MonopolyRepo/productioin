@@ -95,7 +95,6 @@
 		
 		<lookup-method name="addEventListener" ref="localeEventListener"/>
 		<lookup-method name="addEventListener" ref="changeTypingColorEventListener"/>
-		<lookup-method name="addEventListener" ref="stockEventListener"/>
 	</bean>
 		
 	<bean id="dailyBonusEventListener" class="net.events.DailyBonusEventListener">
@@ -338,7 +337,6 @@
 		
 		<lookup-method name="addPacket" ref="localePacket"/>
 		<lookup-method name="addPacket" ref="typingColorPacket"/>
-		<lookup-method name="addPacket" ref="stockPacket"/>
 	</bean>
 		
 	<bean id="connectionManager" class="core.net.ConnectionManager" init-method="connect">
