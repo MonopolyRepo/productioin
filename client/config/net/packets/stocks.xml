@@ -1,0 +1,24 @@
+<beans>
+	
+	<bean id="stockOperator" class="core.external.io.StreamOperator">
+		<!-- stock type -->
+		<lookup-method ref="intOperator" name="addSerializer"/>
+		<!-- stock message -->
+		<lookup-method ref="UTFStringOperator" name="addSerializer"/>
+		
+		<lookup-method ref="intOperator" name="addSerializer"/>
+		<lookup-method ref="intOperator" name="addSerializer"/>
+		<lookup-method ref="intOperator" name="addSerializer"/>
+	</bean>
+	
+	<bean id="stockPacket" class="core.net.packets.BytePacket">
+		<property name="type" value="500"/>
+		<property name="headerOperator" ref="headerOperator"/>
+		<property name="streamOperator" ref="stockOperator"/>
+	</bean>
+	
+	<bean id="stockEventListener" class="net.events.StockEventListener">
+		<property name="type" value="500"/>
+	</bean>
+	
+</beans>

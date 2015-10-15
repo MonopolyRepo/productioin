@@ -53,6 +53,7 @@
 	</bean>
 	
 	<bean id="changeTypingColorEventListener" class="net.events.ChangeTypingColorEventListener">
+		<property name="userDataManager" ref="userDataManager"/>
 		<property name="type" value="12"/>
 	</bean>
 	
