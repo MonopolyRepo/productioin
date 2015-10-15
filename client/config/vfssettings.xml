@@ -12,7 +12,7 @@
 		<scope value="vfs"/>
 	</bean>
 	
-	<bean id="directoryScaner" class="core.fileSystem.external.VirtualDirectoryScaner" init-method="scan">
+	<bean id="directoryScaner" class="core.fileSystem.external.VirtualDirectoryScaner"> <!-- init-method="scan"> -->
 		<property name="directoryRoot" ref="directoryRoot"/>
 		<property name="path" value="fs.fs"/>
 	</bean>

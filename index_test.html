@@ -2,56 +2,121 @@
 
 <html>
   <head>
-    <title>Example</title>
+    <title>test</title>
   </head>
-  <body>
-    <div id="fb-root"></div>
-    <script src="//connect.facebook.net/en_US/all.js"></script>
+<body>
+	<div id="fb-root"></div>
+	<script src="../js/jquery.js"></script>
+	<script src="//connect.facebook.net/en_US/all.js"></script>
+	<script src="../js/swfobject.js"></script>
     
     <script type="text/javascript">
       
 	var appId = "601400096658911";
-	var url = "https://bizimdepo.mobi/game01/index_test.html";
+	var url = "https://bizimdepo.mobi/game01/test/index_test.html";
 	
 	FB.init({appId:appId, xfbml: true, status: true, cookie: true});
 	FB.getLoginStatus(checkLoginStatus);
-
-	function getUrlVars() {
-		var vars = {};
-		var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(m,key,value) {
-			vars[key] = value;
-		});
-		return vars;
-	}
 
 	function checkLoginStatus(response) 
 	{
 		if(response && response.status == 'connected') 
 		{
-			var currentUrlVars = getUrlVars();
-			
-			if(currentUrlVars != null && currentUrlVars["accessToken"] && currentUrlVars["userID"])
+			var authResponse = response.authResponse;
+			console.log(authResponse);
+			if(authResponse.accessToken != null && authResponse.userID != null)
 			{
-				console.log("recivied token then shut up");
+				buildFlashMovie(authResponse.accessToken, authResponse.userID);
+			
 				return;
 			}	
-			
-			var urlVars = "";
-			
-			for(var vr in response.authResponse)
-			{
-				urlVars+=vr+"="+response.authResponse[vr] + "&";
-			}
-			
-			urlVars = urlVars.substr(0, urlVars.length-1);
-			window.location=url+"?"+urlVars
 		}
 		else 
 		{
 			window.location="https://www.facebook.com/dialog/oauth?client_id="+appId+"&redirect_uri="+url+"&response_type=token";
 		}
 	}
-				
+	
+	function buildFlashMovie(token, uid)
+	{
+		var version = 101;
+		var flashvars = {
+			version:version
+		};
+		
+		
+		flashvars.token = token;
+		flashvars.fb_user_id = uid;
+		flashvars.facebookLogin = "2";
+		flashvars.version = version;
+		
+		var params = {
+			menu: "false",
+			
+			allowFullscreen: "true",
+			allowFullscreenInteractive: "true",
+			allowScriptAccess: "always",
+			bgcolor: "",
+			wmode: "direct" // can cause issues with FP settings & webcam
+		};
+		var attributes = {
+			id:"Bin_web"
+		};
+		
+		var maxHeight = 785;
+		var currentHeight = $(document).height();
+		var padding = 25;
+		
+		if(currentHeight > maxHeight)
+			currentHeight = maxHeight;
+		
+		swfobject.embedSWF(
+			"Bin_web.swf?test=true&" + version, 
+			"flashHolder", "100%", currentHeight - padding, "19.0.0", 
+			"expressInstall.swf", 
+			flashvars, params, attributes);
+	}
+	
+	window.onresize = function(event) {
+	
+		var maxHeight = 785;
+		var currentHeight = $(document).height();
+		var padding = 25;
+		
+		if(currentHeight > maxHeight)
+			currentHeight = maxHeight;
+		
+		document.getElementById("Bin_web").height = currentHeight - padding;
+	};
+	
     </script>
-  </body>
+	
+	<style>
+		html, body {
+			height:100%;
+			overflow:hidden;
+		}
+		body {
+			background-color:#000000;
+		}
+		body {
+			margin:0;
+		}
+	</style>	 
+	
+	<div id="flashHolder">
+		<p>
+			<a href="https://www.adobe.com/go/getflashplayer">
+				<img 
+					src="https://www.adobe.com/images/shared/download_buttons/get_flash_player.gif" 
+					alt="Get Adobe Flash player" />
+			</a>
+		</p>
+	</div>
+	
+	<div id="infosection" align="center">
+		<a href="https://www.facebook.com/batirkazan"><font color="#FFFFFF" face="Verdana">FAN PAGE</font></a>
+	</div>
+	
+</body>
 </html>

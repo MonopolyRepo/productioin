@@ -37,5 +37,8 @@
 		<lookup-method ref="intOperator" name="addSerializer"/><!-- rank win rate -->
 		<lookup-method ref="intOperator" name="addSerializer"/><!-- rank money -->
 		<lookup-method ref="intOperator" name="addSerializer"/><!-- rank weekly -->
+		<lookup-method ref="intOperator" name="addSerializer"/><!-- avatar id -->
+		<lookup-method ref="intOperator" name="addSerializer"/><!-- is use avatar -->
+		
 	</bean>
 </beans>

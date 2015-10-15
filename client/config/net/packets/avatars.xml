@@ -1,0 +1,26 @@
+<beans>
+	
+	<bean id="avatarInfoOperator" class="core.external.io.StreamOperator">
+		<lookup-method ref="intOperator" name="addSerializer"/><!-- user id -->
+		<lookup-method ref="intOperator" name="addSerializer"/><!-- ava id -->
+		<lookup-method ref="intOperator" name="addSerializer"/><!-- is turned on -->
+		
+		<lookup-method ref="intOperator" name="addDeserializer"/><!-- ava id -->
+		<lookup-method ref="intOperator" name="addDeserializer"/><!-- is turned on  -->
+	</bean>
+	
+	<bean id="avatarPacket" class="core.net.packets.BytePacket">
+		<property name="type" value="400"/>
+		<property name="headerOperator" ref="headerOperator"/>
+		<property name="streamOperator" ref="avatarInfoOperator"/>
+	</bean>
+	
+	<bean class="net.events.ChangeAvatarInfoEventListener" id="changeAvatarInfoEventListener">
+        <property name="type" value="400" />
+		<property name="userDataManager" ref="userDataManager"/>
+    </bean>
+	
+	
+	
+	
+</beans>
