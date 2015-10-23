@@ -1,0 +1,16 @@
+<beans>
+	<bean id="displayManager" class="display.ui.DisplayManager"/>
+	
+	<bean id="scenesController" class="gameui.ScenesController" init-method="initialize">
+		<property name="displayManager" ref="displayManager"/>
+	</bean>
+	
+	<bean id="preloaderScene" class="gameui.preloadScreen.PreloaderScene"/>
+	<bean id="autorisationScene" class="gameui.autorisation.AutorisationScene"/>
+	<bean id="mainMenuScene" class="gameui.mainmenu.MainMenuScene"/>
+	<bean id="hangar" class="gameui.hangar.HangarScene"/>
+	<bean id="gameScene" class="gameui.gamescene.GameScene"/>
+	<bean id="connectionErrorScene" class="gameui.connectionError.ConnectionErrorScene"/>
+
+	
+</beans>
