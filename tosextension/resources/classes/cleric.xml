@@ -1,0 +1,20 @@
+<root>
+
+    <id>3</id>
+
+    <name lang="default">Cleric</name>
+    <name lang="ruRU">Клерик</name>
+
+    <description lang="default">tool tip text</description>
+    <description lang="ruRU">тоол тип текст</description>
+
+    <baseStats>
+        <strength>6</strength>
+        <dexterity>2</dexterity>
+        <intelligence>7</intelligence>
+        <vitality>6</vitality>
+        <spirit>9</spirit>
+    </baseStats>
+
+
+</root>

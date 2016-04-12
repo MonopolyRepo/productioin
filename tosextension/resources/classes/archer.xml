@@ -1,0 +1,20 @@
+<root>
+
+    <id>2</id>
+
+    <name lang="default">Archer</name>
+    <name lang="ruRU">Лучник</name>
+
+    <description lang="default">tool tip text</description>
+    <description lang="ruRU">тоол тип текст</description>
+
+    <baseStats>
+        <strength>5</strength>
+        <dexterity>14</dexterity>
+        <intelligence>3</intelligence>
+        <vitality>3</vitality>
+        <spirit>5</spirit>
+    </baseStats>
+
+
+</root>

@@ -1,0 +1,20 @@
+<root>
+
+    <id>0</id>
+
+    <name lang="default">Swordsman</name>
+    <name lang="ruRU">Мечник</name>
+
+    <description lang="default">tool tip text</description>
+    <description lang="ruRU">тоол тип текст</description>
+
+    <baseStats>
+        <strength>10</strength>
+        <dexterity>6</dexterity>
+        <intelligence>2</intelligence>
+        <vitality>8</vitality>
+        <spirit>4</spirit>
+    </baseStats>
+
+
+</root>

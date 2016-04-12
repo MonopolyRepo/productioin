@@ -1,0 +1,20 @@
+<root>
+
+    <id>1</id>
+
+    <name lang="default">Wizard</name>
+    <name lang="ruRU">Волшебник</name>
+
+    <description lang="default">The wizardest wizard</description>
+    <description lang="ruRU">тоол тип текст</description>
+
+    <baseStats>
+        <strength>1</strength>
+        <dexterity>4</dexterity>
+        <intelligence>15</intelligence>
+        <vitality>4</vitality>
+        <spirit>6</spirit>
+    </baseStats>
+
+
+</root>
