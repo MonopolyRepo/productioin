@@ -17,11 +17,8 @@
 		$.ajaxSetup({
 			cache: true
 		});
-		$.getScript('//connect.facebook.net/en_UK/all.js', function () 
+		$.getScript('https://connect.facebook.net/en_UK/all.js', function () 
 		{
-			
-			
-			
 			if(currentUrlVars.isLogin != null)
 				return;
 			
@@ -43,12 +40,11 @@
 	{
 		if(response && response.status == 'connected')
 		{
-			
-			
 			for(var vr in response.authResponse)
 			{
 				urlVars += vr + "=" + response.authResponse[vr] + "&";
 			}
+			
 			
 			urlVars = urlVars.substr(0, urlVars.length-1);
 			window.location = url + "true&" + urlVars;
